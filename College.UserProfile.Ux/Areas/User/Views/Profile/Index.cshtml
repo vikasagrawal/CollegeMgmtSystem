@@ -1,0 +1,84 @@
+﻿@model College.UserProfile.Core.Models.UserProfile
+@{
+    ViewBag.Title = "User Profile";
+}
+
+<h2>User Profile</h2>
+
+<script id="customMessageTemplate" type="text/html">
+    <em class="customMessage" data-bind='validationMessage: field'></em>
+</script>
+<p id="infoMessages" class="message-success"></p>
+<fieldset>
+    <div data-bind='validationOptions: { messageTemplate: "customMessageTemplate" }'>
+
+        <label>
+            First Name:<input type="text" data-bind="value: viewModel.user.FirstName" id="FirstName" />
+        </label>
+        <label>
+            Middle Name:<input type="text" data-bind="value: viewModel.user.MiddleName" id="MiddleName" />
+        </label>
+        <label>
+            Last Name:<input type="text" data-bind="value: viewModel.user.LastName" id="LastName" />
+        </label>
+        <label>
+            Home Town:<input type="text" data-bind="value: viewModel.user.HomeTown" id="HomeTown" />
+        </label>
+        <label>
+            Zip Code:<input type="text" data-bind="value: viewModel.user.ZipCode" id="ZipCode" />
+        </label>
+        <label>
+            Mobile:<input type="text" data-bind="value: viewModel.user.MobileNo" id="MobileNo" />
+        </label>
+        <label>
+            Gender: 
+                <div data-bind="foreach: GenderOption">
+                         <input name="Gender"" type="radio" data-bind="value: LookupID, trueFalseRadioButton: $root.viewModel.user.Gender" />
+                        <span data-bind="text: LookupValue" />
+                </div>
+        </label>
+        <label>
+            Languages Spoken:<input type="text" data-bind="value: viewModel.user.LanguagesSpoken" id="LanguagesSpoken" />
+        </label>
+        <label>
+            Date Of Birth:<input type="text" data-bind="datepicker: viewModel.user.BirthDate, datepickerOptions: { changeMonth: true, changeYear: true }" id="BirthDate" />
+        </label>
+        <label>
+            Photo:<input type="text" data-bind="value: viewModel.user.UserPhoto" id="UserPhoto" />
+        </label>
+        <label>
+            Email:<input type="text" id="Email" />
+        </label>
+        <label>
+            About User:<textarea id="AboutUser" rows="5" data-bind="text: viewModel.user.AboutUser"></textarea>
+        </label>
+    </div>
+      <select data-placeholder="Choose a Country..." class="chosen-select" multiple style="width:350px;" tabindex="2">
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+    <option value="3">Option 3</option>
+  </select>
+    <button type="submit">Save</button>
+</fieldset>
+
+@section scripts
+{
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="~/Content/style.css">
+  <link rel="stylesheet" href="~/Content/prism.css">
+    <link rel="stylesheet" href="~/Content/chosen.min.css">
+    @Scripts.Render("~/Scripts/chosen.jquery.min.js")
+@Scripts.Render("~/Scripts/prism.js")
+    @Scripts.Render("~/Scripts/knockout.mapping-latest.js")
+    @Scripts.Render("~/Scripts/Custom.js")
+    @Scripts.Render("~/Scripts/User/ProfileViewModel.js")
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script language="javascript" type="text/javascript">
+
+        $(document).ready(function () {
+            var userViewModel = new UserViewModel();
+            userViewModel.loadUserProfile();
+        });
+        $(".chosen-select").chosen();
+    </script>
+}

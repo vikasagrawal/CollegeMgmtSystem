@@ -1,0 +1,345 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="UserProfilesModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="UserProfilesModelStoreContainer">
+          <EntitySet Name="CodeLookup" EntityType="UserProfilesModel.Store.CodeLookup" store:Type="Tables" store:Schema="dbo" store:Name="CodeLookup">
+            <DefiningQuery>SELECT 
+      [CodeLookup].[CodeLookupId] AS [CodeLookupId], 
+      [CodeLookup].[CodeDesc] AS [CodeDesc], 
+      [CodeLookup].[ShortDesc] AS [ShortDesc], 
+      [CodeLookup].[ParentCodeLookupId] AS [ParentCodeLookupId], 
+      [CodeLookup].[IsActive] AS [IsActive], 
+      [CodeLookup].[CreatedBy] AS [CreatedBy], 
+      [CodeLookup].[CreatedDate] AS [CreatedDate], 
+      [CodeLookup].[UpdatedBy] AS [UpdatedBy], 
+      [CodeLookup].[UpdatedDate] AS [UpdatedDate]
+      FROM [dbo].[CodeLookup] AS [CodeLookup]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Course" EntityType="UserProfilesModel.Store.Course" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Subject" EntityType="UserProfilesModel.Store.Subject" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserEducationDetails" EntityType="UserProfilesModel.Store.UserEducationDetails" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserFBDetails" EntityType="UserProfilesModel.Store.UserFBDetails" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserLogin" EntityType="UserProfilesModel.Store.UserLogin" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Users" EntityType="UserProfilesModel.Store.Users" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'UserProfiles.dbo.CodeLookup' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="CodeLookup">
+          <Key>
+            <PropertyRef Name="CodeLookupId" />
+            <PropertyRef Name="CodeDesc" />
+            <PropertyRef Name="IsActive" />
+          </Key>
+          <Property Name="CodeLookupId" Type="int" Nullable="false" />
+          <Property Name="CodeDesc" Type="varchar" Nullable="false" MaxLength="500" />
+          <Property Name="ShortDesc" Type="varchar" MaxLength="50" />
+          <Property Name="ParentCodeLookupId" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDate" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="CourseId" />
+          </Key>
+          <Property Name="CourseId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CourseName" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="CourseFieldId" Type="int" Nullable="false" />
+          <Property Name="DegreeTypeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="SubjectId" />
+          </Key>
+          <Property Name="SubjectId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SubjectDesc" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="UserEducationDetails">
+          <Key>
+            <PropertyRef Name="UserEducationDetailId" />
+          </Key>
+          <Property Name="UserEducationDetailId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CollegeId" Type="int" Nullable="false" />
+          <Property Name="PassingYear" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="DegreeTypeId" Type="int" Nullable="false" />
+          <Property Name="CourseId" Type="int" Nullable="false" />
+          <Property Name="SubjectId" Type="int" Nullable="false" />
+          <Property Name="InstituitionTypeId" Type="int" Nullable="false" />
+          <Property Name="SchoolName" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="UserFBDetails">
+          <Key>
+            <PropertyRef Name="UserFBDetailId" />
+          </Key>
+          <Property Name="UserFBDetailId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserLoginId" Type="int" Nullable="false" />
+          <Property Name="FBData" Type="xml" />
+        </EntityType>
+        <EntityType Name="UserLogin">
+          <Key>
+            <PropertyRef Name="UserLoginID" />
+          </Key>
+          <Property Name="UserLoginID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="EmailAddress" Type="nvarchar" Nullable="false" MaxLength="250" />
+          <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="IsFacebookLogin" Type="bit" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="FBUserID" Type="varchar" MaxLength="50" />
+          <Property Name="IsEmailVerified" Type="bit" />
+          <Property Name="VerificationCode" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="MiddleName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="Gender" Type="int" />
+          <Property Name="UserTypeID" Type="int" />
+          <Property Name="HomeTown" Type="varchar" MaxLength="100" />
+          <Property Name="ZipCode" Type="varchar" MaxLength="10" />
+          <Property Name="BirthDate" Type="datetime" />
+          <Property Name="MobileNo" Type="varchar" MaxLength="10" />
+          <Property Name="AboutUser" Type="varchar" MaxLength="500" />
+          <Property Name="UserPhoto" Type="varchar" MaxLength="100" />
+          <Property Name="LanguagesSpoken" Type="xml" />
+          <Property Name="IsUserVerified" Type="bit" />
+          <Property Name="VerifiedBy" Type="int" />
+          <Property Name="FieldOfInterest" Type="xml" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="UserProfilesModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="UserProfilesContext" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="CodeLookups" EntityType="UserProfilesModel.CodeLookup" />
+          <EntitySet Name="Courses" EntityType="UserProfilesModel.Course" />
+          <EntitySet Name="Subjects" EntityType="UserProfilesModel.Subject" />
+          <EntitySet Name="UserEducationDetails" EntityType="UserProfilesModel.UserEducationDetail" />
+          <EntitySet Name="UserFBDetails" EntityType="UserProfilesModel.UserFBDetail" />
+          <EntitySet Name="UserLogins" EntityType="UserProfilesModel.UserLogin" />
+          <EntitySet Name="Users" EntityType="UserProfilesModel.User" />
+        </EntityContainer>
+        <EntityType Name="CodeLookup">
+          <Key>
+            <PropertyRef Name="CodeLookupId" />
+            <PropertyRef Name="CodeDesc" />
+            <PropertyRef Name="IsActive" />
+          </Key>
+          <Property Name="CodeLookupId" Type="Int32" Nullable="false" />
+          <Property Name="CodeDesc" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="ShortDesc" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ParentCodeLookupId" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDate" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+        </EntityType>
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="CourseId" />
+          </Key>
+          <Property Name="CourseId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseName" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="CourseFieldId" Type="Int32" Nullable="false" />
+          <Property Name="DegreeTypeId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="SubjectId" />
+          </Key>
+          <Property Name="SubjectId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="SubjectDesc" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="UserEducationDetail">
+          <Key>
+            <PropertyRef Name="UserEducationDetailId" />
+          </Key>
+          <Property Name="UserEducationDetailId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CollegeId" Type="Int32" Nullable="false" />
+          <Property Name="PassingYear" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="DegreeTypeId" Type="Int32" Nullable="false" />
+          <Property Name="CourseId" Type="Int32" Nullable="false" />
+          <Property Name="SubjectId" Type="Int32" Nullable="false" />
+          <Property Name="InstituitionTypeId" Type="Int32" Nullable="false" />
+          <Property Name="SchoolName" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="UserFBDetail">
+          <Key>
+            <PropertyRef Name="UserFBDetailId" />
+          </Key>
+          <Property Name="UserFBDetailId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="UserLoginId" Type="Int32" Nullable="false" />
+          <Property Name="FBData" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="UserLogin">
+          <Key>
+            <PropertyRef Name="UserLoginID" />
+          </Key>
+          <Property Name="UserLoginID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="EmailAddress" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="IsFacebookLogin" Type="Boolean" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="FBUserID" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="IsEmailVerified" Type="Boolean" />
+          <Property Name="VerificationCode" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Gender" Type="Int32" />
+          <Property Name="UserTypeID" Type="Int32" />
+          <Property Name="HomeTown" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="ZipCode" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="BirthDate" Type="DateTime" Precision="3" />
+          <Property Name="MobileNo" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="AboutUser" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="UserPhoto" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="LanguagesSpoken" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="IsUserVerified" Type="Boolean" />
+          <Property Name="VerifiedBy" Type="Int32" />
+          <Property Name="FieldOfInterest" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="UserProfilesModelStoreContainer" CdmEntityContainer="UserProfilesContext">
+          <EntitySetMapping Name="CodeLookups">
+            <EntityTypeMapping TypeName="UserProfilesModel.CodeLookup">
+              <MappingFragment StoreEntitySet="CodeLookup">
+                <ScalarProperty Name="CodeLookupId" ColumnName="CodeLookupId" />
+                <ScalarProperty Name="CodeDesc" ColumnName="CodeDesc" />
+                <ScalarProperty Name="ShortDesc" ColumnName="ShortDesc" />
+                <ScalarProperty Name="ParentCodeLookupId" ColumnName="ParentCodeLookupId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Courses">
+            <EntityTypeMapping TypeName="UserProfilesModel.Course">
+              <MappingFragment StoreEntitySet="Course">
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="CourseFieldId" ColumnName="CourseFieldId" />
+                <ScalarProperty Name="DegreeTypeId" ColumnName="DegreeTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subjects">
+            <EntityTypeMapping TypeName="UserProfilesModel.Subject">
+              <MappingFragment StoreEntitySet="Subject">
+                <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+                <ScalarProperty Name="SubjectDesc" ColumnName="SubjectDesc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserEducationDetails">
+            <EntityTypeMapping TypeName="UserProfilesModel.UserEducationDetail">
+              <MappingFragment StoreEntitySet="UserEducationDetails">
+                <ScalarProperty Name="UserEducationDetailId" ColumnName="UserEducationDetailId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CollegeId" ColumnName="CollegeId" />
+                <ScalarProperty Name="PassingYear" ColumnName="PassingYear" />
+                <ScalarProperty Name="DegreeTypeId" ColumnName="DegreeTypeId" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+                <ScalarProperty Name="InstituitionTypeId" ColumnName="InstituitionTypeId" />
+                <ScalarProperty Name="SchoolName" ColumnName="SchoolName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserFBDetails">
+            <EntityTypeMapping TypeName="UserProfilesModel.UserFBDetail">
+              <MappingFragment StoreEntitySet="UserFBDetails">
+                <ScalarProperty Name="UserFBDetailId" ColumnName="UserFBDetailId" />
+                <ScalarProperty Name="UserLoginId" ColumnName="UserLoginId" />
+                <ScalarProperty Name="FBData" ColumnName="FBData" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserLogins">
+            <EntityTypeMapping TypeName="UserProfilesModel.UserLogin">
+              <MappingFragment StoreEntitySet="UserLogin">
+                <ScalarProperty Name="UserLoginID" ColumnName="UserLoginID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IsFacebookLogin" ColumnName="IsFacebookLogin" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="FBUserID" ColumnName="FBUserID" />
+                <ScalarProperty Name="IsEmailVerified" ColumnName="IsEmailVerified" />
+                <ScalarProperty Name="VerificationCode" ColumnName="VerificationCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="UserProfilesModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
+                <ScalarProperty Name="HomeTown" ColumnName="HomeTown" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="AboutUser" ColumnName="AboutUser" />
+                <ScalarProperty Name="UserPhoto" ColumnName="UserPhoto" />
+                <ScalarProperty Name="LanguagesSpoken" ColumnName="LanguagesSpoken" />
+                <ScalarProperty Name="IsUserVerified" ColumnName="IsUserVerified" />
+                <ScalarProperty Name="VerifiedBy" ColumnName="VerifiedBy" />
+                <ScalarProperty Name="FieldOfInterest" ColumnName="FieldOfInterest" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
