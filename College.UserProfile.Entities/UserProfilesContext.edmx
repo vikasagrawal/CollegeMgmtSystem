@@ -6,19 +6,7 @@
     <edmx:StorageModels>
     <Schema Namespace="UserProfilesModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="UserProfilesModelStoreContainer">
-          <EntitySet Name="CodeLookup" EntityType="UserProfilesModel.Store.CodeLookup" store:Type="Tables" store:Schema="dbo" store:Name="CodeLookup">
-            <DefiningQuery>SELECT 
-      [CodeLookup].[CodeLookupId] AS [CodeLookupId], 
-      [CodeLookup].[CodeDesc] AS [CodeDesc], 
-      [CodeLookup].[ShortDesc] AS [ShortDesc], 
-      [CodeLookup].[ParentCodeLookupId] AS [ParentCodeLookupId], 
-      [CodeLookup].[IsActive] AS [IsActive], 
-      [CodeLookup].[CreatedBy] AS [CreatedBy], 
-      [CodeLookup].[CreatedDate] AS [CreatedDate], 
-      [CodeLookup].[UpdatedBy] AS [UpdatedBy], 
-      [CodeLookup].[UpdatedDate] AS [UpdatedDate]
-      FROM [dbo].[CodeLookup] AS [CodeLookup]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="CodeLookup" EntityType="UserProfilesModel.Store.CodeLookup" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Course" EntityType="UserProfilesModel.Store.Course" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Subject" EntityType="UserProfilesModel.Store.Subject" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UserEducationDetails" EntityType="UserProfilesModel.Store.UserEducationDetails" store:Type="Tables" Schema="dbo" />
@@ -26,14 +14,9 @@
           <EntitySet Name="UserLogin" EntityType="UserProfilesModel.Store.UserLogin" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Users" EntityType="UserProfilesModel.Store.Users" store:Type="Tables" Schema="dbo" />
         </EntityContainer>
-        <!--Errors Found During Generation:
-      warning 6002: The table/view 'UserProfiles.dbo.CodeLookup' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
-      -->
         <EntityType Name="CodeLookup">
           <Key>
             <PropertyRef Name="CodeLookupId" />
-            <PropertyRef Name="CodeDesc" />
-            <PropertyRef Name="IsActive" />
           </Key>
           <Property Name="CodeLookupId" Type="int" Nullable="false" />
           <Property Name="CodeDesc" Type="varchar" Nullable="false" MaxLength="500" />
@@ -134,8 +117,6 @@
         <EntityType Name="CodeLookup">
           <Key>
             <PropertyRef Name="CodeLookupId" />
-            <PropertyRef Name="CodeDesc" />
-            <PropertyRef Name="IsActive" />
           </Key>
           <Property Name="CodeLookupId" Type="Int32" Nullable="false" />
           <Property Name="CodeDesc" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
@@ -190,7 +171,7 @@
             <PropertyRef Name="UserLoginID" />
           </Key>
           <Property Name="UserLoginID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" />
           <Property Name="EmailAddress" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
           <Property Name="Password" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
           <Property Name="IsFacebookLogin" Type="Boolean" />
