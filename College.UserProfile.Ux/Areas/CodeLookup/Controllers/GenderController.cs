@@ -8,9 +8,11 @@ using System.Web;
 using System.Web.Mvc;
 using College.UserProfile.Entities;
 using College.UserProfile.Core;
+using College.UserProfile.Ux.CustomAttributes;
 
 namespace College.UserProfile.Ux.Areas.CodeLookup.Controllers
 {
+    [HandleUIException]
     public class GenderController : Controller
     {
         private UserProfilesContext db = new UserProfilesContext();

@@ -1,5 +1,6 @@
 ﻿using College.UserProfile.Core.Authentication;
 using College.UserProfile.Entities;
+using College.UserProfile.Ux.CustomAttributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,7 @@ using System.Web.Mvc;
 namespace College.UserProfile.Ux.Areas.User.Controllers
 {
     [Authorize]
+    [HandleUIException]
     public class ProfileController : Controller
     {
         private UserProfilesContext db = new UserProfilesContext();

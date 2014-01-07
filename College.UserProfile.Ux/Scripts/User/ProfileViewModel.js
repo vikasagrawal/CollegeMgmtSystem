@@ -50,23 +50,15 @@ function UserViewModel() {
             }
         }
     };
-    
-    var Country = function(name, population) {
-        this.countryName = name;
-        this.countryPopulation = population;
-    };
 
-    self.availableCountries = ko.observableArray([
-            new Country("UK", 65000000),
-            new Country("USA", 320000000),
-            new Country("Sweden", 29000000)
-    ]);
     self.GenderOption = ko.observableArray([]);
     self.viewModel = {};
     self.loadUserProfile = function () {
         $('#loading').show();
-        GetGenderLists(function(output) {
+        GetGenderLists(function (output) {
             self.GenderOption(output);
+        }, function (error) {
+            $("#infoMessages").html(error).attr("class", "message-error");
         });
 
         $.getJSON(
@@ -75,16 +67,14 @@ function UserViewModel() {
                 function (data, textStatus, jqXHR) {
                     if (textStatus == "success") {
                         self.viewModel = ko.mapping.fromJSON(jqXHR.responseText, validationMapping);
-                        //$('#BirthDate').datepicker('setDate', self.viewModel.user.BirthDate());
-                        ko.applyBindings(self);
+                         ko.applyBindings(self);
                     }
                     $('#loading').hide();
                     //todo: redirect to error page
                 })
             .fail(
                     function (data, textStatus, jqXHR) {
-                        //todo: redirect to error page
-                        var output = jqXHR.responseText;
+                        $("#infoMessages").html(JSON.parse(jqXHR.responseText).Message).attr("class", "message-error");
                         $('#loading').hide();
                     });
     }

@@ -77,14 +77,14 @@ ko.bindingHandlers.trueFalseRadioButton =
     }
 };
 
-function GetGenderLists(handleData) {
+function GetGenderLists(handleData, handleException) {
     $.ajax({
         url: "/CodeLookup/Gender/Index",
         type: "GET",
         contentType: "application/json",
         dataType: "json",
         error: function (data, textStatus, jqXHR) {
-            alert("failed");
+            handleException(JSON.parse(jqXHR.responseText).Message);
         },
         success: function(data) {
             handleData(data);

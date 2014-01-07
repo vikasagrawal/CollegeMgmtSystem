@@ -11,9 +11,10 @@ using System.Web.Mvc;
 
 namespace College.UserProfile.Ux.Areas.User.Controllers
 {
+    [HandleUIException]
     public class LoginController : Controller
     {
-        private UserProfilesContext db = new UserProfilesContext();
+                private UserProfilesContext db = new UserProfilesContext();
 
         //
         // GET: /User/Login/
@@ -25,7 +26,6 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
         //
         // POST: /User/Login/Create
         [HttpPost]
-        [HandleUIException]
         public JsonResult Create(UserLogin userlogin)
         {
             if (ModelState.IsValid)
@@ -53,7 +53,6 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
         }
 
         [HttpPost]
-        [HandleUIException]
         public ActionResult ValidateUserLogin(UserLogin userLogin)
         {
             UserLogin userlogin = db.UserLogins.SingleOrDefault(usr => usr.EmailAddress.Equals(userLogin.EmailAddress, StringComparison.OrdinalIgnoreCase)

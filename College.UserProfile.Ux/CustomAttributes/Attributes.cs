@@ -26,7 +26,7 @@ namespace College.UserProfile.Ux.CustomAttributes
                     filterContext.HttpContext.Response.StatusCode = (int)System.Net.HttpStatusCode.NotAcceptable;
                     filterContext.Result = ((ValidationException)filterContext.Exception).exceptionDetails;
                 }
-                else
+                else if (filterContext.Exception is GeneralException)
                 {
                     filterContext.ExceptionHandled = true;
                     filterContext.HttpContext.Response.Clear();
@@ -34,7 +34,15 @@ namespace College.UserProfile.Ux.CustomAttributes
                     filterContext.HttpContext.Response.StatusCode = (int)System.Net.HttpStatusCode.BadRequest;
                     filterContext.Result = ((ValidationException)filterContext.Exception).exceptionDetails;
                 }
-                
+                else
+                {
+                    filterContext.ExceptionHandled = true;
+                    filterContext.HttpContext.Response.Clear();
+                    filterContext.HttpContext.Response.TrySkipIisCustomErrors = true;
+                    filterContext.HttpContext.Response.StatusCode = (int)System.Net.HttpStatusCode.InternalServerError;
+                    filterContext.Result = new JsonResult { Data = new { Message = filterContext.Exception.Message } };
+                }
+
 
             }
         }
