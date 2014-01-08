@@ -37,43 +37,33 @@
             $('#loading').show();
             if (self.NewUser()) {
                 var userLoginJson = ko.toJSON(self);
-                $.ajax({
-                    url: '/User/Login/Create',
-                    type: "POST",
-                    data: userLoginJson,
-                    datatype: "json",
-                    processData: false,
-                    contentType: "application/json; charset=utf-8"
-                }).done(function (data, textStatus, jqXHR) {
-                    $('#loading').hide();
-                    var output = JSON.parse(jqXHR.responseText);
-                    window.location.href = JSON.parse(jqXHR.responseText).redirectToUrl;
-                }).fail(function (jqXHR, textStatus, errorThrown) {
-                    $("#infoMessages").html(JSON.parse(jqXHR.responseText).Message).attr("class", "message-error");
-                    self.ConfirmPassword("");
-                    self.Password("");
-                    $('#loading').hide();
-                });
+                CreateNewUser(userLoginJson,
+                    function (data, textStatus, jqXHR) {
+                        $('#loading').hide();
+                        var output = JSON.parse(jqXHR.responseText);
+                        window.location.href = JSON.parse(jqXHR.responseText).redirectToUrl;
+                    },
+                    function (jqXHR, textStatus, errorThrown) {
+                        $("#infoMessages").html(JSON.parse(jqXHR.responseText).Message).attr("class", "message-error");
+                        self.ConfirmPassword("");
+                        self.Password("");
+                        $('#loading').hide();
+                    });
             }
             else {
                 var userLoginJson = ko.toJSON(self);
-                $.ajax({
-                    url: '/User/Login/ValidateUserLogin',
-                    type: "POST",
-                    data: userLoginJson,
-                    datatype: "json",
-                    processData: false,
-                    contentType: "application/json; charset=utf-8"
-                }).done(function (data, textStatus, jqXHR) {
-                    $('#loading').hide();
-                    var output = JSON.parse(jqXHR.responseText);
-                    window.location.href = JSON.parse(jqXHR.responseText).redirectToUrl;
-                }).fail(function (jqXHR, textStatus, errorThrown) {
-                    $("#infoMessages").html(JSON.parse(jqXHR.responseText).Message).attr("class", "message-error");
-                    self.ConfirmPassword("");
-                    self.Password("");
-                    $('#loading').hide();
-                });
+                ValidateUser(userLoginJson,
+                    function (data, textStatus, jqXHR) {
+                        $('#loading').hide();
+                        var output = JSON.parse(jqXHR.responseText);
+                        window.location.href = JSON.parse(jqXHR.responseText).redirectToUrl;
+                    },
+                    function (jqXHR, textStatus, errorThrown) {
+                        $("#infoMessages").html(JSON.parse(jqXHR.responseText).Message).attr("class", "message-error");
+                        self.ConfirmPassword("");
+                        self.Password("");
+                        $('#loading').hide();
+                    });
             }
             self.errors.showAllMessages(false);
         }
@@ -83,5 +73,42 @@
     };
 
     this.errors = ko.validation.group(self);
+}
 
+function CreateNewUser(data, handleSuccess, handleFailure) {
+    $.ajax({
+        url: '/User/Login/Create',
+        type: "POST",
+        data: data,
+        datatype: "json",
+        processData: false,
+        contentType: "application/json; charset=utf-8"
+    })
+    .done(
+        function (data, textStatus, jqXHR) {
+            handleSuccess(data, textStatus, jqXHR);
+        })
+    .fail(
+        function (data, textStatus, jqXHR) {
+            handleFailure(data, textStatus, jqXHR);
+        });
+}
+
+function ValidateUser(data, handleSuccess, handleFailure) {
+    $.ajax({
+        url: '/User/Login/ValidateUserLogin',
+        type: "POST",
+        data: data,
+        datatype: "json",
+        processData: false,
+        contentType: "application/json; charset=utf-8"
+    })
+    .done(
+        function (data, textStatus, jqXHR) {
+            handleSuccess(data, textStatus, jqXHR);
+        })
+    .fail(
+        function (data, textStatus, jqXHR) {
+            handleFailure(data, textStatus, jqXHR);
+        });
 }

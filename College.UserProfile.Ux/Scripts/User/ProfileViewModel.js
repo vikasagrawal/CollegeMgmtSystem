@@ -2,6 +2,41 @@
 function UserViewModel() {
     $('#loading').hide();
     var self = this;
+   
+    self.LanguageOption = ko.observableArray([]);
+    self.GenderOption = ko.observableArray([]);
+    self.viewModel = {};
+    self.loadUserProfile = function ()
+    {
+        $('#loading').show();
+        GetGenderLists(function (output) {
+            self.GenderOption(output);
+
+        }, function (error) {
+            $("#infoMessages").html(error).attr("class", "message-error");
+        });
+
+        GetLanguagesList(function (output) {
+            self.LanguageOption(output);
+        }, function (error) {
+            $("#infoMessages").html(error).attr("class", "message-error");
+        });
+
+        GetUserProfile(
+                  function (data, textStatus, jqXHR) {
+                      if (textStatus == "success") {
+                          self.viewModel = ko.mapping.fromJSON(jqXHR.responseText, validationMapping);
+                          ko.applyBindings(self);
+                      }
+                      $('#loading').hide();
+                      //todo: redirect to error page
+                  },
+                  function (data, textStatus, jqXHR) {
+                      $("#infoMessages").html(JSON.parse(jqXHR.responseText).Message).attr("class", "message-error");
+                      $('#loading').hide();
+                  });
+    }
+
     var validationMapping = {
         // customize the creation of the name property so that it provides validation
         FirstName: {
@@ -50,36 +85,20 @@ function UserViewModel() {
             }
         }
     };
-
-    self.GenderOption = ko.observableArray([]);
-    self.viewModel = {};
-    self.loadUserProfile = function () {
-        $('#loading').show();
-        GetGenderLists(function (output) {
-            self.GenderOption(output);
-        }, function (error) {
-            $("#infoMessages").html(error).attr("class", "message-error");
-        });
-
-        $.getJSON(
-            "/user/profile/GetUserProfileInformation")
-            .done(
-                function (data, textStatus, jqXHR) {
-                    if (textStatus == "success") {
-                        self.viewModel = ko.mapping.fromJSON(jqXHR.responseText, validationMapping);
-                         ko.applyBindings(self);
-                    }
-                    $('#loading').hide();
-                    //todo: redirect to error page
-                })
-            .fail(
-                    function (data, textStatus, jqXHR) {
-                        $("#infoMessages").html(JSON.parse(jqXHR.responseText).Message).attr("class", "message-error");
-                        $('#loading').hide();
-                    });
-    }
 }
 
 $(function () {
     $("#BirthDate").datepicker();
 });
+
+function GetUserProfile(handleSuccess, handleFailure) {
+    $.getJSON("/user/profile/GetUserProfileInformation")
+    .done(
+        function (data, textStatus, jqXHR) {
+            handleSuccess(data, textStatus, jqXHR);
+        })
+    .fail(
+        function (data, textStatus, jqXHR) {
+            handleFailure(data, textStatus, jqXHR);
+        });
+}

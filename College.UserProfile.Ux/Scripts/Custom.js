@@ -22,14 +22,15 @@ ko.bindingHandlers.datepicker = {
 
         var options = allBindingsAccessor().datepickerOptions || {},
            $el = $(element);
-
-        var jsonDate = valueAccessor();
-        var value = new Date(parseInt(jsonDate().replace("/Date(", "").replace(")/", ""), 10));
-
         //initialize datepicker with some optional options
         $el.datepicker(options);
-        $el.datepicker("setDate", value);
 
+        var jsonDate = valueAccessor();
+
+        if (jsonDate() != null) {
+            var value = new Date(parseInt(jsonDate().replace("/Date(", "").replace(")/", ""), 10));
+            $el.datepicker("setDate", value);
+        }
         //handle the field changing
         ko.utils.registerEventHandler(element, "change", function () {
             var observable = valueAccessor();
@@ -77,6 +78,17 @@ ko.bindingHandlers.trueFalseRadioButton =
     }
 };
 
+ko.bindingHandlers.chosen =
+{
+    init: function (element) {
+        $(element).addClass('chzn-select');
+        $(element).chosen();
+    },
+    update: function (element) {
+        $(element).trigger('liszt:updated');
+    }
+};
+
 function GetGenderLists(handleData, handleException) {
     $.ajax({
         url: "/CodeLookup/Gender/Index",
@@ -86,7 +98,23 @@ function GetGenderLists(handleData, handleException) {
         error: function (data, textStatus, jqXHR) {
             handleException(JSON.parse(jqXHR.responseText).Message);
         },
-        success: function(data) {
+        success: function (data) {
+            handleData(data);
+        }
+    });
+}
+
+
+function GetLanguagesList(handleData, handleException) {
+    $.ajax({
+        url: "/CodeLookup/Language/Index",
+        type: "GET",
+        contentType: "application/json",
+        dataType: "json",
+        error: function (data, textStatus, jqXHR) {
+            handleException(JSON.parse(jqXHR.responseText).Message);
+        },
+        success: function (data) {
             handleData(data);
         }
     });
