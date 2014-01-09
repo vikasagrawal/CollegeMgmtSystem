@@ -71,7 +71,6 @@
             <PropertyRef Name="UserLoginID" />
           </Key>
           <Property Name="UserLoginID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="UserID" Type="int" />
           <Property Name="EmailAddress" Type="nvarchar" Nullable="false" MaxLength="250" />
           <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="100" />
           <Property Name="IsFacebookLogin" Type="bit" />
@@ -100,6 +99,7 @@
           <Property Name="IsUserVerified" Type="bit" />
           <Property Name="VerifiedBy" Type="int" />
           <Property Name="FieldOfInterest" Type="xml" />
+          <Property Name="UserLoginID" Type="int" Nullable="false" />
         </EntityType>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -171,7 +171,6 @@
             <PropertyRef Name="UserLoginID" />
           </Key>
           <Property Name="UserLoginID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="UserID" Type="Int32" />
           <Property Name="EmailAddress" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
           <Property Name="Password" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
           <Property Name="IsFacebookLogin" Type="Boolean" />
@@ -200,6 +199,7 @@
           <Property Name="IsUserVerified" Type="Boolean" />
           <Property Name="VerifiedBy" Type="Int32" />
           <Property Name="FieldOfInterest" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Type="Int32" Name="UserLoginID" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -268,7 +268,6 @@
             <EntityTypeMapping TypeName="UserProfilesModel.UserLogin">
               <MappingFragment StoreEntitySet="UserLogin">
                 <ScalarProperty Name="UserLoginID" ColumnName="UserLoginID" />
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="IsFacebookLogin" ColumnName="IsFacebookLogin" />
@@ -282,6 +281,7 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="UserProfilesModel.User">
               <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserLoginID" ColumnName="UserLoginID" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />

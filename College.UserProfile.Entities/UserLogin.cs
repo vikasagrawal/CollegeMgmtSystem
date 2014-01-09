@@ -15,7 +15,6 @@ namespace College.UserProfile.Entities
     public partial class UserLogin
     {
         public int UserLoginID { get; set; }
-        public Nullable<int> UserID { get; set; }
         public string EmailAddress { get; set; }
         public string Password { get; set; }
         public Nullable<bool> IsFacebookLogin { get; set; }

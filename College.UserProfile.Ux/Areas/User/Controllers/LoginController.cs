@@ -14,7 +14,7 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
     [HandleUIException]
     public class LoginController : Controller
     {
-                private UserProfilesContext db = new UserProfilesContext();
+        private UserProfilesContext db = new UserProfilesContext();
 
         //
         // GET: /User/Login/

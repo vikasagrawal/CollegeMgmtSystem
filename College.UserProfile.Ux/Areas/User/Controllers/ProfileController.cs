@@ -27,16 +27,16 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
         // GET: /User/Profile/GetUserProfileInformation
         public ActionResult GetUserProfileInformation()
         {
-            string userId = Utils.GetAutheticatedUserData();
+            string userLoginID = Utils.GetAutheticatedUserData();
 
-            if (!String.IsNullOrEmpty(userId))
+            if (!String.IsNullOrEmpty(userLoginID))
             {
                 int id;
-                if (Int32.TryParse(userId, out id))
+                if (Int32.TryParse(userLoginID, out id))
                 {
-                    var user = db.Users.SingleOrDefault(x => x.UserID == id);
+                    var user = db.Users.SingleOrDefault(x => x.UserLoginID == id);
                     var userProfile = new College.UserProfile.Core.Models.UserProfile();
-                    userProfile.user = new Entities.User() { UserID = Int32.Parse(userId) };
+                    userProfile.user = new Entities.User() { UserLoginID = Int32.Parse(userLoginID), UserID = 0 };
                     if (user != null)
                     {
                         userProfile.user = user;
@@ -59,7 +59,7 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
                 XElement el = new XElement("Languages", userProfile.UserLanguages.Select(kv => new XElement("Language", kv)));
                 userProfile.user.LanguagesSpoken = el.ToString();
 
-                Entities.User existingUser = GetUser(userProfile.user.UserID);
+                Entities.User existingUser = GetUser(userProfile.user.UserLoginID);
                 if (existingUser == null)
                 {
                     db.Users.Add(userProfile.user);
@@ -84,9 +84,9 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
             }
         }
 
-        private Entities.User GetUser(int userid)
+        private Entities.User GetUser(int userLoginID)
         {
-            return db.Users.Find(userid);
+            return db.Users.SingleOrDefault(x => x.UserLoginID == userLoginID);
         }
 
     }

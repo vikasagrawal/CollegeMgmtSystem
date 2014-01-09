@@ -30,5 +30,6 @@ namespace College.UserProfile.Entities
         public Nullable<bool> IsUserVerified { get; set; }
         public Nullable<int> VerifiedBy { get; set; }
         public string FieldOfInterest { get; set; }
+        public int UserLoginID { get; set; }
     }
 }
