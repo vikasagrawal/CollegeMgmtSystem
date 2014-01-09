@@ -78,10 +78,13 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
                         db.UserEducationDetails.RemoveRange(ed);
                     }
 
-                    foreach (var newued in userProfile.UserEducationDetail)
+                    if (userProfile.UserEducationDetail != null)
                     {
-                        newued.UserId = userProfile.user.UserID;
-                        db.UserEducationDetails.Add(newued);
+                        foreach (var newued in userProfile.UserEducationDetail)
+                        {
+                            newued.UserId = userProfile.user.UserID;
+                            db.UserEducationDetails.Add(newued);
+                        }
                     }
                 }
 
