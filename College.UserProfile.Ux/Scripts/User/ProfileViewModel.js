@@ -5,9 +5,10 @@ function UserViewModel() {
     var bindingCompleted = false;
     var languagesLoaded = false;
     var userProfileLoaded = false;
+
     self.LanguageOption = ko.observableArray([]);
     self.GenderOption = ko.observableArray([]);
-    self.viewModel = {};
+    self.viewModel = {}
     self.loadUserProfile = function () {
         $('#loading').show();
         GetGenderLists(function (output) {
@@ -57,6 +58,7 @@ function UserViewModel() {
     //};
 
     self.SaveUserProfile = function () {
+        $("#infoMessages").html("");
         if (self.errors().length == 0) {
             $('#loading').show();
             var userProfile = ko.toJSON(self.viewModel);
@@ -78,6 +80,17 @@ function UserViewModel() {
         }
     };
 
+    ko.validation.configure({
+        registerExtenders: true,
+        decorateElement: true,
+        messagesOnModified: true,
+        insertMessages: true,
+        parseInputAttributes: true,
+        //messageTemplate: null,
+        grouping: { deep: true }
+    });
+
+    this.errors = ko.validation.group(self);
     var validationMapping = {
         // customize the creation of the name property so that it provides validation
         FirstName: {
@@ -127,9 +140,6 @@ function UserViewModel() {
         }
     };
 
-
-
-    this.errors = ko.validation.group(self);
 }
 
 $(function () {
@@ -137,6 +147,7 @@ $(function () {
 });
 
 function GetUserProfile(handleSuccess, handleFailure) {
+    $("#infoMessages").html("");
     $.getJSON("/user/profile/GetUserProfileInformation")
     .done(
         function (data, textStatus, jqXHR) {
@@ -157,13 +168,13 @@ function UpdateUserProfile(data, handleSuccess, handleFailure) {
         processData: false,
         contentType: "application/json; charset=utf-8"
     })
-    .done(
-        function (data, textStatus, jqXHR) {
-            handleSuccess(data, textStatus, jqXHR);
-        })
-    .fail(
-        function (data, textStatus, jqXHR) {
-            handleFailure(data, textStatus, jqXHR);
-        });
+.done(
+    function (data, textStatus, jqXHR) {
+        handleSuccess(data, textStatus, jqXHR);
+    })
+.fail(
+    function (data, textStatus, jqXHR) {
+        handleFailure(data, textStatus, jqXHR);
+    });
 }
 

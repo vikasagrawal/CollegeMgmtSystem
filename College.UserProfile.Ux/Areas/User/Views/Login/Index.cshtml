@@ -50,10 +50,11 @@
 
         $(document).ready(function () {
             ko.applyBindings(new UserLoginViewModel());
+            $("#dialog-form").dialog("open");
         });
 
         $("#dialog-form").dialog({
-            autoOpen: true,
+            autoOpen: false,
             height: 500,
             width: 650,
             modal: true,
