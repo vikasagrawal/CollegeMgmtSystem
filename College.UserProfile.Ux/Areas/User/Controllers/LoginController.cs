@@ -48,7 +48,13 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
             }
             else
             {
-                throw new GeneralException(Json(userlogin));
+                var ModelStateError = from e in ModelState
+                                      where e.Value.Errors.Count > 0
+                                      select
+                                          e.Value.Errors[0].ErrorMessage;
+
+
+                throw new GeneralException(Json(new { userlogin = userlogin, Message = ModelStateError }));
             }
         }
 

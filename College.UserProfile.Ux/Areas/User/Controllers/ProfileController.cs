@@ -1,4 +1,5 @@
 ﻿using College.UserProfile.Core.Authentication;
+using College.UserProfile.Core.Exceptions;
 using College.UserProfile.Entities;
 using College.UserProfile.Ux.CustomAttributes;
 using System;
@@ -6,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Xml.Linq;
 
 namespace College.UserProfile.Ux.Areas.User.Controllers
 {
@@ -21,6 +23,8 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
             return View();
         }
 
+        //
+        // GET: /User/Profile/GetUserProfileInformation
         public ActionResult GetUserProfileInformation()
         {
             string userId = Utils.GetAutheticatedUserData();
@@ -32,7 +36,7 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
                 {
                     var user = db.Users.SingleOrDefault(x => x.UserID == id);
                     var userProfile = new College.UserProfile.Core.Models.UserProfile();
-                    userProfile.user = new Entities.User();
+                    userProfile.user = new Entities.User() { UserID = Int32.Parse(userId) };
                     if (user != null)
                     {
                         userProfile.user = user;
@@ -42,6 +46,47 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
             }
 
             throw new UnauthorizedAccessException();
+        }
+
+        //
+        // POST: /User/Profile/Create
+        [HttpPost]
+        public JsonResult CreateOrUpdate(College.UserProfile.Core.Models.UserProfile userProfile)
+        {
+            if (ModelState.IsValid)
+            {
+
+                XElement el = new XElement("Languages", userProfile.UserLanguages.Select(kv => new XElement("Language", kv)));
+                userProfile.user.LanguagesSpoken = el.ToString();
+
+                Entities.User existingUser = GetUser(userProfile.user.UserID);
+                if (existingUser == null)
+                {
+                    db.Users.Add(userProfile.user);
+                }
+                else
+                {
+                    db.Entry(existingUser).CurrentValues.SetValues(userProfile.user);
+                }
+
+                db.SaveChanges();
+                return Json(new { userProfile = userProfile, Message = "Profile Saved Successfully." });
+            }
+            else
+            {
+                var ModelStateError = from e in ModelState
+                                      where e.Value.Errors.Count > 0
+                                      select
+                                          e.Value.Errors[0].ErrorMessage;
+
+
+                throw new GeneralException(Json(new { userProfile = userProfile, Message = ModelStateError }));
+            }
+        }
+
+        private Entities.User GetUser(int userid)
+        {
+            return db.Users.Find(userid);
         }
 
     }

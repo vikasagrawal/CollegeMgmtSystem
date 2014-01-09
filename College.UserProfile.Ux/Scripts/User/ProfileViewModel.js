@@ -2,12 +2,13 @@
 function UserViewModel() {
     $('#loading').hide();
     var self = this;
-   
+    var bindingCompleted = false;
+    var languagesLoaded = false;
+    var userProfileLoaded = false;
     self.LanguageOption = ko.observableArray([]);
     self.GenderOption = ko.observableArray([]);
     self.viewModel = {};
-    self.loadUserProfile = function ()
-    {
+    self.loadUserProfile = function () {
         $('#loading').show();
         GetGenderLists(function (output) {
             self.GenderOption(output);
@@ -18,7 +19,15 @@ function UserViewModel() {
 
         GetLanguagesList(function (output) {
             self.LanguageOption(output);
+            languagesLoaded = true;
+            if (bindingCompleted == false && userProfileLoaded) {
+                ko.applyBindings(self);
+            }
         }, function (error) {
+            languagesLoaded = true;
+            if (bindingCompleted == false && userProfileLoaded) {
+                ko.applyBindings(self);
+            }
             $("#infoMessages").html(error).attr("class", "message-error");
         });
 
@@ -26,7 +35,11 @@ function UserViewModel() {
                   function (data, textStatus, jqXHR) {
                       if (textStatus == "success") {
                           self.viewModel = ko.mapping.fromJSON(jqXHR.responseText, validationMapping);
-                          ko.applyBindings(self);
+                          userProfileLoaded = true;
+                          if (languagesLoaded) {
+                              ko.applyBindings(self);
+                              bindingCompleted = true;
+                          }
                       }
                       $('#loading').hide();
                       //todo: redirect to error page
@@ -36,6 +49,34 @@ function UserViewModel() {
                       $('#loading').hide();
                   });
     }
+
+    //self.toJSON = function () {
+    //    var copy = ko.toJS(this); //easy way to get a clean copy
+    //    delete copy.full; //remove an extra property
+    //    return copy; //return the copy to be serialized
+    //};
+
+    self.SaveUserProfile = function () {
+        if (self.errors().length == 0) {
+            $('#loading').show();
+            var userProfile = ko.toJSON(self.viewModel);
+            UpdateUserProfile(userProfile,
+                function (data, textStatus, jqXHR) {
+                    $('#loading').hide();
+                    $("#infoMessages").html(JSON.parse(jqXHR.responseText).Message).attr("class", "message-error");
+                },
+                function (jqXHR, textStatus, errorThrown) {
+                    $("#infoMessages").html(JSON.parse(jqXHR.responseText).Message).attr("class", "message-error");
+
+                    $('#loading').hide();
+                });
+
+            self.errors.showAllMessages(false);
+        }
+        else {
+            self.errors.showAllMessages(true);
+        }
+    };
 
     var validationMapping = {
         // customize the creation of the name property so that it provides validation
@@ -85,6 +126,10 @@ function UserViewModel() {
             }
         }
     };
+
+
+
+    this.errors = ko.validation.group(self);
 }
 
 $(function () {
@@ -102,3 +147,23 @@ function GetUserProfile(handleSuccess, handleFailure) {
             handleFailure(data, textStatus, jqXHR);
         });
 }
+
+function UpdateUserProfile(data, handleSuccess, handleFailure) {
+    $.ajax({
+        url: '/user/profile/CreateOrUpdate',
+        type: "POST",
+        data: data,
+        datatype: "json",
+        processData: false,
+        contentType: "application/json; charset=utf-8"
+    })
+    .done(
+        function (data, textStatus, jqXHR) {
+            handleSuccess(data, textStatus, jqXHR);
+        })
+    .fail(
+        function (data, textStatus, jqXHR) {
+            handleFailure(data, textStatus, jqXHR);
+        });
+}
+

@@ -24,12 +24,12 @@ ko.bindingHandlers.datepicker = {
            $el = $(element);
         //initialize datepicker with some optional options
         $el.datepicker(options);
-
         var jsonDate = valueAccessor();
 
         if (jsonDate() != null) {
             var value = new Date(parseInt(jsonDate().replace("/Date(", "").replace(")/", ""), 10));
             $el.datepicker("setDate", value);
+            valueAccessor()(value);
         }
         //handle the field changing
         ko.utils.registerEventHandler(element, "change", function () {
@@ -82,10 +82,10 @@ ko.bindingHandlers.chosen =
 {
     init: function (element) {
         $(element).addClass('chzn-select');
-        $(element).chosen();
     },
     update: function (element) {
-        $(element).trigger('liszt:updated');
+        $(element).chosen();
+        $(element).trigger("liszt:updated");
     }
 };
 
