@@ -22,7 +22,7 @@ namespace College.UserProfile.Core.Models
                 _user = value;
                 if (string.IsNullOrEmpty(value.LanguagesSpoken))
                 {
-                    this.UserLanguages = null;
+                    this.UserLanguages = new List<int>();
                 }
                 else
                 {
