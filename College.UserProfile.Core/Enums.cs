@@ -9,6 +9,7 @@ namespace College.UserProfile.Core
     public enum CodeLookupsDesc
     {
         GENDER = 0,
-        LANGUAGE = 1
+        LANGUAGE = 1,
+        DEGREETYPE = 2
     }
 }

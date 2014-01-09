@@ -119,3 +119,49 @@ function GetLanguagesList(handleData, handleException) {
         }
     });
 }
+
+function GetDegreeTypesList(handleData, handleException) {
+    $.ajax({
+        url: "/CodeLookup/DegreeType/Index",
+        type: "GET",
+        contentType: "application/json",
+        dataType: "json",
+        error: function (data, textStatus, jqXHR) {
+            handleException(JSON.parse(jqXHR.responseText).Message);
+        },
+        success: function (data) {
+            handleData(data);
+        }
+    });
+}
+
+function GetSubjectsList(handleData, handleException) {
+    $.ajax({
+        url: "/CodeLookup/Subject/Index",
+        type: "GET",
+        contentType: "application/json",
+        dataType: "json",
+        error: function (data, textStatus, jqXHR) {
+            handleException(JSON.parse(jqXHR.responseText).Message);
+        },
+        success: function (data) {
+            handleData(data);
+        }
+    });
+}
+
+
+function GetCoursesList(handleData, handleException) {
+    $.ajax({
+        url: "/CodeLookup/Course/Index",
+        type: "GET",
+        contentType: "application/json",
+        dataType: "json",
+        error: function (data, textStatus, jqXHR) {
+            handleException(JSON.parse(jqXHR.responseText).Message);
+        },
+        success: function (data) {
+            handleData(data);
+        }
+    });
+}

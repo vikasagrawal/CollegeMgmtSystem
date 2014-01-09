@@ -43,6 +43,7 @@
           </Key>
           <Property Name="SubjectId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="SubjectDesc" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="CourseID" Type="int" />
         </EntityType>
         <EntityType Name="UserEducationDetails">
           <Key>
@@ -143,6 +144,7 @@
           </Key>
           <Property Name="SubjectId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="SubjectDesc" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Type="Int32" Name="CourseID" />
         </EntityType>
         <EntityType Name="UserEducationDetail">
           <Key>
@@ -235,6 +237,7 @@
           <EntitySetMapping Name="Subjects">
             <EntityTypeMapping TypeName="UserProfilesModel.Subject">
               <MappingFragment StoreEntitySet="Subject">
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
                 <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
                 <ScalarProperty Name="SubjectDesc" ColumnName="SubjectDesc" />
               </MappingFragment>

@@ -1,3 +1,4 @@
 Removed UserID column from UserLogin table
 Added UserLoginID column in Users table. This makes more sense than keeping UserID column in UserLogin table.
 CodeLookupID column in CodeLookup table is made Primary Key as there was no primary key in that table.
+CourseID field added in Subject Table

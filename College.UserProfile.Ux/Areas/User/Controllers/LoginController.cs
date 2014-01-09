@@ -14,6 +14,7 @@ using System.Web.Security;
 namespace College.UserProfile.Ux.Areas.User.Controllers
 {
     [HandleUIException]
+    [OutputCache(Duration = 0)]
     public class LoginController : Controller
     {
         private UserProfilesContext db = new UserProfilesContext();
@@ -27,6 +28,7 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
 
         public ActionResult Logout()
         {
+            Session.Clear();
             FormsAuthentication.SignOut();
             return RedirectToAction("Index");
         }

@@ -24,5 +24,7 @@ namespace College.UserProfile.Core.Models
             }
         }
         public List<int> UserLanguages { get; set; }
+
+        public List<UserEducationDetail> UserEducationDetail { get; set; }
     }
 }

@@ -162,6 +162,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\CodeLookup\CodeLookupAreaRegistration.cs" />
+    <Compile Include="Areas\CodeLookup\Controllers\DegreeTypeController.cs" />
+    <Compile Include="Areas\CodeLookup\Controllers\SubjectController.cs" />
+    <Compile Include="Areas\CodeLookup\Controllers\CourseController.cs" />
     <Compile Include="Areas\CodeLookup\Controllers\GenderController.cs" />
     <Compile Include="Areas\CodeLookup\Controllers\LanguageController.cs" />
     <Compile Include="Areas\User\Controllers\LoginController.cs" />

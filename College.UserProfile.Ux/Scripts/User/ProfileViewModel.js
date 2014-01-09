@@ -1,4 +1,19 @@
 ﻿
+function BlankUserEducationDetail() {
+    var bed = {
+        UserEducationDetailId: ko.observable(),
+        UserId: ko.observable(),
+        CollegeId: ko.observable(),
+        PassingYear: ko.observable(""),
+        DegreeTypeId: ko.observable(),
+        CourseId: ko.observable(),
+        SubjectId: ko.observable(),
+        InstituitionTypeId: ko.observable(1),
+        SchoolName: ko.observable("")
+    }
+
+    return bed;
+}
 function UserViewModel() {
     $('#loading').hide();
     var self = this;
@@ -8,11 +23,43 @@ function UserViewModel() {
 
     self.LanguageOption = ko.observableArray([]);
     self.GenderOption = ko.observableArray([]);
+    self.DegreeTypeOption = ko.observableArray([]);
+    self.CourseOption = ko.observableArray([]);
+    self.SubjectOption = ko.observableArray([]);
     self.viewModel = {}
+
+    self.removeCollegeDetails = self.removePerson = function () {
+        self.viewModel.UserEducationDetail.remove(this);
+    }
+    self.addCollegeDetails = function () {
+        self.viewModel.UserEducationDetail.push(ko.mapping.fromJS(ko.mapping.toJS(new BlankUserEducationDetail()), validationMapping));
+    }
+
     self.loadUserProfile = function () {
         $('#loading').show();
         GetGenderLists(function (output) {
             self.GenderOption(output);
+
+        }, function (error) {
+            $("#infoMessages").html(error).attr("class", "message-error");
+        });
+
+        GetDegreeTypesList(function (output) {
+            self.DegreeTypeOption(output);
+
+        }, function (error) {
+            $("#infoMessages").html(error).attr("class", "message-error");
+        });
+
+        GetSubjectsList(function (output) {
+            self.SubjectOption(output);
+
+        }, function (error) {
+            $("#infoMessages").html(error).attr("class", "message-error");
+        });
+
+        GetCoursesList(function (output) {
+            self.CourseOption(output);
 
         }, function (error) {
             $("#infoMessages").html(error).attr("class", "message-error");
@@ -137,7 +184,39 @@ function UserViewModel() {
             create: function (options) {
                 return ko.observable(options.data).extend({ maxLength: 500 });
             }
+        },
+        CollegeId: {
+            create: function (options) {
+                return ko.observable(options.data).extend({ required: { message: 'Please supply College.' } });
+            }
+        },
+        PassingYear: {
+            create: function (options) {
+                return ko.observable(options.data).extend({
+                    required: { message: 'Please supply Year.' },
+                    minLength: 4, maxLength: 4, pattern: {
+                        message: 'Please enter valid Passing Year',
+                        params: '^(0|[1-9][0-9]*)$'
+                    }
+                });
+            }
+        },
+        DegreeTypeId: {
+            create: function (options) {
+                return ko.observable(options.data).extend({ required: { message: 'Please supply Degree Type.' } });
+            }
+        },
+        CourseId: {
+            create: function (options) {
+                return ko.observable(options.data).extend({ required: { message: 'Please supply Course.' } });
+            }
+        },
+        SubjectId: {
+            create: function (options) {
+                return ko.observable(options.data).extend({ required: { message: 'Please supply Major.' } });
+            }
         }
+
     };
 
 }

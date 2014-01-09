@@ -14,6 +14,7 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
 {
     [Authorize]
     [HandleUIException]
+    [OutputCache(Duration = 0)]
     public class ProfileController : Controller
     {
         private UserProfilesContext db = new UserProfilesContext();
@@ -38,9 +39,11 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
                     var user = db.Users.SingleOrDefault(x => x.UserLoginID == id);
                     var userProfile = new College.UserProfile.Core.Models.UserProfile();
                     userProfile.user = new Entities.User() { UserLoginID = Int32.Parse(userLoginID), UserID = 0 };
+                    userProfile.UserEducationDetail = new List<UserEducationDetail>();
                     if (user != null)
                     {
                         userProfile.user = user;
+                        userProfile.UserEducationDetail = db.UserEducationDetails.Where(x => x.UserId == user.UserID).ToList<UserEducationDetail>();
                     }
                     return Json(userProfile, JsonRequestBehavior.AllowGet);
                 }
@@ -66,6 +69,20 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
                 else
                 {
                     db.Entry(existingUser).CurrentValues.SetValues(userProfile.user);
+                    var ed = from ued in db.UserEducationDetails
+                             where ued.UserId == userProfile.user.UserID
+                             select ued;
+
+                    if (ed.Count() > 0)
+                    {
+                        db.UserEducationDetails.RemoveRange(ed);
+                    }
+
+                    foreach (var newued in userProfile.UserEducationDetail)
+                    {
+                        newued.UserId = userProfile.user.UserID;
+                        db.UserEducationDetails.Add(newued);
+                    }
                 }
 
                 db.SaveChanges();

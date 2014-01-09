@@ -128,8 +128,46 @@
                     </table>
                 </td>
             </tr>
+            </tr>
+            <tr>
+                <td colspan="3">&nbsp;&nbsp;&nbsp;
+                    </td>
+                </tr>
+           
+            <tr>
+                <td colspan="3">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Delete</th>
+                                <th>College</th>
+                                <th>Year</th>
+                                <th>Degree Type</th>
+                                <th>Course</th>
+                                <th>Major</th>
+                            </tr>
+                        </thead>
+                         <tbody data-bind="foreach: viewModel.UserEducationDetail">
+                            <tr>
+                                <td><a href="#" data-bind="click: $parent.removeCollegeDetails">Remove</a></td>
+                                <td><input type="text" data-bind="value: CollegeId" id="CollegeId" /></td>
+                                <td><input type="text" data-bind="value: PassingYear" id="PassingYear" /></td>
+                                <td><select id="DegreeTypeId" data-bind="options: $root.DegreeTypeOption, value: DegreeTypeId, optionsValue: 'LookupID', optionsText: 'LookupValue'"></select>
+                                </td>
+                                <td><select id="CourseId" data-bind="options: $root.CourseOption, value: CourseId, optionsValue: 'LookupID', optionsText: 'LookupValue'"></select></td>
+                                <td><select id="SubjectId" data-bind="options: $root.SubjectOption, value: SubjectId, optionsValue: 'LookupID', optionsText: 'LookupValue'"></select></td>
+                            </tr>
+                        </tbody>
+                         <tr>
+                <td colspan="6"><button data-bind="click: addCollegeDetails">+ Add Another</button>
+                    </td>
+                </tr>
+                    </table>
+                </td>
+            </tr>
         </table>
     </div>
+    <br />
     <button type="submit" data-bind="click: SaveUserProfile">Save</button>
 </fieldset>
 

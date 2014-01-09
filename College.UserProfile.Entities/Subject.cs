@@ -16,5 +16,6 @@ namespace College.UserProfile.Entities
     {
         public int SubjectId { get; set; }
         public string SubjectDesc { get; set; }
+        public Nullable<int> CourseID { get; set; }
     }
 }
