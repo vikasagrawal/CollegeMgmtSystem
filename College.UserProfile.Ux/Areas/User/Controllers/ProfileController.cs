@@ -1,4 +1,5 @@
-﻿using College.UserProfile.Core.Authentication;
+﻿using College.UserProfile.Core;
+using College.UserProfile.Core.Authentication;
 using College.UserProfile.Core.Exceptions;
 using College.UserProfile.Entities;
 using College.UserProfile.Ux.CustomAttributes;
@@ -55,9 +56,7 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
         {
             if (ModelState.IsValid)
             {
-
-                XElement el = new XElement("Languages", userProfile.UserLanguages.Select(kv => new XElement("Language", kv)));
-                userProfile.user.LanguagesSpoken = el.ToString();
+                userProfile.user.LanguagesSpoken = Helper.ListToXMLString(userProfile.UserLanguages, Constants.LanguagesRootElementName, Constants.LanguagesElementName);
 
                 Entities.User existingUser = GetUser(userProfile.user.UserLoginID);
                 if (existingUser == null)

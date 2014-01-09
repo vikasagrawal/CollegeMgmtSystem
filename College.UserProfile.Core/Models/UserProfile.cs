@@ -20,18 +20,9 @@ namespace College.UserProfile.Core.Models
             set
             {
                 _user = value;
-                if (string.IsNullOrEmpty(value.LanguagesSpoken))
-                {
-                    this.UserLanguages = new List<int>();
-                }
-                else
-                {
-                    this.UserLanguages = XElement.Parse(value.LanguagesSpoken).Elements("Language").Select(f => Int32.Parse(f.Value));
-                    //this.UserLanguages = XElement.Parse(value.LanguagesSpoken).Elements("Language").Select(f => f.Value);
-                }
-
+                this.UserLanguages = Helper.XMLStringToList(value.LanguagesSpoken, Constants.LanguagesElementName);
             }
         }
-        public IEnumerable<int> UserLanguages;
+        public List<int> UserLanguages { get; set; }
     }
 }

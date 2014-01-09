@@ -69,8 +69,8 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
             }
 
             College.UserProfile.Core.Authentication.Utils.SetAuthenticationCookie(userlogin);
-            var routeValues = new { area = "User", id = userlogin.UserLoginID };
-            var urlToRedirect = Url.Action("Index", "Profile", routeValues);
+            var routeValues = new { area = "User" };
+            var urlToRedirect = Url.Action("", "Profile", routeValues);
             return Json(new { redirectToUrl = urlToRedirect, Message = "Success" });
         }
 
