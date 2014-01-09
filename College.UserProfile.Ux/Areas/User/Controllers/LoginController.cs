@@ -1,6 +1,7 @@
 ﻿using College.UserProfile.Core.Exceptions;
 using College.UserProfile.Entities;
 using College.UserProfile.Ux.CustomAttributes;
+using College.UserProfile.Core.Authentication;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace College.UserProfile.Ux.Areas.User.Controllers
 {
@@ -23,6 +25,12 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
             return View();
         }
 
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index");
+        }
+
         //
         // POST: /User/Login/Create
         [HttpPost]
@@ -35,7 +43,7 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
                     db.UserLogins.Add(userlogin);
                     db.SaveChanges();
 
-                    College.UserProfile.Core.Authentication.Utils.SetAuthenticationCookie(userlogin);
+                    Utils.SetAuthenticationCookie(userlogin);
                     var routeValues = new { area = "User", id = userlogin.UserLoginID };
                     var urlToRedirect = Url.Action("Index", "Profile", routeValues);
                     return Json(new { redirectToUrl = urlToRedirect, Message = "Success" });

@@ -32,6 +32,20 @@
         }
     });
 
+    self.ToggleNewUser = function()
+    {
+        self.errors.showAllMessages(false);
+        $("#infoMessages").html("")
+        self.NewUser(true);
+    }
+
+    self.ToggleExistingUser = function () {
+        self.errors.showAllMessages(false);
+        $("#infoMessages").html("")
+
+        self.NewUser(false);
+    }
+
     self.SignIn = function () {
         if (self.errors().length == 0) {
             $('#loading').show();

@@ -2,48 +2,63 @@
     ViewBag.Title = "Sign In";
 }
 
-<h2>Sign In</h2>
-<script id="customMessageTemplate" type="text/html">
-    <em class="customMessage" data-bind='validationMessage: field'></em>
-</script>
-<p id="infoMessages" class="message-success"></p>
-<fieldset>
-    <div data-bind='validationOptions: { messageTemplate: "customMessageTemplate" }'>
-        <label>
-            <input type="checkbox" data-bind="checked: NewUser" id="NewUser">New User? Sign Up?</input>
-        </label>
-        </br>
-        <label>
-            <input placeholder="ENTER EMAIL" type="text" data-bind="value: EmailAddress" id="EmailAddress" />
-        </label>
-        </br>
-        <label>
-            <input placeholder="PASSWORD" type="password" data-bind="value: Password" id="Password" />
-        </label>
-        </br>
-        <div id="divConfirmPassword" data-bind="visible: NewUser">
-            <label>
-                <input placeholder="RE-TYPE PASSWORD" type="password" data-bind="value: ConfirmPassword" id="ConfirmPassword" />
-            </label>
-            </br>
-        </div>
-    </div>
-    <button data-bind="click: SignIn" type="submit">Sign In</button>
-</fieldset>
 
+<div id="dialog-form" title="Sign In">
+    <form>
+        <h2>Sign In</h2>
+        <label>
+            <button id="btnNewUser" data-bind="click: ToggleNewUser">New User?</button>
+            <button id="btnExistingUser" data-bind="click: ToggleExistingUser">Existing User?</button>
+        </label>
+        <script id="customMessageTemplate" type="text/html">
+            <em class="customMessage" data-bind='validationMessage: field'></em>
+        </script>
+        <p id="infoMessages" class="message-success"></p>
+        <fieldset>
+            <legend></legend>
+            <div data-bind='validationOptions: { messageTemplate: "customMessageTemplate" }'>
+                <label>
+                    <input placeholder="ENTER EMAIL" type="text" data-bind="value: EmailAddress" id="EmailAddress" />
+                </label>
+                <br />
+                <label>
+                    <input placeholder="PASSWORD" type="password" data-bind="value: Password" id="Password" />
+                </label>
+                <br />
+                <div id="divConfirmPassword" data-bind="visible: NewUser">
+                    <label>
+                        <input placeholder="RE-TYPE PASSWORD" type="password" data-bind="value: ConfirmPassword" id="ConfirmPassword" />
+                    </label>
+                    <br />
+                </div>
+            </div>
+            <br />
+            <button data-bind="click: SignIn" type="submit">Sign In</button>
+        </fieldset>
+    </form>
+</div>
 @section scripts
 {
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="~/Content/jquery-ui-1.10.3.css">
     <link rel="stylesheet" href="~/Content/style.css">
     <link rel="stylesheet" href="~/Content/prism.css">
     <link rel="stylesheet" href="~/Content/chosen.min.css">
     @Scripts.Render("~/Scripts/Custom.js")
     @Scripts.Render("~/Scripts/User/LoginViewModel.js")
+    @Scripts.Render("~/Scripts/jquery-ui-1.10.3.js")
     <script>
 
         $(document).ready(function () {
             ko.applyBindings(new UserLoginViewModel());
         });
+
+        $("#dialog-form").dialog({
+            autoOpen: true,
+            height: 500,
+            width: 650,
+            modal: true,
+        });
+
     </script>
 }
 
