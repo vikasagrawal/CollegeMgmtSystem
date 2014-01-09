@@ -21,6 +21,31 @@ function UserViewModel() {
     var languagesLoaded = false;
     var userProfileLoaded = false;
 
+
+    self.uploadimage = function () {
+        $('#loading').show();
+        var postdata = $('#image-upload-form').serialize();
+        var file = document.getElementById('files').files[0];
+        var fd = new FormData();
+        fd.append("files", file);
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/User/Profile/UploadImage", false);
+
+        xhr.onreadystatechange = function (oEvent) {
+            if (xhr.readyState === 4) {
+                $('#loading').hide();
+                if (xhr.status === 200) {
+                    $("#infoMessages").html(JSON.parse(xhr.responseText).Message).attr("class", "message-error");
+                    self.viewModel.user.UserPhoto("/upload/" + JSON.parse(xhr.responseText).FileName);
+                } else {
+                    $("#infoMessages").html(JSON.parse(xhr.responseText).Message).attr("class", "message-error");
+                }
+            }
+        };
+        xhr.send(fd);
+    }
+
+
     self.LanguageOption = ko.observableArray([]);
     self.GenderOption = ko.observableArray([]);
     self.DegreeTypeOption = ko.observableArray([]);

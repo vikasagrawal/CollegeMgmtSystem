@@ -103,6 +103,27 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
             }
         }
 
+        [HttpPost]
+        public JsonResult UploadImage(FormCollection data)
+        {
+            if (Request.Files["files"] != null)
+            {
+                string fileExtention = System.IO.Path.GetExtension(Request.Files["files"].FileName);
+                using (var binaryReader = new System.IO.BinaryReader(Request.Files["files"].InputStream))
+                {
+                    var Imagefile = binaryReader.ReadBytes(Request.Files["files"].ContentLength);//your image
+                    System.IO.File.WriteAllBytes(AppDomain.CurrentDomain.BaseDirectory + "Upload/" + Utils.GetAutheticatedUserData() + fileExtention, Imagefile);
+                }
+                return Json(new { FileName = Utils.GetAutheticatedUserData() + fileExtention, Message = "Image Saved Successfully." });
+            }
+            else
+            {
+                throw new ValidationException(Json(new { Message = "Invalid File." }));
+            }
+
+
+        }
+
         private Entities.User GetUser(int userLoginID)
         {
             return db.Users.SingleOrDefault(x => x.UserLoginID == userLoginID);

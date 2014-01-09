@@ -121,7 +121,14 @@
                                     <label>Photo:</label>
                                 </td>
                                 <td>
-                                    <input type="text" data-bind="value: viewModel.user.UserPhoto" id="UserPhoto" />
+                                    <img data-bind="visible: viewModel.user.UserPhoto() != null, attr: { src: viewModel.user.UserPhoto }" width="100px" height="100px"  />
+                                    <form id="image-upload-form">
+                                        <input type="file" name="photo" id="files" accept="image/*;capture=camera">
+                                        <button type="submit" data-bind="click: uploadimage">Upload Image</button>
+                                      </form>
+                                    @*<input type="file" data-bind="value: viewModel.user.UserPhoto, fileUpload: viewModel.user.UserPhoto, url: 'http://localhost:27471/upload/'">
+                                    <script src="{{ STATIC_URL }}html5knockoutImagePreview.js"></script>​
+                                    <input type="text" data-bind="value: viewModel.user.UserPhoto" id="UserPhoto" />*@
                                 </td>
                             </tr>
                         </tr>
