@@ -10,10 +10,10 @@
 </script>
 <p id="infoMessages" class="message-success"></p>
 <fieldset><legend></legend>
-    <div data-bind='validationOptions: { messageTemplate: "customMessageTemplate" }'>
+    <div data-bind='validationOptions: { messageTemplate: "customMessageTemplate" }'>    </div>
         <table>
             <tr>
-                <td>
+                <td style="vertical-align:top">
                     <table>
                         <tr>
                             <td>
@@ -158,7 +158,7 @@
                                 <td><a href="#" data-bind="click: $parent.removeCollegeDetails">Remove</a></td>
                                 <td><input placeholder="COLLEGE" type="text" data-bind="value: CollegeId" id="CollegeId" /></td>
                                 <td><input placeholder="YEAR" type="text" data-bind="value: PassingYear" id="CollegePassingYear" /></td>
-                                <td><select id="DegreeTypeId" data-bind="options: $root.DegreeTypeOption, value: DegreeTypeId, optionsValue: 'LookupID', optionsText: 'LookupValue', optionsCaption:'DEGREE TYPE...' "></select>
+                                <td><select id="DegreeTypeId" data-bind="options: $root.DegreeTypeOption, value: DegreeTypeId, optionsValue: 'LookupID', optionsText: 'LookupValue', optionsCaption: 'DEGREE TYPE...' "></select>
                                 </td>
                                 <td><select id="CourseId" data-bind="options: $root.CourseOption, value: CourseId, optionsValue: 'LookupID', optionsText: 'LookupValue', optionsCaption: 'COURSE...'"></select></td>
                                 <td><select id="SubjectId" data-bind="options: $root.SubjectOption, value: SubjectId, optionsValue: 'LookupID', optionsText: 'LookupValue', optionsCaption: 'MAJOR...'"></select></td>
@@ -199,7 +199,7 @@
                 </td>
             </tr>
         </table>
-    </div>
+
     <br />
     <button type="submit" data-bind="click: SaveUserProfile">Save</button>
 </fieldset>
