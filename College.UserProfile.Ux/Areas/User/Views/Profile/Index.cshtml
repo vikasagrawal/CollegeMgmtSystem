@@ -135,9 +135,8 @@
                     </table>
                 </td>
             </tr>
-            </tr>
             <tr>
-                <td colspan="3">&nbsp;&nbsp;&nbsp;
+                <td colspan="3"><h2>College Education Details</h2>
                     </td>
                 </tr>
            
@@ -154,7 +153,7 @@
                                 <th>Major</th>
                             </tr>
                         </thead>
-                         <tbody data-bind="foreach: viewModel.UserEducationDetail">
+                         <tbody data-bind="foreach: CollegeDetails">
                             <tr>
                                 <td><a href="#" data-bind="click: $parent.removeCollegeDetails">Remove</a></td>
                                 <td><input type="text" data-bind="value: CollegeId" id="CollegeId" /></td>
@@ -167,6 +166,33 @@
                         </tbody>
                          <tr>
                 <td colspan="6"><button data-bind="click: addCollegeDetails">+ Add Another</button>
+                    </td>
+                </tr>
+                    </table>
+                </td>
+            </tr>
+                <tr>
+                <td colspan="3"><h2>School Education Details</h2>
+                    </td>
+                </tr>
+           
+            <tr>
+                <td colspan="3">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Delete</th>
+                                <th>School</th>
+                            </tr>
+                        </thead>
+                         <tbody data-bind="foreach: SchoolDetails">
+                            <tr>
+                                <td><a href="#" data-bind="click: $parent.removeSchoolDetails">Remove</a></td>
+                                <td><input type="text" data-bind="value: SchoolName" id="SchoolName" /></td>
+                            </tr>
+                        </tbody>
+                         <tr>
+                <td colspan="2"><button data-bind="click: addSchoolDetails">+ Add Another</button>
                     </td>
                 </tr>
                     </table>

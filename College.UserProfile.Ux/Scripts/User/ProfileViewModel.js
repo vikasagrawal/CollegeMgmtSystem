@@ -1,18 +1,35 @@
 ﻿
-function BlankUserEducationDetail() {
-    var bed = {
-        UserEducationDetailId: ko.observable(),
-        UserId: ko.observable(),
-        CollegeId: ko.observable(),
-        PassingYear: ko.observable(""),
-        DegreeTypeId: ko.observable(),
-        CourseId: ko.observable(),
-        SubjectId: ko.observable(),
-        InstituitionTypeId: ko.observable(1),
-        SchoolName: ko.observable("")
-    }
+function BlankUserEducationDetail(institutionTypeID) {
+    if (institutionTypeID == 1) {
+        var bed = {
+            UserEducationDetailId: ko.observable(),
+            UserId: ko.observable(),
+            CollegeId: ko.observable(),
+            PassingYear: ko.observable(""),
+            DegreeTypeId: ko.observable(),
+            CourseId: ko.observable(),
+            SubjectId: ko.observable(),
+            InstituitionTypeId: ko.observable(institutionTypeID),
+            SchoolName: ko.observable("NoSchool")
+        }
 
-    return bed;
+        return bed;
+    }
+    else {
+        var bed = {
+            UserEducationDetailId: ko.observable(),
+            UserId: ko.observable(),
+            CollegeId: ko.observable(0),
+            PassingYear: ko.observable("0000"),
+            DegreeTypeId: ko.observable(0),
+            CourseId: ko.observable(0),
+            SubjectId: ko.observable(0),
+            InstituitionTypeId: ko.observable(institutionTypeID),
+            SchoolName: ko.observable("")
+        }
+
+        return bed;
+    }
 }
 function UserViewModel() {
     $('#loading').hide();
@@ -45,19 +62,26 @@ function UserViewModel() {
         xhr.send(fd);
     }
 
-
     self.LanguageOption = ko.observableArray([]);
     self.GenderOption = ko.observableArray([]);
     self.DegreeTypeOption = ko.observableArray([]);
     self.CourseOption = ko.observableArray([]);
     self.SubjectOption = ko.observableArray([]);
-    self.viewModel = {}
+    self.viewModel = {};
+
 
     self.removeCollegeDetails = self.removePerson = function () {
         self.viewModel.UserEducationDetail.remove(this);
     }
     self.addCollegeDetails = function () {
-        self.viewModel.UserEducationDetail.push(ko.mapping.fromJS(ko.mapping.toJS(new BlankUserEducationDetail()), validationMapping));
+        self.viewModel.UserEducationDetail.push(ko.mapping.fromJS(ko.mapping.toJS(new BlankUserEducationDetail(1)), validationMapping));
+    }
+
+    self.removeSchoolDetails = self.removePerson = function () {
+        self.viewModel.UserEducationDetail.remove(this);
+    }
+    self.addSchoolDetails = function () {
+        self.viewModel.UserEducationDetail.push(ko.mapping.fromJS(ko.mapping.toJS(new BlankUserEducationDetail(2)), validationMapping));
     }
 
     self.loadUserProfile = function () {
@@ -109,6 +133,21 @@ function UserViewModel() {
                       if (textStatus == "success") {
                           self.viewModel = ko.mapping.fromJSON(jqXHR.responseText, validationMapping);
                           userProfileLoaded = true;
+
+                          self.CollegeDetails = ko.computed(function () {
+                              return ko.utils.arrayFilter(self.viewModel.UserEducationDetail(), function (eduDetails) {
+                                  return eduDetails.InstituitionTypeId() === 1;
+                              }
+                              )
+                          });
+
+                          self.SchoolDetails = ko.computed(function () {
+                              return ko.utils.arrayFilter(self.viewModel.UserEducationDetail(), function (eduDetails) {
+                                  return eduDetails.InstituitionTypeId() === 2;
+                              }
+                              )
+                          });
+
                           if (languagesLoaded) {
                               ko.applyBindings(self);
                               bindingCompleted = true;
@@ -221,7 +260,7 @@ function UserViewModel() {
                     required: { message: 'Please supply Year.' },
                     minLength: 4, maxLength: 4, pattern: {
                         message: 'Please enter valid Passing Year',
-                        params: '^(0|[1-9][0-9]*)$'
+                        params: '^(0|[0-9][0-9]*)$'
                     }
                 });
             }
@@ -239,6 +278,11 @@ function UserViewModel() {
         SubjectId: {
             create: function (options) {
                 return ko.observable(options.data).extend({ required: { message: 'Please supply Major.' } });
+            }
+        },
+        SchoolName: {
+            create: function (options) {
+                return ko.observable(options.data).extend({ required: { message: 'Please supply SchoolName.' } });
             }
         }
 
