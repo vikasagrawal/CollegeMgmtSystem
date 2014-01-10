@@ -65,28 +65,31 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
                 if (existingUser == null)
                 {
                     db.Users.Add(userProfile.user);
+                    db.SaveChanges();
                 }
                 else
                 {
                     db.Entry(existingUser).CurrentValues.SetValues(userProfile.user);
-                    var ed = from ued in db.UserEducationDetails
-                             where ued.UserId == userProfile.user.UserID
-                             select ued;
+                }
 
-                    if (ed.Count() > 0)
-                    {
-                        db.UserEducationDetails.RemoveRange(ed);
-                    }
+                var ed = from ued in db.UserEducationDetails
+                         where ued.UserId == userProfile.user.UserID
+                         select ued;
 
-                    if (userProfile.UserEducationDetail != null)
+                if (ed.Count() > 0)
+                {
+                    db.UserEducationDetails.RemoveRange(ed);
+                }
+
+                if (userProfile.UserEducationDetail != null)
+                {
+                    foreach (var newued in userProfile.UserEducationDetail)
                     {
-                        foreach (var newued in userProfile.UserEducationDetail)
-                        {
-                            newued.UserId = userProfile.user.UserID;
-                            db.UserEducationDetails.Add(newued);
-                        }
+                        newued.UserId = userProfile.user.UserID;
+                        db.UserEducationDetails.Add(newued);
                     }
                 }
+
 
                 db.SaveChanges();
                 return Json(new { userProfile = userProfile, Message = "Profile Saved Successfully." });
