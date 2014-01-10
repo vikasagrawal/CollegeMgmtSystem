@@ -154,7 +154,7 @@
     <Content Include="Scripts\User\LoginViewModel.js" />
     <Content Include="Scripts\User\ProfileViewModel.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Upload\28.JPG" />
+    <Content Include="Upload\temp.jpg" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

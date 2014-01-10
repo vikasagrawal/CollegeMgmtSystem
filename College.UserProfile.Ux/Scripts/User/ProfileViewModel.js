@@ -53,6 +53,7 @@ function UserViewModel() {
                 $('#loading').hide();
                 if (xhr.status === 200) {
                     $("#infoMessages").html(JSON.parse(xhr.responseText).Message).attr("class", "message-error");
+                    self.viewModel.user.UserPhoto("");
                     self.viewModel.user.UserPhoto("/upload/" + JSON.parse(xhr.responseText).FileName);
                 } else {
                     $("#infoMessages").html(JSON.parse(xhr.responseText).Message).attr("class", "message-error");
