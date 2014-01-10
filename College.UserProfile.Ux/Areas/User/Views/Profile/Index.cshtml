@@ -17,7 +17,7 @@
                     <table>
                         <tr>
                             <td>
-                                <label>First Name:</label>
+                                <label>FIRST NAME:</label>
                             </td>
                             <td>
                                 <input type="text" data-bind="value: viewModel.user.FirstName" id="FirstName" />
@@ -25,7 +25,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <label>Middle Name:</label>
+                                <label>MIDDLE NAME:</label>
                             </td>
                             <td>
                                 <input type="text" data-bind="value: viewModel.user.MiddleName" id="MiddleName" />
@@ -33,7 +33,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <label>Last Name:</label>
+                                <label>LAST NAME:</label>
                             </td>
                             <td>
                                 <input type="text" data-bind="value: viewModel.user.LastName" id="LastName" />
@@ -41,7 +41,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <label>Home Town:</label>
+                                <label>HOME TOWN:</label>
                             </td>
                             <td>
                                 <input type="text" data-bind="value: viewModel.user.HomeTown" id="HomeTown" />
@@ -49,7 +49,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <label>Zip Code:</label>
+                                <label>ZIP CODE:</label>
                             </td>
                             <td>
                                 <input type="text" data-bind="value: viewModel.user.ZipCode" id="ZipCode" />
@@ -57,24 +57,24 @@
                         </tr>
                         <tr>
                             <td>
-                                <label>Mobile:</label>
+                                <label>MOBILE:</label>
                             </td>
                             <td>
                                 <input type="text" data-bind="value: viewModel.user.MobileNo" id="MobileNo" />
                             </td>
                         </tr>
 
-                        <tr>
+                      @*  <tr>
                             <td>
-                                <label>Email:</label>
+                                <label>EMAIL:</label>
                             </td>
                             <td>
                                 <input type="text" id="Email" />
                             </td>
-                        </tr>
+                        </tr>*@
                         <tr>
                             <td>
-                                <label>About User:</label>
+                                <label>ABOUT YOU:</label>
                             </td>
                             <td>
                                 <textarea id="AboutUser" rows="5" data-bind="value: viewModel.user.AboutUser"></textarea>
@@ -88,7 +88,7 @@
                         <tr>
                             <tr>
                                 <td>
-                                    <label>Gender:</label>
+                                    <label>GENDER:</label>
                                 </td>
                                 <td>
                                       <div data-bind="foreach: GenderOption">
@@ -99,7 +99,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <label>Languages Spoken:</label>
+                                    <label>LANGUAGES SPOKEN:</label>
                                 </td>
                                 <td>
                                     <select id="LanguagesSpoken" data-placeholder="Choose Languages..." data-bind="options: $root.LanguageOption, selectedOptions: viewModel.UserLanguages,
@@ -110,7 +110,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <label>Date Of Birth:</label>
+                                    <label>DATE OF BIRTH:</label>
                                 </td>
                                 <td>
                                     <input type="text" data-bind="datepicker: viewModel.user.BirthDate, datepickerOptions: { changeMonth: true, changeYear: true }" id="BirthDate" />
@@ -118,7 +118,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <label>Photo:</label>
+                                    <label>PHOTO:</label>
                                 </td>
                                 <td>
                                     <img data-bind="visible: viewModel.user.UserPhoto() != null, attr: { src: viewModel.user.UserPhoto }" width="100px" height="100px"  />
@@ -136,14 +136,14 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="3"><h2>College Education Details</h2>
+                <td colspan="3"><h2>CURRENT/PAST ACADEMIC INST.</h2>
                     </td>
                 </tr>
            
             <tr>
                 <td colspan="3">
                     <table>
-                        <thead>
+                       @* <thead>
                             <tr>
                                 <th>Delete</th>
                                 <th>College</th>
@@ -152,16 +152,16 @@
                                 <th>Course</th>
                                 <th>Major</th>
                             </tr>
-                        </thead>
+                        </thead>*@
                          <tbody data-bind="foreach: CollegeDetails">
                             <tr>
                                 <td><a href="#" data-bind="click: $parent.removeCollegeDetails">Remove</a></td>
-                                <td><input type="text" data-bind="value: CollegeId" id="CollegeId" /></td>
-                                <td><input type="text" data-bind="value: PassingYear" id="PassingYear" /></td>
-                                <td><select id="DegreeTypeId" data-bind="options: $root.DegreeTypeOption, value: DegreeTypeId, optionsValue: 'LookupID', optionsText: 'LookupValue'"></select>
+                                <td><input placeholder="COLLEGE" type="text" data-bind="value: CollegeId" id="CollegeId" /></td>
+                                <td><input placeholder="YEAR" type="text" data-bind="value: PassingYear" id="CollegePassingYear" /></td>
+                                <td><select id="DegreeTypeId" data-bind="options: $root.DegreeTypeOption, value: DegreeTypeId, optionsValue: 'LookupID', optionsText: 'LookupValue', optionsCaption:'DEGREE TYPE...' "></select>
                                 </td>
-                                <td><select id="CourseId" data-bind="options: $root.CourseOption, value: CourseId, optionsValue: 'LookupID', optionsText: 'LookupValue'"></select></td>
-                                <td><select id="SubjectId" data-bind="options: $root.SubjectOption, value: SubjectId, optionsValue: 'LookupID', optionsText: 'LookupValue'"></select></td>
+                                <td><select id="CourseId" data-bind="options: $root.CourseOption, value: CourseId, optionsValue: 'LookupID', optionsText: 'LookupValue', optionsCaption: 'COURSE...'"></select></td>
+                                <td><select id="SubjectId" data-bind="options: $root.SubjectOption, value: SubjectId, optionsValue: 'LookupID', optionsText: 'LookupValue', optionsCaption: 'MAJOR...'"></select></td>
                             </tr>
                         </tbody>
                          <tr>
@@ -172,23 +172,23 @@
                 </td>
             </tr>
                 <tr>
-                <td colspan="3"><h2>School Education Details</h2>
+                <td colspan="3"><h2></h2>
                     </td>
-                </tr>
-           
-            <tr>
+             </tr>
+             <tr>
                 <td colspan="3">
                     <table>
-                        <thead>
+                      @*  <thead>
                             <tr>
                                 <th>Delete</th>
                                 <th>School</th>
                             </tr>
-                        </thead>
+                        </thead>*@
                          <tbody data-bind="foreach: SchoolDetails">
                             <tr>
                                 <td><a href="#" data-bind="click: $parent.removeSchoolDetails">Remove</a></td>
-                                <td><input type="text" data-bind="value: SchoolName" id="SchoolName" /></td>
+                                <td><input type="text" placeholder="SCHOOL" data-bind="value: SchoolName" id="SchoolName" /></td>
+                                 <td><input placeholder="YEAR" type="text" data-bind="value: PassingYear" id="SchoolPassingYear" /></td>
                             </tr>
                         </tbody>
                          <tr>

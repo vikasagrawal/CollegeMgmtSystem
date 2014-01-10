@@ -20,7 +20,7 @@ function BlankUserEducationDetail(institutionTypeID) {
             UserEducationDetailId: ko.observable(),
             UserId: ko.observable(),
             CollegeId: ko.observable(0),
-            PassingYear: ko.observable("0000"),
+            PassingYear: ko.observable(""),
             DegreeTypeId: ko.observable(0),
             CourseId: ko.observable(0),
             SubjectId: ko.observable(0),
@@ -260,7 +260,7 @@ function UserViewModel() {
                     required: { message: 'Please supply Year.' },
                     minLength: 4, maxLength: 4, pattern: {
                         message: 'Please enter valid Passing Year',
-                        params: '^(0|[0-9][0-9]*)$'
+                        params: '^(0|[1-9][0-9]*)$'
                     }
                 });
             }
