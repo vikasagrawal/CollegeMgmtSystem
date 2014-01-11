@@ -23,7 +23,8 @@ ko.bindingHandlers.datepicker = {
         var options = allBindingsAccessor().datepickerOptions || {},
            $el = $(element);
         //initialize datepicker with some optional options
-        $el.datepicker(options);
+        $el.datepicker();
+        $el.datepicker('option', options);
         var jsonDate = valueAccessor();
 
         if (jsonDate() != null) {
