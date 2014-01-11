@@ -4,7 +4,7 @@
 }
 
 <h2>User Profile</h2>
-
+<div id="pageform">
 <script id="customMessageTemplate" type="text/html">
     <em class="customMessage" data-bind='validationMessage: field'></em>
 </script>
@@ -203,7 +203,7 @@
     <br />
     <button type="submit" data-bind="click: SaveUserProfile">Save</button>
 </fieldset>
-
+    </div>
 @section scripts
 {
     <link rel="stylesheet" href="~/Content/themes/base/jquery-ui.css">
@@ -215,7 +215,7 @@
     @Scripts.Render("~/Scripts/User/ProfileViewModel.js")
     @Scripts.Render("~/Scripts/jquery-ui-1.10.3.js")
     <script language="javascript" type="text/javascript">
-
+        $("#pageform").hide();
         $(document).ready(function () {
             var userViewModel = new UserViewModel();
             userViewModel.loadUserProfile();

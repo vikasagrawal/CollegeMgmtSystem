@@ -119,12 +119,16 @@ function UserViewModel() {
             self.LanguageOption(output);
             languagesLoaded = true;
             if (bindingCompleted == false && userProfileLoaded) {
+                $("#pageform").show();
                 ko.applyBindings(self);
+               
             }
         }, function (error) {
             languagesLoaded = true;
             if (bindingCompleted == false && userProfileLoaded) {
+                $("#pageform").show();
                 ko.applyBindings(self);
+               
             }
             $("#infoMessages").html(error).attr("class", "message-error");
         });
@@ -150,7 +154,9 @@ function UserViewModel() {
                           });
 
                           if (languagesLoaded) {
+                              $("#pageform").show();
                               ko.applyBindings(self);
+                            
                               bindingCompleted = true;
                           }
                       }
