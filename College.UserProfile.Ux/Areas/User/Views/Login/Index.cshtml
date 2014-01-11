@@ -4,38 +4,40 @@
 
 
 <div id="dialog-form" title="Sign In">
-    <form>
-        <h2>Sign In</h2>
-        <label>
-            <button id="btnNewUser" data-bind="click: ToggleNewUser">New User?</button>
-            <button id="btnExistingUser" data-bind="click: ToggleExistingUser">Existing User?</button>
-        </label>
-        <script id="customMessageTemplate" type="text/html">
-            <em class="customMessage" data-bind='validationMessage: field'></em>
-        </script>
-        <p id="infoMessages" class="message-success"></p>
-        <fieldset>
-            <legend></legend>
-            <div data-bind='validationOptions: { messageTemplate: "customMessageTemplate" }'>
-                <label>
-                    <input placeholder="ENTER EMAIL" type="text" data-bind="value: EmailAddress" id="EmailAddress" />
-                </label>
-                <br />
-                <label>
-                    <input placeholder="PASSWORD" type="password" data-bind="value: Password" id="Password" />
-                </label>
-                <br />
-                <div id="divConfirmPassword" data-bind="visible: NewUser">
+    <div id="pageform" hidden>
+        <form>
+            <h2>Sign In</h2>
+            <label>
+                <button id="btnNewUser" data-bind="click: ToggleNewUser">New User?</button>
+                <button id="btnExistingUser" data-bind="click: ToggleExistingUser">Existing User?</button>
+            </label>
+            <script id="customMessageTemplate" type="text/html">
+                <em class="customMessage" data-bind='validationMessage: field'></em>
+            </script>
+            <p id="infoMessages" class="message-success"></p>
+            <fieldset>
+                <legend></legend>
+                <div data-bind='validationOptions: { messageTemplate: "customMessageTemplate" }'>
                     <label>
-                        <input placeholder="RE-TYPE PASSWORD" type="password" data-bind="value: ConfirmPassword" id="ConfirmPassword" />
+                        <input placeholder="ENTER EMAIL" type="text" data-bind="value: EmailAddress" id="EmailAddress" />
                     </label>
                     <br />
+                    <label>
+                        <input placeholder="PASSWORD" type="password" data-bind="value: Password" id="Password" />
+                    </label>
+                    <br />
+                    <div id="divConfirmPassword" data-bind="visible: NewUser">
+                        <label>
+                            <input placeholder="RE-TYPE PASSWORD" type="password" data-bind="value: ConfirmPassword" id="ConfirmPassword" />
+                        </label>
+                        <br />
+                    </div>
                 </div>
-            </div>
-            <br />
-            <button data-bind="click: SignIn" type="submit">Sign In</button>
-        </fieldset>
-    </form>
+                <br />
+                <button data-bind="click: SignIn" type="submit">Sign In</button>
+            </fieldset>
+        </form>
+    </div>
 </div>
 @section scripts
 {
@@ -52,6 +54,7 @@
         $(document).ready(function () {
             ko.applyBindings(new UserLoginViewModel());
             $("#dialog-form").dialog("open");
+            $("#pageform").show();
         });
 
         $("#dialog-form").dialog({
