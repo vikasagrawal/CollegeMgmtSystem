@@ -39,10 +39,11 @@
 </div>
 @section scripts
 {
-    <link rel="stylesheet" href="~/Content/jquery-ui-1.10.3.css">
+    <link rel="stylesheet" href="~/Content/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="~/Content/style.css">
-    <link rel="stylesheet" href="~/Content/prism.css">
     <link rel="stylesheet" href="~/Content/chosen.min.css">
+    @Scripts.Render("~/Scripts/chosen.jquery.min.js")
+    @Scripts.Render("~/Scripts/knockout.mapping-latest.js")
     @Scripts.Render("~/Scripts/Custom.js")
     @Scripts.Render("~/Scripts/User/LoginViewModel.js")
     @Scripts.Render("~/Scripts/jquery-ui-1.10.3.js")
