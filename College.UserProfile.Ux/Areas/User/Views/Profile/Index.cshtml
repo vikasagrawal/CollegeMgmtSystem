@@ -4,220 +4,186 @@
 }
 
 <h2>User Profile</h2>
-<div id="pageform" hidden>
 <script id="customMessageTemplate" type="text/html">
     <em class="customMessage" data-bind='validationMessage: field'></em>
 </script>
-<p id="infoMessages" class="message-success"></p>
-<fieldset><legend></legend>
-    <div data-bind='validationOptions: { messageTemplate: "customMessageTemplate" }'>    </div>
-        <table>
-            <tr>
-                <td style="vertical-align:top">
-                    <table>
-                        <tr>
-                            <td>
-                                <label>FIRST NAME:</label>
-                            </td>
-                            <td>
-                                <input type="text" data-bind="value: viewModel.user.FirstName" id="FirstName" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label>MIDDLE NAME:</label>
-                            </td>
-                            <td>
-                                <input type="text" data-bind="value: viewModel.user.MiddleName" id="MiddleName" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label>LAST NAME:</label>
-                            </td>
-                            <td>
-                                <input type="text" data-bind="value: viewModel.user.LastName" id="LastName" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label>HOME TOWN:</label>
-                            </td>
-                            <td>
-                                <input type="text" data-bind="value: viewModel.user.HomeTown" id="HomeTown" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label>ZIP CODE:</label>
-                            </td>
-                            <td>
-                                <input type="text" data-bind="value: viewModel.user.ZipCode" id="ZipCode" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label>MOBILE:</label>
-                            </td>
-                            <td>
-                                <input type="text" data-bind="value: viewModel.user.MobileNo" id="MobileNo" />
-                            </td>
-                        </tr>
 
-                      @*  <tr>
-                            <td>
-                                <label>EMAIL:</label>
-                            </td>
-                            <td>
-                                <input type="text" id="Email" />
-                            </td>
-                        </tr>*@
-                        <tr>
-                            <td>
-                                <label>ABOUT YOU:</label>
-                            </td>
-                            <td>
-                                <textarea id="AboutUser" rows="5" data-bind="value: viewModel.user.AboutUser"></textarea>
-                            </td>
-                        </tr>
-                    </table>
+<div id="pageform" hidden>
+    <!-- set the context of working with the user part of the data-model -->
+    <form class="well form form-horizontal" data-bind='validationOptions: { messageTemplate: "customMessageTemplate" }'>
+        <div class="control-group">
+            <div class="controls">
+                <p id="infoMessages" class="message-success"></p>
+            </div>
+        </div>
+        <table style="width: 100%">
+            <tr>
+                <td style="width: 50%; vertical-align: top">
+                    <div class="control-group">
+                        <label class="control-label" for="FirstName">FIRST NAME:</label>
+                        <span class="controls">
+                            <input type="text" data-bind="value: viewModel.user.FirstName" id="FirstName" />
+                        </span>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="MiddleName">MIDDLE NAME:</label>
+                        <span class="controls">
+                            <input type="text" data-bind="value: viewModel.user.MiddleName" id="MiddleName" />
+                        </span>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="LastName">LAST NAME:</label>
+                        <span class="controls">
+                            <input type="text" data-bind="value: viewModel.user.LastName" id="LastName" />
+                        </span>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="HomeTown">HOME TOWN:</label>
+                        <span class="controls">
+                            <input type="text" data-bind="value: viewModel.user.HomeTown" id="HomeTown" />
+                        </span>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="ZipCode">ZIP CODE:</label>
+                        <span class="controls">
+                            <input type="text" data-bind="value: viewModel.user.ZipCode" id="ZipCode" />
+                        </span>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="MobileNo">MOBILE:</label>
+                        <span class="controls">
+                            <input type="text" data-bind="value: viewModel.user.MobileNo" id="MobileNo" />
+                        </span>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="AboutUser">ABOUT YOU:</label>
+                        <span class="controls">
+                            <textarea id="AboutUser" rows="5" data-bind="value: viewModel.user.AboutUser"></textarea>
+                        </span>
+                    </div>
                 </td>
-                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                <td>
-                    <table>
-                        <tr>
-                            <tr>
-                                <td>
-                                    <label>GENDER:</label>
-                                </td>
-                                <td>
-                                      <div data-bind="foreach: GenderOption">
-                                    <input name="Gender"" type="radio" data-bind="value: LookupID, trueFalseRadioButton: $root.viewModel.user.Gender" />
-                                    <span data-bind="text: LookupValue" />
-                                </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label>LANGUAGES SPOKEN:</label>
-                                </td>
-                                <td>
-                                    <select id="LanguagesSpoken" data-placeholder="Choose Languages..." data-bind="options: $root.LanguageOption, selectedOptions: viewModel.UserLanguages,
-    optionsValue: 'LookupID', optionsText: 'LookupValue', chosen: {}"
-                                                 multiple style="width: 350px;">
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label>DATE OF BIRTH:</label>
-                                </td>
-                                <td>
-                                    <input type="text" data-bind="datepicker: viewModel.user.BirthDate, datepickerOptions: { changeMonth: true, changeYear: true }" id="BirthDate" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label>PHOTO:</label>
-                                </td>
-                                <td>
-                                    <img data-bind="visible: viewModel.user.UserPhoto() != null, attr: { src: viewModel.user.UserPhoto }" width="100px" height="100px"  />
-                                    <form id="image-upload-form">
-                                        <input type="file" name="photo" id="files" accept="image/*;capture=camera">
-                                        <button type="submit" data-bind="click: uploadimage">Upload Image</button>
-                                      </form>
-                                    @*<input type="file" data-bind="value: viewModel.user.UserPhoto, fileUpload: viewModel.user.UserPhoto, url: 'http://localhost:27471/upload/'">
-                                    <script src="{{ STATIC_URL }}html5knockoutImagePreview.js"></script>​
-                                    <input type="text" data-bind="value: viewModel.user.UserPhoto" id="UserPhoto" />*@
-                                </td>
-                            </tr>
-                        </tr>
-                    </table>
+                <td style="width: 50%; vertical-align: top">
+                    <div class="control-group">
+                        <label class="control-label" for="Gender">GENDER:</label>
+                        <span class="controls">
+                            <span data-bind="foreach: GenderOption">
+                                <input id="Gender" type="radio" data-bind="value: LookupID, trueFalseRadioButton: $root.viewModel.user.Gender" />
+                                <span data-bind="text: LookupValue" />
+                            </span>
+                        </span>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="LanguagesSpoken">LANGUAGES SPOKEN:</label>
+                        <span class="controls">
+                            <select id="LanguagesSpoken" multiple
+                                data-bind="options: $root.LanguageOption,
+    selectedOptions: viewModel.UserLanguages,
+    optionsValue: 'LookupID',
+    optionsText: 'LookupValue',
+    chosen: {},
+    optionsCaption: 'Choose Languages...'"
+                                style="width: 350px;">
+                            </select>
+                        </span>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="BirthDate">DATE OF BIRTH:</label>
+                        <span class="controls">
+                            <input type="text" data-bind="datepicker: viewModel.user.BirthDate, datepickerOptions: { changeMonth: true, changeYear: true }" id="BirthDate" />
+                        </span>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="photo">PHOTO:</label>
+                        <span class="controls">
+                            <img data-bind="visible: viewModel.user.UserPhoto() != null, attr: { src: viewModel.user.UserPhoto }" width="100px" height="100px" />
+                            <form id="image-upload-form">
+                                <input type="file" name="photo" id="files" accept="image/*;capture=camera">
+                                <button type="submit" data-bind="click: uploadimage">Upload Image</button>
+                            </form>
+                        </span>
+                    </div>
                 </td>
             </tr>
             <tr>
-                <td colspan="3"><h2>CURRENT/PAST ACADEMIC INST.</h2>
-                    </td>
-                </tr>
-           
+                <td colspan="2">
+                    <h2>CURRENT/PAST ACADEMIC INST.</h2>
+                </td>
+            </tr>
             <tr>
-                <td colspan="3">
+                <td colspan="2">
                     <table>
-                       @* <thead>
-                            <tr>
-                                <th>Delete</th>
-                                <th>College</th>
-                                <th>Year</th>
-                                <th>Degree Type</th>
-                                <th>Course</th>
-                                <th>Major</th>
-                            </tr>
-                        </thead>*@
-                         <tbody data-bind="foreach: CollegeDetails">
+                        <tbody data-bind="foreach: CollegeDetails">
                             <tr>
                                 <td><a href="#" data-bind="click: $parent.removeCollegeDetails">Remove</a></td>
-                                <td><input placeholder="COLLEGE" type="text" data-bind="value: CollegeId" id="CollegeId" /></td>
-                                <td><input placeholder="YEAR" type="text" data-bind="value: PassingYear" id="CollegePassingYear" /></td>
-                                <td><select id="DegreeTypeId" data-bind="options: $root.DegreeTypeOption, value: DegreeTypeId, optionsValue: 'LookupID', optionsText: 'LookupValue', optionsCaption: 'DEGREE TYPE...' "></select>
+                                <td>
+                                    <input placeholder="COLLEGE" type="text" data-bind="value: CollegeId" id="CollegeId" /></td>
+                                <td>
+                                    <input placeholder="YEAR" type="text" data-bind="value: PassingYear" id="CollegePassingYear" /></td>
+                                <td>
+                                    <select id="DegreeTypeId" data-bind="options: $root.DegreeTypeOption, value: DegreeTypeId, optionsValue: 'LookupID', optionsText: 'LookupValue', optionsCaption: 'DEGREE TYPE...' "></select>
                                 </td>
-                                <td><select id="CourseId" data-bind="options: $root.CourseOption, value: CourseId, optionsValue: 'LookupID', optionsText: 'LookupValue', optionsCaption: 'COURSE...'"></select></td>
-                                <td><select id="SubjectId" data-bind="options: $root.SubjectOption, value: SubjectId, optionsValue: 'LookupID', optionsText: 'LookupValue', optionsCaption: 'MAJOR...'"></select></td>
+                                <td>
+                                    <select id="CourseId" data-bind="options: $root.CourseOption, value: CourseId, optionsValue: 'LookupID', optionsText: 'LookupValue', optionsCaption: 'COURSE...'"></select></td>
+                                <td>
+                                    <select id="SubjectId" data-bind="options: $root.SubjectOption, value: SubjectId, optionsValue: 'LookupID', optionsText: 'LookupValue', optionsCaption: 'MAJOR...'"></select></td>
                             </tr>
                         </tbody>
-                         <tr>
-                <td colspan="6"><button data-bind="click: addCollegeDetails">+ Add Another</button>
-                    </td>
-                </tr>
+                        <tr>
+                            <td colspan="6">
+                                <button data-bind="click: addCollegeDetails">+ Add Another</button>
+                            </td>
+                        </tr>
                     </table>
                 </td>
             </tr>
-                <tr>
-                <td colspan="3"><h2></h2>
-                    </td>
-             </tr>
-             <tr>
-                <td colspan="3">
+            <tr>
+                <td colspan="2">
+                    <h2></h2>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
                     <table>
-                      @*  <thead>
-                            <tr>
-                                <th>Delete</th>
-                                <th>School</th>
-                            </tr>
-                        </thead>*@
-                         <tbody data-bind="foreach: SchoolDetails">
+                        <tbody data-bind="foreach: SchoolDetails">
                             <tr>
                                 <td><a href="#" data-bind="click: $parent.removeSchoolDetails">Remove</a></td>
-                                <td><input type="text" placeholder="SCHOOL" data-bind="value: SchoolName" id="SchoolName" /></td>
-                                 <td><input placeholder="YEAR" type="text" data-bind="value: PassingYear" id="SchoolPassingYear" /></td>
+                                <td>
+                                    <input type="text" placeholder="SCHOOL" data-bind="value: SchoolName" id="SchoolName" /></td>
+                                <td>
+                                    <input placeholder="YEAR" type="text" data-bind="value: PassingYear" id="SchoolPassingYear" /></td>
                             </tr>
                         </tbody>
-                         <tr>
-                <td colspan="2"><button data-bind="click: addSchoolDetails">+ Add Another</button>
-                    </td>
-                </tr>
+                        <tr>
+                            <td colspan="2">
+                                <button data-bind="click: addSchoolDetails">+ Add Another</button>
+                            </td>
+                        </tr>
                     </table>
                 </td>
             </tr>
         </table>
-
-    <br />
-    <button type="submit" data-bind="click: SaveUserProfile">Save</button>
-</fieldset>
-    </div>
+        <br />
+        <button type="submit" data-bind="click: SaveUserProfile">Save</button>
+    </form>
+</div>
 @section scripts
 {
     <link rel="stylesheet" href="~/Content/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="~/Content/style.css">
-    <link rel="stylesheet" href="~/Content/chosen.min.css">
-    @Scripts.Render("~/Scripts/chosen.jquery.min.js")
     @Scripts.Render("~/Scripts/knockout.mapping-latest.js")
     @Scripts.Render("~/Scripts/Custom.js")
     @Scripts.Render("~/Scripts/User/ProfileViewModel.js")
     @Scripts.Render("~/Scripts/jquery-ui-1.10.3.js")
+    @Scripts.Render("~/Scripts/underscore.js")
     <script language="javascript" type="text/javascript">
         $(document).ready(function () {
             var userViewModel = new UserViewModel();
-            userViewModel.loadUserProfile();
+
+            userViewModel.load();
         });
 
     </script>

@@ -47,10 +47,6 @@ ko.bindingHandlers.datepicker = {
         var value = ko.utils.unwrapObservable(valueAccessor()),
             $el = $(element),
             current = $el.datepicker("getDate");
-
-        //if (value - current !== 0) {
-        //    $el.datepicker("setDate", value);
-        //}
     }
 };
 
@@ -82,9 +78,9 @@ ko.bindingHandlers.chosen =
 {
     init: function (element) {
         $(element).addClass('chzn-select');
+        //$(element).chosen();
     },
     update: function (element) {
-        $(element).chosen();
         $(element).trigger("liszt:updated");
     }
 };

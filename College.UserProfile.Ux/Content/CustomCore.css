@@ -7,3 +7,8 @@
     z-index: 1000;
     background: url('/images/loading.gif') no-repeat center center;
 }
+
+.control-label {
+    width: 200px;
+    vertical-align:top;
+}

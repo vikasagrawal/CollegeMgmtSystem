@@ -1,8 +1,6 @@
 ﻿@{
     ViewBag.Title = "Sign In";
 }
-
-
 <div id="dialog-form" title="Sign In">
     <div id="pageform" hidden>
         <form>
@@ -43,12 +41,10 @@
 {
     <link rel="stylesheet" href="~/Content/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="~/Content/style.css">
-    <link rel="stylesheet" href="~/Content/chosen.min.css">
-    @Scripts.Render("~/Scripts/chosen.jquery.min.js")
+    @Scripts.Render("~/Scripts/jquery-ui-1.10.3.js")
     @Scripts.Render("~/Scripts/knockout.mapping-latest.js")
     @Scripts.Render("~/Scripts/Custom.js")
     @Scripts.Render("~/Scripts/User/LoginViewModel.js")
-    @Scripts.Render("~/Scripts/jquery-ui-1.10.3.js")
     <script>
 
         $(document).ready(function () {

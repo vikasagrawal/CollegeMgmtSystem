@@ -31,6 +31,7 @@ function BlankUserEducationDetail(institutionTypeID) {
         return bed;
     }
 }
+
 function UserViewModel() {
     $('#loading').hide();
     var self = this;
@@ -38,6 +39,8 @@ function UserViewModel() {
     var languagesLoaded = false;
     var userProfileLoaded = false;
 
+
+    self.loading = ko.observableArray();
 
     self.uploadimage = function () {
         $('#loading').show();
@@ -85,95 +88,132 @@ function UserViewModel() {
         self.viewModel.UserEducationDetail.push(ko.mapping.fromJS(ko.mapping.toJS(new BlankUserEducationDetail(2)), validationMapping));
     }
 
-    self.loadUserProfile = function () {
-        $('#loading').show();
+
+    self.loadGenders = function (ctx) {
+        self.loading.push(true);
         GetGenderLists(function (output) {
             self.GenderOption(output);
-
+            console.log("loaded genders")
+            console.dir(output);
+            self.loading.pop();
+            if (ctx && ctx.success !== 'undefined') { ctx.success(); }
         }, function (error) {
             $("#infoMessages").html(error).attr("class", "message-error");
+            self.loading.pop();
+            if (ctx && ctx.success !== 'undefined') { ctx.success(); }
         });
-
-        GetDegreeTypesList(function (output) {
-            self.DegreeTypeOption(output);
-
-        }, function (error) {
-            $("#infoMessages").html(error).attr("class", "message-error");
-        });
-
-        GetSubjectsList(function (output) {
-            self.SubjectOption(output);
-
-        }, function (error) {
-            $("#infoMessages").html(error).attr("class", "message-error");
-        });
-
-        GetCoursesList(function (output) {
-            self.CourseOption(output);
-
-        }, function (error) {
-            $("#infoMessages").html(error).attr("class", "message-error");
-        });
-
-        GetLanguagesList(function (output) {
-            self.LanguageOption(output);
-            languagesLoaded = true;
-            if (bindingCompleted == false && userProfileLoaded) {
-                $("#pageform").show();
-                ko.applyBindings(self);
-               
-            }
-        }, function (error) {
-            languagesLoaded = true;
-            if (bindingCompleted == false && userProfileLoaded) {
-                $("#pageform").show();
-                ko.applyBindings(self);
-               
-            }
-            $("#infoMessages").html(error).attr("class", "message-error");
-        });
-
-        GetUserProfile(
-                  function (data, textStatus, jqXHR) {
-                      if (textStatus == "success") {
-                          self.viewModel = ko.mapping.fromJSON(jqXHR.responseText, validationMapping);
-                          userProfileLoaded = true;
-
-                          self.CollegeDetails = ko.computed(function () {
-                              return ko.utils.arrayFilter(self.viewModel.UserEducationDetail(), function (eduDetails) {
-                                  return eduDetails.InstituitionTypeId() === 1;
-                              }
-                              )
-                          });
-
-                          self.SchoolDetails = ko.computed(function () {
-                              return ko.utils.arrayFilter(self.viewModel.UserEducationDetail(), function (eduDetails) {
-                                  return eduDetails.InstituitionTypeId() === 2;
-                              }
-                              )
-                          });
-
-                          if (languagesLoaded) {
-                              $("#pageform").show();
-                              ko.applyBindings(self);
-                            
-                              bindingCompleted = true;
-                          }
-                      }
-                      $('#loading').hide();
-                      //todo: redirect to error page
-                  },
-                  function (data, textStatus, jqXHR) {
-                      $("#infoMessages").html(JSON.parse(jqXHR.responseText).Message).attr("class", "message-error");
-                      $('#loading').hide();
-                  });
     }
 
-    //self.toJSON = function () {
-    //    var copy = ko.toJS(this); //easy way to get a clean copy
-    //    delete copy.full; //remove an extra property
-    //    return copy; //return the copy to be serialized
-    //};
+
+    self.loadDegreeTypes = function (ctx) {
+        self.loading.push(true);
+        GetDegreeTypesList(function (output) {
+            self.DegreeTypeOption(output);
+            console.log("loaded degreetypes")
+            console.dir(output);
+            self.loading.pop();
+            if (ctx && ctx.success !== 'undefined') { ctx.success(); }
+
+        }, function (error) {
+            $("#infoMessages").html(error).attr("class", "message-error");
+            self.loading.pop();
+            if (ctx && ctx.success !== 'undefined') { ctx.success(); }
+        });
+    }
+
+    self.loadSubjects = function (ctx) {
+        self.loading.push(true);
+        GetSubjectsList(function (output) {
+            self.SubjectOption(output);
+            console.log("loaded subjects")
+            console.dir(output);
+            self.loading.pop();
+            if (ctx && ctx.success !== 'undefined') { ctx.success(); }
+
+        }, function (error) {
+            $("#infoMessages").html(error).attr("class", "message-error");
+            self.loading.pop();
+            if (ctx && ctx.success !== 'undefined') { ctx.success(); }
+        });
+    }
+
+    self.loadCourses = function (ctx) {
+        self.loading.push(true);
+        GetCoursesList(function (output) {
+            self.CourseOption(output);
+            console.log("loaded courses")
+            console.dir(output);
+            self.loading.pop();
+            if (ctx && ctx.success !== 'undefined') { ctx.success(); }
+
+        }, function (error) {
+            $("#infoMessages").html(error).attr("class", "message-error");
+            self.loading.pop();
+            if (ctx && ctx.success !== 'undefined') { ctx.success(); }
+        });
+    }
+
+    self.loadLanguages = function (ctx) {
+        self.loading.push(true);
+        GetLanguagesList(function (output) {
+            self.LanguageOption(output);
+            console.log("loaded languages")
+            console.dir(output);
+            self.loading.pop();
+            if (ctx && ctx.success !== 'undefined') { ctx.success(); }
+        }, function (error) {
+            $("#infoMessages").html(error).attr("class", "message-error");
+            self.loading.pop();
+            if (ctx && ctx.success !== 'undefined') { ctx.success(); }
+        });
+    }
+
+    // Loads user.
+    self.load = function () {
+        // Important: we need to load countries and languages first and only then load the user, to make
+        // sure that corresponding drop-downs are populated before loaded user will try to set values on them
+
+        // loadUser() is run once, after both loadCountries() and loadLanguages() have run (they do run in parallel!)
+        var parallelExecutions = [self.loadGenders, self.loadDegreeTypes, self.loadSubjects, self.loadCourses, self.loadLanguages];
+        var delayedLoadUser = _.after(parallelExecutions.length, self.loadUserProfile);
+        _.each(parallelExecutions, function (func) {
+            func({ success: delayedLoadUser });
+        });
+    };
+
+
+    self.loadUserProfile = function () {
+        self.loading.push(true);
+        GetUserProfile(
+            function (data, textStatus, jqXHR) {
+                if (textStatus == "success") {
+                    self.viewModel = ko.mapping.fromJSON(jqXHR.responseText, validationMapping);
+
+
+                    self.CollegeDetails = ko.computed(function () {
+                        return ko.utils.arrayFilter(self.viewModel.UserEducationDetail(), function (eduDetails) {
+                            return eduDetails.InstituitionTypeId() === 1;
+                        }
+                        )
+                    });
+
+                    self.SchoolDetails = ko.computed(function () {
+                        return ko.utils.arrayFilter(self.viewModel.UserEducationDetail(), function (eduDetails) {
+                            return eduDetails.InstituitionTypeId() === 2;
+                        }
+                        )
+                    });
+                    ko.applyBindings(self);
+                    $("#pageform").show();
+                }
+                $('#loading').hide();
+                //todo: redirect to error page
+            },
+            function (data, textStatus, jqXHR) {
+                $("#infoMessages").html(JSON.parse(jqXHR.responseText).Message).attr("class", "message-error");
+                $('#loading').hide();
+            });
+    }
 
     self.SaveUserProfile = function () {
         $("#infoMessages").html("");
@@ -183,6 +223,7 @@ function UserViewModel() {
             UpdateUserProfile(userProfile,
                 function (data, textStatus, jqXHR) {
                     $('#loading').hide();
+                    self.viewModel.user.UserID(JSON.parse(jqXHR.responseText).userProfile.user.UserID)
                     $("#infoMessages").html(JSON.parse(jqXHR.responseText).Message).attr("class", "message-error");
                 },
                 function (jqXHR, textStatus, errorThrown) {

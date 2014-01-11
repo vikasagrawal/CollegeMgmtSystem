@@ -1,6 +1,8 @@
 ﻿function UserLoginViewModel() {
     $('#loading').hide();
     var self = this;
+    self.loading = ko.observableArray();
+
     self.NewUser = ko.observable(false);
     self.EmailAddress = ko.observable("").extend({
         required: {
