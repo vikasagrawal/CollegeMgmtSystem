@@ -96,13 +96,17 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
             }
             else
             {
-                var ModelStateError = from e in ModelState
-                                      where e.Value.Errors.Count > 0
-                                      select
-                                          e.Value.Errors[0].ErrorMessage;
+                string errormsg = string.Empty;
+                foreach (ModelState modelState in ViewData.ModelState.Values)
+                {
+                    foreach (ModelError error in modelState.Errors)
+                    {
+                        
+                        errormsg = error.ErrorMessage;
+                    }
+                }
 
-
-                throw new GeneralException(Json(new { userProfile = userProfile, Message = ModelStateError }));
+                throw new GeneralException(Json(new { userProfile = userProfile, Message = errormsg }));
             }
         }
 

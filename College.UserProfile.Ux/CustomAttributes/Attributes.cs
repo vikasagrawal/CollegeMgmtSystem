@@ -32,7 +32,7 @@ namespace College.UserProfile.Ux.CustomAttributes
                     filterContext.HttpContext.Response.Clear();
                     filterContext.HttpContext.Response.TrySkipIisCustomErrors = true;
                     filterContext.HttpContext.Response.StatusCode = (int)System.Net.HttpStatusCode.BadRequest;
-                    filterContext.Result = ((ValidationException)filterContext.Exception).exceptionDetails;
+                    filterContext.Result = ((GeneralException)filterContext.Exception).exceptionDetails;
                 }
                 else
                 {

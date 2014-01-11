@@ -78,13 +78,9 @@
                     <div class="control-group">
                         <label class="control-label" for="LanguagesSpoken">LANGUAGES SPOKEN:</label>
                         <span class="controls">
-                            <select id="LanguagesSpoken" multiple
-                                data-bind="options: $root.LanguageOption,
-    selectedOptions: viewModel.UserLanguages,
-    optionsValue: 'LookupID',
-    optionsText: 'LookupValue',
-    chosen: {},
-    optionsCaption: 'Choose Languages...'"
+                            <select id="LanguagesSpoken"
+                                multiple data-placeholde="Choose Languages..."
+                                data-bind="chosen: { source: $root.LanguageOption,  selectedValue: viewModel.UserLanguages, valueProp: 'LookupID', displayProp: 'LookupValue' }"
                                 style="width: 350px;">
                             </select>
                         </span>
@@ -174,11 +170,14 @@
 {
     <link rel="stylesheet" href="~/Content/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="~/Content/style.css">
+    <link rel="stylesheet" href="~/Content/chosen.css">
     @Scripts.Render("~/Scripts/knockout.mapping-latest.js")
     @Scripts.Render("~/Scripts/Custom.js")
     @Scripts.Render("~/Scripts/User/ProfileViewModel.js")
     @Scripts.Render("~/Scripts/jquery-ui-1.10.3.js")
     @Scripts.Render("~/Scripts/underscore.js")
+    @Scripts.Render("~/Scripts/chosen.jquery.js")
+    @Scripts.Render("~/Scripts/cb-ko-binding-chosen.js")
     <script language="javascript" type="text/javascript">
         $(document).ready(function () {
             var userViewModel = new UserViewModel();

@@ -74,16 +74,16 @@ ko.bindingHandlers.trueFalseRadioButton =
     }
 };
 
-ko.bindingHandlers.chosen =
-{
-    init: function (element) {
-        $(element).addClass('chzn-select');
-        //$(element).chosen();
-    },
-    update: function (element) {
-        $(element).trigger("liszt:updated");
-    }
-};
+//ko.bindingHandlers.chosen =
+//{
+//    init: function (element) {
+//        $(element).addClass('chosen-select');
+//    },
+//    update: function (element) {
+//        $(element).chosen();
+//        $(element).trigger("liszt:updated");
+//    }
+//};
 
 function GetGenderLists(handleData, handleException) {
     $.ajax({

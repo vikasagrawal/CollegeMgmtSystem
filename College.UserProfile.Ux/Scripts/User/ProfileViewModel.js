@@ -57,7 +57,8 @@ function UserViewModel() {
                 if (xhr.status === 200) {
                     $("#infoMessages").html(JSON.parse(xhr.responseText).Message).attr("class", "message-error");
                     self.viewModel.user.UserPhoto("");
-                    self.viewModel.user.UserPhoto("/upload/" + JSON.parse(xhr.responseText).FileName);
+                    d = new Date();
+                    self.viewModel.user.UserPhoto("/upload/" + JSON.parse(xhr.responseText).FileName + "?" + d.getTime());
                 } else {
                     $("#infoMessages").html(JSON.parse(xhr.responseText).Message).attr("class", "message-error");
                 }
@@ -170,6 +171,7 @@ function UserViewModel() {
 
     // Loads user.
     self.load = function () {
+        $('#loading').show();
         // Important: we need to load countries and languages first and only then load the user, to make
         // sure that corresponding drop-downs are populated before loaded user will try to set values on them
 
@@ -183,6 +185,7 @@ function UserViewModel() {
 
 
     self.loadUserProfile = function () {
+        $('#loading').show();
         self.loading.push(true);
         GetUserProfile(
             function (data, textStatus, jqXHR) {
