@@ -1,6 +1,7 @@
 # Build Folders (you can keep bin if you'd like, to store dlls and pdbs)
 [Bb]in/
 [Oo]bj/
+[Aa]pp-[Dd]ata/
 
 # mstest test results
 TestResults
@@ -12,6 +13,8 @@ TestResults
 *.suo
 *.user
 *.sln.docstates
+*.ldf
+*.mdf
 
 # Build results
 [Dd]ebug/

@@ -1,65 +1,83 @@
 ﻿@{
     ViewBag.Title = "Sign In";
+    Layout = null;
 }
-<div id="dialog-form" title="Sign In">
-    <div id="pageform" hidden>
-        <form>
-            <h2>Sign In</h2>
-            <label>
-                <button id="btnNewUser" data-bind="click: ToggleNewUser">New User?</button>
-                <button id="btnExistingUser" data-bind="click: ToggleExistingUser">Existing User?</button>
-            </label>
-            <script id="customMessageTemplate" type="text/html">
-                <em class="customMessage" data-bind='validationMessage: field'></em>
-            </script>
-            <p id="infoMessages" class="message-success"></p>
-            <fieldset>
-                <legend></legend>
-                <div data-bind='validationOptions: { messageTemplate: "customMessageTemplate" }'>
-                    <label>
-                        <input placeholder="ENTER EMAIL" type="text" data-bind="value: EmailAddress" id="EmailAddress" />
-                    </label>
-                    <br />
-                    <label>
-                        <input placeholder="PASSWORD" type="password" data-bind="value: Password" id="Password" />
-                    </label>
-                    <br />
-                    <div id="divConfirmPassword" data-bind="visible: NewUser">
-                        <label>
-                            <input placeholder="RE-TYPE PASSWORD" type="password" data-bind="value: ConfirmPassword" id="ConfirmPassword" />
-                        </label>
-                        <br />
-                    </div>
-                </div>
-                <br />
-                <button data-bind="click: SignIn" type="submit">Sign In</button>
-            </fieldset>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    @*  <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">*@
+
+    <title>Signin</title>
+</head>
+<body>
+    <script id="customMessageTemplate" type="text/html">
+        <p data-bind="validationMessage: field"></p>
+    </script>
+
+    <div id="dialog-form" class="container" hidden title="Sign In">
+        <form class="form-signin" role="form">
+            @*<h2 class="form-signin-heading">Please sign in</h2>*@
+            <div>
+                <button class="btn btn-lg btn-primary btn-block" id="btnNewUser" data-bind="click: ToggleNewUser">New User?</button>
+                <button class="btn btn-lg btn-primary btn-block" id="btnExistingUser" data-bind="click: ToggleExistingUser">Existing User?</button>
+            </div>
+            <div>
+                <p id="infoMessages" class="message-error"></p>
+                @*   <ul>
+                    <li data-bind="validationMessage: EmailAddress"></li>
+                    <li data-bind="validationMessage: Password"></li>
+                    <li data-bind="validationMessage: ConfirmPassword"></li>
+                </ul>*@
+            </div>
+            <div data-bind='validationOptions: { messageTemplate: "customMessageTemplate" }'>
+                <p></p>
+                <input type="text" data-bind="value: EmailAddress" class="form-control" id="EmailAddress" placeholder="ENTER EMAIL">
+                <p></p>
+                <input type="password" data-bind="value: Password" class="form-control" id="Password" placeholder="PASSWORD">
+                <p></p>
+                <input placeholder="RE-TYPE PASSWORD" class="form-control" type="password" data-bind="value: ConfirmPassword, visible: NewUser" id="divConfirmPassword" />
+            </div>
+            <div>
+                <p></p>
+                <button data-bind="click: SignIn" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+
+            </div>
         </form>
     </div>
-</div>
-@section scripts
-{
+    <!-- /container -->
+    <div id="loading">
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/knockout")
+    @Scripts.Render("~/bundles/knockout-validation")
+    @Scripts.Render("~/bundles/bootstrap")
     <link rel="stylesheet" href="~/Content/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="~/Content/style.css">
+    <link rel="stylesheet" href="~/Content/CustomCore.css">
     @Scripts.Render("~/Scripts/jquery-ui-1.10.3.js")
     @Scripts.Render("~/Scripts/knockout.mapping-latest.js")
     @Scripts.Render("~/Scripts/Custom.js")
     @Scripts.Render("~/Scripts/User/LoginViewModel.js")
-    <script>
+</body>
+</html>
+<script>
 
-        $(document).ready(function () {
-            ko.applyBindings(new UserLoginViewModel());
-            $("#dialog-form").dialog("open");
-            $("#pageform").show();
-        });
+    $(document).ready(function () {
+        ko.applyBindings(new UserLoginViewModel());
+        $("#dialog-form").dialog("open");
+        $("#dialog-form").show();
+    });
 
-        $("#dialog-form").dialog({
-            autoOpen: false,
-            height: 500,
-            width: 650,
-            modal: true,
-        });
+    $("#dialog-form").dialog({
+        autoOpen: false,
+        height: 400,
+        width: 400,
+        modal: true,
+    });
 
-    </script>
-}
-
+</script>
