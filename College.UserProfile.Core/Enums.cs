@@ -10,6 +10,7 @@ namespace College.UserProfile.Core
     {
         GENDER = 0,
         LANGUAGE = 1,
-        DEGREETYPE = 2
+        DEGREETYPE = 2,
+        COURSEFIELD = 3
     }
 }

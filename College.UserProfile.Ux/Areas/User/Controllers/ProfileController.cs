@@ -44,6 +44,8 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
                     {
                         userProfile.user = user;
                         userProfile.UserEducationDetail = db.UserEducationDetails.Where(x => x.UserId == user.UserID).ToList<UserEducationDetail>();
+                        userProfile.UserLanguages = Helper.XMLStringToList(userProfile.user.LanguagesSpoken, Constants.LanguagesElementName);
+                        userProfile.UserFieldOfInterest = Helper.XMLStringToList(userProfile.user.FieldOfInterest, Constants.FieldOfInterestsElementName);
                     }
                     return Json(userProfile, JsonRequestBehavior.AllowGet);
                 }
@@ -60,6 +62,7 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
             if (ModelState.IsValid)
             {
                 userProfile.user.LanguagesSpoken = Helper.ListToXMLString(userProfile.UserLanguages, Constants.LanguagesRootElementName, Constants.LanguagesElementName);
+                userProfile.user.FieldOfInterest = Helper.ListToXMLString(userProfile.UserFieldOfInterest, Constants.FieldOfInterestsRootElementName, Constants.FieldOfInterestsElementName);
 
                 Entities.User existingUser = GetUser(userProfile.user.UserLoginID);
                 if (existingUser == null)
@@ -101,7 +104,7 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
                 {
                     foreach (ModelError error in modelState.Errors)
                     {
-                        
+
                         errormsg = error.ErrorMessage;
                     }
                 }

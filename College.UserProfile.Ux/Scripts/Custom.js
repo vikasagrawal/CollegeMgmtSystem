@@ -66,7 +66,8 @@ ko.bindingHandlers.trueFalseRadioButton =
     },
     update: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
         var elementValue = $.parseJSON($(element).val());
-        var observableValue = ko.utils.unwrapObservable(valueAccessor()); if (elementValue === observableValue) {
+        var observableValue = ko.utils.unwrapObservable(valueAccessor());
+        if (elementValue === observableValue) {
             element.checked = true;
         }
         else {
@@ -74,17 +75,6 @@ ko.bindingHandlers.trueFalseRadioButton =
         }
     }
 };
-
-//ko.bindingHandlers.chosen =
-//{
-//    init: function (element) {
-//        $(element).addClass('chosen-select');
-//    },
-//    update: function (element) {
-//        $(element).chosen();
-//        $(element).trigger("liszt:updated");
-//    }
-//};
 
 function GetGenderLists(handleData, handleException) {
     $.ajax({
@@ -151,6 +141,21 @@ function GetSubjectsList(handleData, handleException) {
 function GetCoursesList(handleData, handleException) {
     $.ajax({
         url: "/CodeLookup/Course/Index",
+        type: "GET",
+        contentType: "application/json",
+        dataType: "json",
+        error: function (data, textStatus, jqXHR) {
+            handleException(JSON.parse(jqXHR.responseText).Message);
+        },
+        success: function (data) {
+            handleData(data);
+        }
+    });
+}
+
+function GetCourseFieldLists(handleData, handleException) {
+    $.ajax({
+        url: "/CodeLookup/CourseField/Index",
         type: "GET",
         contentType: "application/json",
         dataType: "json",

@@ -10,20 +10,13 @@ namespace College.UserProfile.Core.Models
 {
     public class UserProfile
     {
-        private User _user;
         public User user
         {
-            get
-            {
-                return _user;
-            }
-            set
-            {
-                _user = value;
-                this.UserLanguages = Helper.XMLStringToList(value.LanguagesSpoken, Constants.LanguagesElementName);
-            }
+            get;
+            set;
         }
         public List<int> UserLanguages { get; set; }
+        public List<int> UserFieldOfInterest { get; set; }
 
         public List<UserEducationDetail> UserEducationDetail { get; set; }
     }

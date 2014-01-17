@@ -71,6 +71,7 @@ function UserViewModel() {
     self.GenderOption = ko.observableArray([]);
     self.DegreeTypeOption = ko.observableArray([]);
     self.CourseOption = ko.observableArray([]);
+    self.CourseFieldOption = ko.observableArray([]);
     self.SubjectOption = ko.observableArray([]);
     self.viewModel = {};
 
@@ -105,6 +106,21 @@ function UserViewModel() {
         });
     }
 
+
+    self.loadCourseFields = function (ctx) {
+        self.loading.push(true);
+        GetCourseFieldLists(function (output) {
+            self.CourseFieldOption(output);
+            console.log("loaded course fields")
+            console.dir(output);
+            self.loading.pop();
+            if (ctx && ctx.success !== 'undefined') { ctx.success(); }
+        }, function (error) {
+            $("#infoMessages").html(error).attr("class", "message-error");
+            self.loading.pop();
+            if (ctx && ctx.success !== 'undefined') { ctx.success(); }
+        });
+    }
 
     self.loadDegreeTypes = function (ctx) {
         self.loading.push(true);
@@ -176,7 +192,7 @@ function UserViewModel() {
         // sure that corresponding drop-downs are populated before loaded user will try to set values on them
 
         // loadUser() is run once, after both loadCountries() and loadLanguages() have run (they do run in parallel!)
-        var parallelExecutions = [self.loadGenders, self.loadDegreeTypes, self.loadSubjects, self.loadCourses, self.loadLanguages];
+        var parallelExecutions = [self.loadGenders, self.loadDegreeTypes, self.loadSubjects, self.loadCourses, self.loadLanguages, self.loadCourseFields];
         var delayedLoadUser = _.after(parallelExecutions.length, self.loadUserProfile);
         _.each(parallelExecutions, function (func) {
             func({ success: delayedLoadUser });

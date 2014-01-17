@@ -102,6 +102,16 @@
                             </form>
                         </span>
                     </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="photo">Field Of Interests:</label>
+                        <span class="controls">
+                            <span data-bind="foreach: CourseFieldOption">
+                                <input type="checkbox" data-bind="checkedValue: LookupID, checked: $root.viewModel.UserFieldOfInterest" />
+                                <label data-bind="text: LookupValue" />
+                            </span>
+                        </span>
+                    </div>
                 </td>
             </tr>
             <tr>

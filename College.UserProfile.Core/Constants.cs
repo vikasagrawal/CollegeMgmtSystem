@@ -10,5 +10,7 @@ namespace College.UserProfile.Core
     {
         public const string LanguagesRootElementName = "Languages";
         public const string LanguagesElementName = "Language";
+        public const string FieldOfInterestsRootElementName = "FieldOfInterests";
+        public const string FieldOfInterestsElementName = "FieldOfInterest";
     }
 }

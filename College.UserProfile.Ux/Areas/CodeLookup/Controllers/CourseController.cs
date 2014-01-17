@@ -27,8 +27,6 @@ namespace College.UserProfile.Ux.Areas.CodeLookup.Controllers
                                 LookupValue = c1.CourseName
                             };
 
-            // genders = db.UserLogins.SingleOrDefault(usr=> usr.UserLoginID == 28);
-
             return Json(courses, JsonRequestBehavior.AllowGet);
         }
 
