@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>cb.ko.binding.chosen</id>
+    <version>1.0.5</version>
+    <title>Knockout Binding Extension For Chosen</title>
+    <authors>CB</authors>
+    <owners>CB</owners>
+    <projectUrl>https://github.com/cbfrank/cb-ko-chosen</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Knockout Binding Extension For Chosen</description>
+    <summary>Knockout Binding Extension For Chosen</summary>
+    <releaseNotes>Add support to use it in table inline edit mode</releaseNotes>
+    <dependencies>
+      <dependency id="jQuery" version="1.8" />
+      <dependency id="knockoutjs" version="2.0" />
+      <dependency id="harvesthq.chosen" version="1.0.0" />
+    </dependencies>
+  </metadata>
+</package>
