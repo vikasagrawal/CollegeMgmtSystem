@@ -9,26 +9,23 @@ using System.Web.Mvc;
 using College.UserProfile.Entities;
 using College.UserProfile.Core;
 using College.UserProfile.Ux.CustomAttributes;
+using College.UserProfile.Core.EntityInterfaces;
 
 namespace College.UserProfile.Ux.Areas.CodeLookup.Controllers
 {
     [HandleUIException]
     public class GenderController : Controller
     {
-        private UserProfilesContext db = new UserProfilesContext();
+        ICodeLookupReader _codeLookupReader;
+        public GenderController(ICodeLookupReader codeLookupReader)
+        {
+            _codeLookupReader = codeLookupReader;
+        }
 
         // GET: /CodeLookup/Gender/
         public JsonResult Index()
         {
-            var genders = from c1 in db.CodeLookups.AsEnumerable()
-                          where c1.CodeDesc.Equals(CodeLookupsDesc.GENDER.ToString(), StringComparison.OrdinalIgnoreCase) && c1.ParentCodeLookupId == null
-                          join c2 in db.CodeLookups on c1.CodeLookupId equals c2.ParentCodeLookupId
-                          select new
-                          {
-                              LookupID = c2.CodeLookupId,
-                              LookupValue = c2.ShortDesc
-                          };
-
+            var genders = _codeLookupReader.GetCodeLookupsForLookup(CodeLookupsDesc.GENDER.ToString());
             return Json(genders, JsonRequestBehavior.AllowGet);
         }
 
@@ -36,7 +33,7 @@ namespace College.UserProfile.Ux.Areas.CodeLookup.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _codeLookupReader.Dispose();
             }
             base.Dispose(disposing);
         }

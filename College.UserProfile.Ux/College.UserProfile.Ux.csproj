@@ -224,6 +224,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BootstrapBundleConfig.cs" />
+    <Compile Include="App_Start\BootStrapper.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
@@ -243,6 +244,7 @@
     </Compile>
     <Compile Include="CustomAttributes\Attributes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceRegistry.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />

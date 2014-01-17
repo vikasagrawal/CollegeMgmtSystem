@@ -10,6 +10,8 @@ using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using College.UserProfile.Core.EntityProviders;
+using College.UserProfile.Core.EntityInterfaces;
 
 namespace College.UserProfile.Ux.Areas.User.Controllers
 {
@@ -17,7 +19,12 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
     [OutputCache(Duration = 0)]
     public class LoginController : Controller
     {
-        private UserProfilesContext db = new UserProfilesContext();
+        private IUserLoginManager _userLoginManager;
+
+        public LoginController(IUserLoginManager userLoginManager)
+        {
+            _userLoginManager = userLoginManager;
+        }
 
         //
         // GET: /User/Login/
@@ -40,10 +47,9 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (!UserLoginExists(userlogin.EmailAddress))
+                if (!_userLoginManager.IsUserLoginExists(userlogin.EmailAddress))
                 {
-                    db.UserLogins.Add(userlogin);
-                    db.SaveChanges();
+                    _userLoginManager.AddUserLogin(userlogin);
 
                     Utils.SetAuthenticationCookie(userlogin);
                     var routeValues = new { area = "User", id = userlogin.UserLoginID };
@@ -71,8 +77,7 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
         [HttpPost]
         public ActionResult ValidateUserLogin(UserLogin userLogin)
         {
-            UserLogin userlogin = db.UserLogins.SingleOrDefault(usr => usr.EmailAddress.Equals(userLogin.EmailAddress, StringComparison.OrdinalIgnoreCase)
-                && usr.Password == userLogin.Password);
+            var userlogin = _userLoginManager.GetUserLogin(userLogin.EmailAddress, userLogin.Password);
             if (userlogin == null)
             {
                 throw new ValidationException(Json(new { Message = string.Format("Invalid Email Address or Password.", userLogin.EmailAddress) }));
@@ -84,9 +89,13 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
             return Json(new { redirectToUrl = urlToRedirect, Message = "Success" });
         }
 
-        private bool UserLoginExists(string emailAddress)
+        protected override void Dispose(bool disposing)
         {
-            return db.UserLogins.Count(e => e.EmailAddress.Equals(emailAddress, StringComparison.OrdinalIgnoreCase)) > 0;
+            if (disposing)
+            {
+                _userLoginManager.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }

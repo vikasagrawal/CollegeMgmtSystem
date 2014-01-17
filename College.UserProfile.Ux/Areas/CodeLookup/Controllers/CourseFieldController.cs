@@ -9,34 +9,32 @@ using System.Web.Mvc;
 using College.UserProfile.Entities;
 using College.UserProfile.Core;
 using College.UserProfile.Ux.CustomAttributes;
+using College.UserProfile.Core.EntityInterfaces;
 
 namespace College.UserProfile.Ux.Areas.CodeLookup.Controllers
 {
     [HandleUIException]
     public class CourseFieldController : Controller
     {
-        private UserProfilesContext db = new UserProfilesContext();
+        ICodeLookupReader _codeLookupReader;
+        public CourseFieldController(ICodeLookupReader codeLookupReader)
+        {
+            _codeLookupReader = codeLookupReader;
+        }
 
         // GET: /CodeLookup/CourseField/
         public JsonResult Index()
         {
-            var genders = from c1 in db.CodeLookups.AsEnumerable()
-                          where c1.CodeDesc.Equals(CodeLookupsDesc.COURSEFIELD.ToString(), StringComparison.OrdinalIgnoreCase) && c1.ParentCodeLookupId == null
-                          join c2 in db.CodeLookups on c1.CodeLookupId equals c2.ParentCodeLookupId
-                          select new
-                          {
-                              LookupID = c2.CodeLookupId,
-                              LookupValue = c2.ShortDesc
-                          };
+            var courseFields = _codeLookupReader.GetCodeLookupsForLookup(CodeLookupsDesc.COURSEFIELD.ToString());
 
-            return Json(genders, JsonRequestBehavior.AllowGet);
+            return Json(courseFields, JsonRequestBehavior.AllowGet);
         }
 
         protected override void Dispose(bool disposing)
         {
             if (disposing)
             {
-                db.Dispose();
+                _codeLookupReader.Dispose();
             }
             base.Dispose(disposing);
         }

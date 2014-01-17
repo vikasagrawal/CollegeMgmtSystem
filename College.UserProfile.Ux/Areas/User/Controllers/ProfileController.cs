@@ -1,5 +1,6 @@
 ﻿using College.UserProfile.Core;
 using College.UserProfile.Core.Authentication;
+using College.UserProfile.Core.EntityInterfaces;
 using College.UserProfile.Core.Exceptions;
 using College.UserProfile.Entities;
 using College.UserProfile.Ux.CustomAttributes;
@@ -17,7 +18,11 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
     [OutputCache(Duration = 0)]
     public class ProfileController : Controller
     {
-        private UserProfilesContext db = new UserProfilesContext();
+        IUserProfileManager _userProfileManager;
+        public ProfileController(IUserProfileManager userProfileManager)
+        {
+            _userProfileManager = userProfileManager;
+        }
         //
         // GET: /User/Profile/
         public ActionResult Index()
@@ -36,17 +41,7 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
                 int id;
                 if (Int32.TryParse(userLoginID, out id))
                 {
-                    var user = db.Users.SingleOrDefault(x => x.UserLoginID == id);
-                    var userProfile = new College.UserProfile.Core.Models.UserProfile();
-                    userProfile.user = new Entities.User() { UserLoginID = Int32.Parse(userLoginID), UserID = 0 };
-                    userProfile.UserEducationDetail = new List<UserEducationDetail>();
-                    if (user != null)
-                    {
-                        userProfile.user = user;
-                        userProfile.UserEducationDetail = db.UserEducationDetails.Where(x => x.UserId == user.UserID).ToList<UserEducationDetail>();
-                        userProfile.UserLanguages = Helper.XMLStringToList(userProfile.user.LanguagesSpoken, Constants.LanguagesElementName);
-                        userProfile.UserFieldOfInterest = Helper.XMLStringToList(userProfile.user.FieldOfInterest, Constants.FieldOfInterestsElementName);
-                    }
+                    var userProfile = _userProfileManager.GetUserProfile(id);
                     return Json(userProfile, JsonRequestBehavior.AllowGet);
                 }
             }
@@ -61,40 +56,7 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
         {
             if (ModelState.IsValid)
             {
-                userProfile.user.LanguagesSpoken = Helper.ListToXMLString(userProfile.UserLanguages, Constants.LanguagesRootElementName, Constants.LanguagesElementName);
-                userProfile.user.FieldOfInterest = Helper.ListToXMLString(userProfile.UserFieldOfInterest, Constants.FieldOfInterestsRootElementName, Constants.FieldOfInterestsElementName);
-
-                Entities.User existingUser = GetUser(userProfile.user.UserLoginID);
-                if (existingUser == null)
-                {
-                    db.Users.Add(userProfile.user);
-                    db.SaveChanges();
-                }
-                else
-                {
-                    db.Entry(existingUser).CurrentValues.SetValues(userProfile.user);
-                }
-
-                var ed = from ued in db.UserEducationDetails
-                         where ued.UserId == userProfile.user.UserID
-                         select ued;
-
-                if (ed.Count() > 0)
-                {
-                    db.UserEducationDetails.RemoveRange(ed);
-                }
-
-                if (userProfile.UserEducationDetail != null)
-                {
-                    foreach (var newued in userProfile.UserEducationDetail)
-                    {
-                        newued.UserId = userProfile.user.UserID;
-                        db.UserEducationDetails.Add(newued);
-                    }
-                }
-
-
-                db.SaveChanges();
+                userProfile = _userProfileManager.AddOrUpdateUserProfile(userProfile);
                 return Json(new { userProfile = userProfile, Message = "Profile Saved Successfully." });
             }
             else
@@ -134,10 +96,13 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
 
         }
 
-        private Entities.User GetUser(int userLoginID)
+        protected override void Dispose(bool disposing)
         {
-            return db.Users.SingleOrDefault(x => x.UserLoginID == userLoginID);
+            if (disposing)
+            {
+                _userProfileManager.Dispose();
+            }
+            base.Dispose(disposing);
         }
-
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using College.UserProfile.Ux.App_Start;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,6 +12,7 @@ namespace College.UserProfile.Ux
     {
         protected void Application_Start()
         {
+            Bootstrapper.Run();
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles();

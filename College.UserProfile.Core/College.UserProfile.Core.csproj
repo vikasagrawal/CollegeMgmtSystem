@@ -32,10 +32,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="StructureMap">
       <HintPath>..\packages\structuremap.2.6.4.1\lib\net40\StructureMap.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
@@ -47,12 +56,27 @@
   <ItemGroup>
     <Compile Include="Authentication\Utils.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="EntityInterfaces\ICodeLookupReader.cs" />
+    <Compile Include="EntityInterfaces\ICourseReader.cs" />
+    <Compile Include="EntityInterfaces\ISubjectReader.cs" />
+    <Compile Include="EntityInterfaces\IUserEducationDetailsManager.cs" />
+    <Compile Include="EntityInterfaces\IUserLoginManager.cs" />
+    <Compile Include="EntityInterfaces\IUserManager.cs" />
+    <Compile Include="EntityInterfaces\IUserProfileManager.cs" />
+    <Compile Include="EntityProviders\CodeLookupReader.cs" />
+    <Compile Include="EntityProviders\CourseReader.cs" />
+    <Compile Include="EntityProviders\SubjectReader.cs" />
+    <Compile Include="EntityProviders\UserEducationDetailsManager.cs" />
+    <Compile Include="EntityProviders\UserLoginManager.cs" />
+    <Compile Include="EntityProviders\UserManager.cs" />
+    <Compile Include="EntityProviders\UserProfileManager.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Models\UserProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Helper.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

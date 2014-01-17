@@ -9,32 +9,31 @@ using System.Web.Mvc;
 using College.UserProfile.Entities;
 using College.UserProfile.Core;
 using College.UserProfile.Ux.CustomAttributes;
+using College.UserProfile.Core.EntityInterfaces;
 
 namespace College.UserProfile.Ux.Areas.CodeLookup.Controllers
 {
     [HandleUIException]
     public class SubjectController : Controller
     {
-        private UserProfilesContext db = new UserProfilesContext();
+        ISubjectReader _subjectReader;
+        public SubjectController(ISubjectReader subjectReader)
+        {
+            _subjectReader = subjectReader;
+        }
 
         // GET: /CodeLookup/Gender/
         public JsonResult Index()
         {
-            var courses = from c1 in db.Subjects
-                          select new
-                            {
-                                LookupID = c1.SubjectId,
-                                LookupValue = c1.SubjectDesc
-                            };
-
-            return Json(courses, JsonRequestBehavior.AllowGet);
+            var subjects = _subjectReader.GetSubjectsForLookup();
+            return Json(subjects, JsonRequestBehavior.AllowGet);
         }
 
         protected override void Dispose(bool disposing)
         {
             if (disposing)
             {
-                db.Dispose();
+                _subjectReader.Dispose();
             }
             base.Dispose(disposing);
         }
