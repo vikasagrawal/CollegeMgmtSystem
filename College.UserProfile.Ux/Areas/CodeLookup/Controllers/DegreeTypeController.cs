@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using College.UserProfile.Core;
 using College.UserProfile.Ux.CustomAttributes;
-using College.UserProfile.Core.EntityInterfaces;
+using College.UserProfile.Core.DataReaderInterfaces;
 
 namespace College.UserProfile.Ux.Areas.CodeLookup.Controllers
 {

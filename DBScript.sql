@@ -201,3 +201,62 @@ GO
 
 SET ANSI_PADDING OFF
 GO
+
+
+/****** Object:  Table [College].[College]    Script Date: 01/17/2014 21:32:19 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[College](
+	[CollegeId] [int] IDENTITY(1,1) NOT NULL,
+	[CollegeName] [varchar](100) NOT NULL,
+	[CollegeLogo] [varchar](50) NULL,
+	[CollegeDesc] [varchar](1000) NULL,
+	[EstablishedYear] [varchar](10) NULL,
+	[Address1] [varchar](100) NULL,
+	[Address2] [varchar](100) NULL,
+	[CityId] [int] NOT NULL,
+	[StateId] [int] NULL,
+	[CountryId] [int] NOT NULL,
+	[PinCode] [varchar](15) NULL,
+	[Longitude] [varchar](20) NULL,
+	[Latitude] [varchar](20) NULL,
+	[Phone] [varchar](20) NULL,
+	[EmailAddress] [varchar](50) NULL,
+	[TransportDetail] [varchar](150) NULL,
+	[NotifEmailToCollege] [varchar](50) NULL,
+	[SportsAvailable] [bit] NOT NULL,
+	[WebSiteURL] [varchar](100) NULL,
+	[Accreditation] [varchar](100) NULL,
+	[NoOfStudents] [int] NULL,
+	[CollegeTypeId] [int] NOT NULL,
+	[StudentTypeId] [int] NOT NULL,
+	[AffiliatedToId] [int] NULL,
+	[IsAccomodation] [bit] NOT NULL,
+	[AccomodationTypeId] [int] NULL,
+	[Activities] [varchar](500) NULL,
+	[ProspectusLink] [varchar](50) NULL,
+	[AcademicSessionId] [int] NULL,
+	[CampusInfrastructure] [varchar](1000) NULL,
+	[SubmittedById] [int] NULL,
+	[ViewCount] [bigint] NOT NULL,
+	[CreatedBy] [int] NOT NULL,
+	[CreatedDate] [datetime] NOT NULL,
+	[UpdatedBy] [int] NULL,
+	[UpdatedDate] [datetime] NULL,
+ CONSTRAINT [PK_College] PRIMARY KEY CLUSTERED 
+(
+	[CollegeId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO

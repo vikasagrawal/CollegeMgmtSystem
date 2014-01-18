@@ -1,5 +1,5 @@
-﻿using College.UserProfile.Core.EntityInterfaces;
-using College.UserProfile.Core.EntityProviders;
+﻿using College.UserProfile.Core.DataManagerInterfaces;
+using College.UserProfile.Core.DataManagers;
 using StructureMap;
 using StructureMap.Configuration.DSL;
 using System;

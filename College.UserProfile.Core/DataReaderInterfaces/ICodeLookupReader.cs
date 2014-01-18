@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace College.UserProfile.Core.EntityInterfaces
+namespace College.UserProfile.Core.DataReaderInterfaces
 {
     public interface ICodeLookupReader: IDisposable
     {

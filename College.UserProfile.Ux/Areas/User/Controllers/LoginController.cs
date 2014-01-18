@@ -10,8 +10,8 @@ using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-using College.UserProfile.Core.EntityProviders;
-using College.UserProfile.Core.EntityInterfaces;
+using College.UserProfile.Core.DataManagers;
+using College.UserProfile.Core.DataManagerInterfaces;
 
 namespace College.UserProfile.Ux.Areas.User.Controllers
 {

@@ -1,6 +1,6 @@
 ﻿using College.UserProfile.Core;
 using College.UserProfile.Core.Authentication;
-using College.UserProfile.Core.EntityInterfaces;
+using College.UserProfile.Core.DataManagerInterfaces;
 using College.UserProfile.Core.Exceptions;
 using College.UserProfile.Entities;
 using College.UserProfile.Ux.CustomAttributes;
