@@ -133,7 +133,6 @@ GO
 
 CREATE TABLE [dbo].[UserLogin](
 	[UserLoginID] [int] IDENTITY(1,1) NOT NULL,
-	[UserID] [int] NOT NULL,
 	[EmailAddress] [nvarchar](250) NOT NULL,
 	[Password] [nvarchar](100) NOT NULL,
 	[IsFacebookLogin] [bit] NULL,
