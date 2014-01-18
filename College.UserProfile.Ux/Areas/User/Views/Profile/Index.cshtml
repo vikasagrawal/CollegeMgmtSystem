@@ -126,7 +126,8 @@
                             <tr>
                                 <td><a href="#" data-bind="click: $parent.removeCollegeDetails">Remove</a></td>
                                 <td>
-                                    <input placeholder="COLLEGE" type="text" data-bind="value: CollegeId" id="CollegeId" /></td>
+                                    <select id="CollegeId" data-bind="options: $root.CollegeOption, value: CollegeId, optionsValue: 'LookupID', optionsText: 'LookupValue', optionsCaption: 'COLLEGE...' "></select>
+                                </td>
                                 <td>
                                     <input placeholder="YEAR" type="text" data-bind="value: PassingYear" id="CollegePassingYear" /></td>
                                 <td>

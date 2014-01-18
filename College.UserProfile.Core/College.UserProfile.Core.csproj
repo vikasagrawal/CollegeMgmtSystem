@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="Authentication\Utils.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="DataReaderInterfaces\ICollegeReader.cs" />
     <Compile Include="DataReaderInterfaces\ICodeLookupReader.cs" />
     <Compile Include="DataReaderInterfaces\ICourseReader.cs" />
     <Compile Include="DataReaderInterfaces\ISubjectReader.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="DataManagerInterfaces\IUserManager.cs" />
     <Compile Include="DataManagerInterfaces\IUserProfileManager.cs" />
     <Compile Include="DataReaders\CodeLookupReader.cs" />
+    <Compile Include="DataReaders\CollegeReader.cs" />
     <Compile Include="DataReaders\CourseReader.cs" />
     <Compile Include="DataReaders\SubjectReader.cs" />
     <Compile Include="DataManagers\UserEducationDetailsManager.cs" />

@@ -32,5 +32,6 @@ namespace College.UserProfile.Entities
         public DbSet<UserFBDetail> UserFBDetails { get; set; }
         public DbSet<UserLogin> UserLogins { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<College> Colleges { get; set; }
     }
 }

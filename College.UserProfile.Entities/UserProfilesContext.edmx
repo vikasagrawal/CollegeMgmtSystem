@@ -7,6 +7,7 @@
     <Schema Namespace="UserProfilesModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="UserProfilesModelStoreContainer">
           <EntitySet Name="CodeLookup" EntityType="UserProfilesModel.Store.CodeLookup" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="College" EntityType="UserProfilesModel.Store.College" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Course" EntityType="UserProfilesModel.Store.Course" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Subject" EntityType="UserProfilesModel.Store.Subject" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UserEducationDetails" EntityType="UserProfilesModel.Store.UserEducationDetails" store:Type="Tables" Schema="dbo" />
@@ -27,6 +28,47 @@
           <Property Name="CreatedDate" Type="datetime" />
           <Property Name="UpdatedBy" Type="int" />
           <Property Name="UpdatedDate" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="College">
+          <Key>
+            <PropertyRef Name="CollegeId" />
+          </Key>
+          <Property Name="CollegeId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeName" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="CollegeLogo" Type="varchar" MaxLength="50" />
+          <Property Name="CollegeDesc" Type="varchar" MaxLength="1000" />
+          <Property Name="EstablishedYear" Type="varchar" MaxLength="10" />
+          <Property Name="Address1" Type="varchar" MaxLength="100" />
+          <Property Name="Address2" Type="varchar" MaxLength="100" />
+          <Property Name="CityId" Type="int" Nullable="false" />
+          <Property Name="StateId" Type="int" />
+          <Property Name="CountryId" Type="int" Nullable="false" />
+          <Property Name="PinCode" Type="varchar" MaxLength="15" />
+          <Property Name="Longitude" Type="varchar" MaxLength="20" />
+          <Property Name="Latitude" Type="varchar" MaxLength="20" />
+          <Property Name="Phone" Type="varchar" MaxLength="20" />
+          <Property Name="EmailAddress" Type="varchar" MaxLength="50" />
+          <Property Name="TransportDetail" Type="varchar" MaxLength="150" />
+          <Property Name="NotifEmailToCollege" Type="varchar" MaxLength="50" />
+          <Property Name="SportsAvailable" Type="bit" Nullable="false" />
+          <Property Name="WebSiteURL" Type="varchar" MaxLength="100" />
+          <Property Name="Accreditation" Type="varchar" MaxLength="100" />
+          <Property Name="NoOfStudents" Type="int" />
+          <Property Name="CollegeTypeId" Type="int" Nullable="false" />
+          <Property Name="StudentTypeId" Type="int" Nullable="false" />
+          <Property Name="AffiliatedToId" Type="int" />
+          <Property Name="IsAccomodation" Type="bit" Nullable="false" />
+          <Property Name="AccomodationTypeId" Type="int" />
+          <Property Name="Activities" Type="varchar" MaxLength="500" />
+          <Property Name="ProspectusLink" Type="varchar" MaxLength="50" />
+          <Property Name="AcademicSessionId" Type="int" />
+          <Property Name="CampusInfrastructure" Type="varchar" MaxLength="1000" />
+          <Property Name="SubmittedById" Type="int" />
+          <Property Name="ViewCount" Type="bigint" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime" />
         </EntityType>
         <EntityType Name="Course">
           <Key>
@@ -114,6 +156,7 @@
           <EntitySet Name="UserFBDetails" EntityType="UserProfilesModel.UserFBDetail" />
           <EntitySet Name="UserLogins" EntityType="UserProfilesModel.UserLogin" />
           <EntitySet Name="Users" EntityType="UserProfilesModel.User" />
+          <EntitySet Name="Colleges" EntityType="UserProfilesModel.College" />
         </EntityContainer>
         <EntityType Name="CodeLookup">
           <Key>
@@ -202,6 +245,47 @@
           <Property Name="VerifiedBy" Type="Int32" />
           <Property Name="FieldOfInterest" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Type="Int32" Name="UserLoginID" Nullable="false" />
+        </EntityType>
+        <EntityType Name="College">
+          <Key>
+            <PropertyRef Name="CollegeId" />
+          </Key>
+          <Property Type="Int32" Name="CollegeId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="CollegeName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CollegeLogo" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CollegeDesc" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EstablishedYear" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Address1" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Address2" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="CityId" Nullable="false" />
+          <Property Type="Int32" Name="StateId" />
+          <Property Type="Int32" Name="CountryId" Nullable="false" />
+          <Property Type="String" Name="PinCode" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Longitude" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Latitude" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Phone" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EmailAddress" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TransportDetail" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NotifEmailToCollege" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="SportsAvailable" Nullable="false" />
+          <Property Type="String" Name="WebSiteURL" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Accreditation" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="NoOfStudents" />
+          <Property Type="Int32" Name="CollegeTypeId" Nullable="false" />
+          <Property Type="Int32" Name="StudentTypeId" Nullable="false" />
+          <Property Type="Int32" Name="AffiliatedToId" />
+          <Property Type="Boolean" Name="IsAccomodation" Nullable="false" />
+          <Property Type="Int32" Name="AccomodationTypeId" />
+          <Property Type="String" Name="Activities" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ProspectusLink" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="AcademicSessionId" />
+          <Property Type="String" Name="CampusInfrastructure" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="SubmittedById" />
+          <Property Type="Int64" Name="ViewCount" Nullable="false" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="UpdatedBy" />
+          <Property Type="DateTime" Name="UpdatedDate" Precision="3" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -301,6 +385,48 @@
                 <ScalarProperty Name="IsUserVerified" ColumnName="IsUserVerified" />
                 <ScalarProperty Name="VerifiedBy" ColumnName="VerifiedBy" />
                 <ScalarProperty Name="FieldOfInterest" ColumnName="FieldOfInterest" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Colleges">
+            <EntityTypeMapping TypeName="UserProfilesModel.College">
+              <MappingFragment StoreEntitySet="College">
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ViewCount" ColumnName="ViewCount" />
+                <ScalarProperty Name="SubmittedById" ColumnName="SubmittedById" />
+                <ScalarProperty Name="CampusInfrastructure" ColumnName="CampusInfrastructure" />
+                <ScalarProperty Name="AcademicSessionId" ColumnName="AcademicSessionId" />
+                <ScalarProperty Name="ProspectusLink" ColumnName="ProspectusLink" />
+                <ScalarProperty Name="Activities" ColumnName="Activities" />
+                <ScalarProperty Name="AccomodationTypeId" ColumnName="AccomodationTypeId" />
+                <ScalarProperty Name="IsAccomodation" ColumnName="IsAccomodation" />
+                <ScalarProperty Name="AffiliatedToId" ColumnName="AffiliatedToId" />
+                <ScalarProperty Name="StudentTypeId" ColumnName="StudentTypeId" />
+                <ScalarProperty Name="CollegeTypeId" ColumnName="CollegeTypeId" />
+                <ScalarProperty Name="NoOfStudents" ColumnName="NoOfStudents" />
+                <ScalarProperty Name="Accreditation" ColumnName="Accreditation" />
+                <ScalarProperty Name="WebSiteURL" ColumnName="WebSiteURL" />
+                <ScalarProperty Name="SportsAvailable" ColumnName="SportsAvailable" />
+                <ScalarProperty Name="NotifEmailToCollege" ColumnName="NotifEmailToCollege" />
+                <ScalarProperty Name="TransportDetail" ColumnName="TransportDetail" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="PinCode" ColumnName="PinCode" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="EstablishedYear" ColumnName="EstablishedYear" />
+                <ScalarProperty Name="CollegeDesc" ColumnName="CollegeDesc" />
+                <ScalarProperty Name="CollegeLogo" ColumnName="CollegeLogo" />
+                <ScalarProperty Name="CollegeName" ColumnName="CollegeName" />
+                <ScalarProperty Name="CollegeId" ColumnName="CollegeId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

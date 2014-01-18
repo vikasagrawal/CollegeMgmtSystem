@@ -167,3 +167,18 @@ function GetCourseFieldLists(handleData, handleException) {
         }
     });
 }
+
+function GetCollegeLists(handleData, handleException) {
+    $.ajax({
+        url: "/CodeLookup/College/Index",
+        type: "GET",
+        contentType: "application/json",
+        dataType: "json",
+        error: function (data, textStatus, jqXHR) {
+            handleException(JSON.parse(jqXHR.responseText).Message);
+        },
+        success: function (data) {
+            handleData(data);
+        }
+    });
+}

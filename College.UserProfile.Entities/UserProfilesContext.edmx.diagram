@@ -12,6 +12,7 @@
         <EntityTypeShape EntityType="UserProfilesModel.UserFBDetail" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="UserProfilesModel.UserLogin" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="UserProfilesModel.User" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UserProfilesModel.College" Width="1.5" PointX="4.875" PointY="8.375" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

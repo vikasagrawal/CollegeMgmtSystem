@@ -229,6 +229,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\CodeLookup\CodeLookupAreaRegistration.cs" />
+    <Compile Include="Areas\CodeLookup\Controllers\CollegeController.cs" />
     <Compile Include="Areas\CodeLookup\Controllers\CourseFieldController.cs" />
     <Compile Include="Areas\CodeLookup\Controllers\DegreeTypeController.cs" />
     <Compile Include="Areas\CodeLookup\Controllers\SubjectController.cs" />
@@ -267,9 +268,14 @@
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Areas\CodeLookup\Models\" />
+    <Folder Include="Areas\CodeLookup\Views\College\" />
+    <Folder Include="Areas\CodeLookup\Views\CourseField\" />
+    <Folder Include="Areas\CodeLookup\Views\Course\" />
+    <Folder Include="Areas\CodeLookup\Views\DegreeType\" />
     <Folder Include="Areas\CodeLookup\Views\Gender\" />
     <Folder Include="Areas\CodeLookup\Views\Language\" />
     <Folder Include="Areas\CodeLookup\Views\Shared\" />
+    <Folder Include="Areas\CodeLookup\Views\Subject\" />
     <Folder Include="Areas\User\Models\" />
     <Folder Include="Areas\User\Views\Shared\" />
     <Folder Include="Controllers\" />

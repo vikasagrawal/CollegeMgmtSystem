@@ -57,6 +57,9 @@
     <Compile Include="CodeLookup.cs">
       <DependentUpon>UserProfilesContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="College.cs">
+      <DependentUpon>UserProfilesContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Course.cs">
       <DependentUpon>UserProfilesContext.tt</DependentUpon>
     </Compile>
