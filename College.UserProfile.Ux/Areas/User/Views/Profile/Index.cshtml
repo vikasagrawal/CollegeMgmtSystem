@@ -1,6 +1,7 @@
-﻿@model College.UserProfile.Core.Models.UserProfile
+﻿@using Resources;
+@model College.UserProfile.Core.Models.UserProfile
 @{
-    ViewBag.Title = "User Profile";
+    ViewBag.Title = LabelResources.UserProfilePageTitleText;
 }
 
 <h2>User Profile</h2>
@@ -20,46 +21,46 @@
             <tr>
                 <td style="width: 50%; vertical-align: top">
                     <div class="control-group">
-                        <label class="control-label" for="FirstName">FIRST NAME:</label>
+                        <label class="control-label" for="FirstName">@LabelResources.FirstNameLabel</label>
                         <span class="controls">
                             <input type="text" data-bind="value: viewModel.user.FirstName" id="FirstName" />
                         </span>
                     </div>
 
                     <div class="control-group">
-                        <label class="control-label" for="MiddleName">MIDDLE NAME:</label>
+                        <label class="control-label" for="MiddleName">@LabelResources.MiddleNameLabel</label>
                         <span class="controls">
                             <input type="text" data-bind="value: viewModel.user.MiddleName" id="MiddleName" />
                         </span>
                     </div>
                     <div class="control-group">
-                        <label class="control-label" for="LastName">LAST NAME:</label>
+                        <label class="control-label" for="LastName">@LabelResources.LastNameLabel</label>
                         <span class="controls">
                             <input type="text" data-bind="value: viewModel.user.LastName" id="LastName" />
                         </span>
                     </div>
                     <div class="control-group">
-                        <label class="control-label" for="HomeTown">HOME TOWN:</label>
+                        <label class="control-label" for="HomeTown">@LabelResources.HomeTownLabel</label>
                         <span class="controls">
                             <input type="text" data-bind="value: viewModel.user.HomeTown" id="HomeTown" />
                         </span>
                     </div>
                     <div class="control-group">
-                        <label class="control-label" for="ZipCode">ZIP CODE:</label>
+                        <label class="control-label" for="ZipCode">@LabelResources.ZipCodeLabel</label>
                         <span class="controls">
                             <input type="text" data-bind="value: viewModel.user.ZipCode" id="ZipCode" />
                         </span>
                     </div>
 
                     <div class="control-group">
-                        <label class="control-label" for="MobileNo">MOBILE:</label>
+                        <label class="control-label" for="MobileNo">@LabelResources.MobileNoLabel</label>
                         <span class="controls">
                             <input type="text" data-bind="value: viewModel.user.MobileNo" id="MobileNo" />
                         </span>
                     </div>
 
                     <div class="control-group">
-                        <label class="control-label" for="AboutUser">ABOUT YOU:</label>
+                        <label class="control-label" for="AboutUser">@LabelResources.AboutUserLabel</label>
                         <span class="controls">
                             <textarea id="AboutUser" rows="5" data-bind="value: viewModel.user.AboutUser"></textarea>
                         </span>
@@ -67,7 +68,7 @@
                 </td>
                 <td style="width: 50%; vertical-align: top">
                     <div class="control-group">
-                        <label class="control-label" for="Gender">GENDER:</label>
+                        <label class="control-label" for="Gender">@LabelResources.GenderLabel</label>
                         <span class="controls">
                             <span data-bind="foreach: GenderOption">
                                 <input id="Gender" type="radio" data-bind="value: LookupID, trueFalseRadioButton: $root.viewModel.user.Gender" />
@@ -76,7 +77,7 @@
                         </span>
                     </div>
                     <div class="control-group">
-                        <label class="control-label" for="LanguagesSpoken">LANGUAGES SPOKEN:</label>
+                        <label class="control-label" for="LanguagesSpoken">@LabelResources.LanguagesSpokenLabel</label>
                         <span class="controls">
                             <select id="LanguagesSpoken"
                                 multiple data-placeholde="Choose Languages..."
@@ -86,14 +87,14 @@
                         </span>
                     </div>
                     <div class="control-group">
-                        <label class="control-label" for="BirthDate">DATE OF BIRTH:</label>
+                        <label class="control-label" for="BirthDate">@LabelResources.BirthDateLabel</label>
                         <span class="controls">
                             <input type="text" readonly="true" data-bind="datepicker: viewModel.user.BirthDate, datepickerOptions: { changeMonth: true, changeYear: true }" id="BirthDate" />
                         </span>
                     </div>
 
                     <div class="control-group">
-                        <label class="control-label" for="photo">PHOTO:</label>
+                        <label class="control-label" for="UserPhoto">@LabelResources.UserPhotoLabel</label>
                         <span class="controls">
                             <img data-bind="visible: viewModel.user.UserPhoto() != null, attr: { src: viewModel.user.UserPhoto }" width="100px" height="100px" />
                             <form id="image-upload-form">
@@ -104,7 +105,7 @@
                     </div>
 
                     <div class="control-group">
-                        <label class="control-label" for="photo">Field Of Interests:</label>
+                        <label class="control-label" for="UserFieldOfInterest">@LabelResources.UserFieldOfInterestLabel</label>
                         <span class="controls">
                             <span data-bind="foreach: CourseFieldOption">
                                 <input type="checkbox" data-bind="checkedValue: LookupID, checked: $root.viewModel.UserFieldOfInterest" />
@@ -116,7 +117,7 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <h2>CURRENT/PAST ACADEMIC INST.</h2>
+                    <h2>@LabelResources.InstituteSectionTitleText</h2>
                 </td>
             </tr>
             <tr>
@@ -141,7 +142,7 @@
                         </tbody>
                         <tr>
                             <td colspan="6">
-                                <button data-bind="click: addCollegeDetails">+ Add Another</button>
+                                <button data-bind="click: addCollegeDetails">@LabelResources.AddAnotherInstituteButtonText</button>
                             </td>
                         </tr>
                     </table>
@@ -166,7 +167,7 @@
                         </tbody>
                         <tr>
                             <td colspan="2">
-                                <button data-bind="click: addSchoolDetails">+ Add Another</button>
+                                <button data-bind="click: addSchoolDetails">@LabelResources.AddAnotherInstituteButtonText</button>
                             </td>
                         </tr>
                     </table>
@@ -174,7 +175,7 @@
             </tr>
         </table>
         <br />
-        <button type="submit" data-bind="click: SaveUserProfile">Save</button>
+        <button type="submit" data-bind="click: SaveUserProfile">@LabelResources.SaveUserProfileButtonText</button>
     </form>
 </div>
 @section scripts

@@ -5,14 +5,14 @@
     validator: function (val, params) {
         return val === this.getValue(params);
     },
-    message: 'Passwords must match.'
+    message: globalResources.resources.PasswordMustMatchMessage
 };
 
 ko.validation.rules['passwordComplexity'] = {
     validator: function (val) {
         return /(?=^[^\s]{6,128}$)((?=.*?\d)(?=.*?[A-Z])(?=.*?[a-z])|(?=.*?\d)(?=.*?[^\w\d\s])(?=.*?[a-z])|(?=.*?[^\w\d\s])(?=.*?[A-Z])(?=.*?[a-z])|(?=.*?\d)(?=.*?[A-Z])(?=.*?[^\w\d\s]))^.*/.test('' + val + '');
     },
-    message: 'Password must be between 6 and 128 characters long and contain three of the following 4 items: upper case letter, lower case letter, a symbol, a number'
+    message: globalResources.resources.PasswordComplexityNotMetMessage
 };
 
 ko.validation.registerExtenders();

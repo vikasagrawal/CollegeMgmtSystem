@@ -6,22 +6,22 @@
     self.NewUser = ko.observable(false);
     self.EmailAddress = ko.observable("").extend({
         required: {
-            message: 'Please supply Email Address.'
+            message: globalResources.resources.EmailAddressRequiredMessage
         },
         email: {
-            message: 'Please enter Valid Email Address.'
+            message: globalResources.resources.InValidEmailAddressMessage
         }
 
     });
     self.Password = ko.observable("").extend({
         required: {
-            message: 'Please supply Password.'
+            message: globalResources.resources.PasswordRequiredMessage
         }
     });
 
     self.ConfirmPassword = ko.observable("").extend({
         required: {
-            message: 'Please supply Confirm Password.',
+            message: globalResources.resources.ConfirmPasswordRequiredMessage,
             onlyIf: self.NewUser
         },
         areSame:

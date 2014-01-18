@@ -289,7 +289,7 @@ function UserViewModel() {
         // customize the creation of the name property so that it provides validation
         FirstName: {
             create: function (options) {
-                return ko.observable(options.data).extend({ required: { message: 'Please supply First Name.' }, maxLength: 50 });
+                return ko.observable(options.data).extend({ required: { message: globalResources.resources.FirstNameRequiredMessage }, maxLength: 50 });
             }
         },
         MiddleName: {
@@ -311,7 +311,7 @@ function UserViewModel() {
             create: function (options) {
                 return ko.observable(options.data).extend({
                     maxLength: 10, pattern: {
-                        message: 'Please enter valid Zip Code',
+                        message: globalResources.resources.InvalidZipCodeMessage,
                         params: '^(0|[1-9][0-9]*)$'
                     }
                 });
@@ -321,7 +321,7 @@ function UserViewModel() {
             create: function (options) {
                 return ko.observable(options.data).extend({
                     minLength: 10, maxLength: 10, pattern: {
-                        message: 'Please enter valid Phone Number',
+                        message: globalResources.resources.InvalidPhoneNumberMessage,
                         params: '^(0|[1-9][0-9]*)$'
                     }
                 });
@@ -334,13 +334,13 @@ function UserViewModel() {
         },
         CollegeId: {
             create: function (options) {
-                return ko.observable(options.data).extend({ required: { message: 'Please supply College.' } });
+                return ko.observable(options.data).extend({ required: { message: globalResources.resources.CollegeRequiredMessage } });
             }
         },
         PassingYear: {
             create: function (options) {
                 return ko.observable(options.data).extend({
-                    required: { message: 'Please supply Year.' },
+                    required: { message: globalResources.resources.FirstNameRequiredMessage },
                     minLength: 4, maxLength: 4, pattern: {
                         message: 'Please enter valid Passing Year',
                         params: '^(0|[1-9][0-9]*)$'
@@ -350,22 +350,22 @@ function UserViewModel() {
         },
         DegreeTypeId: {
             create: function (options) {
-                return ko.observable(options.data).extend({ required: { message: 'Please supply Degree Type.' } });
+                return ko.observable(options.data).extend({ required: { message: globalResources.resources.DegreeTypeRequiredMessage } });
             }
         },
         CourseId: {
             create: function (options) {
-                return ko.observable(options.data).extend({ required: { message: 'Please supply Course.' } });
+                return ko.observable(options.data).extend({ required: { message: globalResources.resources.CourseRequiredMessage } });
             }
         },
         SubjectId: {
             create: function (options) {
-                return ko.observable(options.data).extend({ required: { message: 'Please supply Major.' } });
+                return ko.observable(options.data).extend({ required: { message: globalResources.resources.SubjectRequiredMessage } });
             }
         },
         SchoolName: {
             create: function (options) {
-                return ko.observable(options.data).extend({ required: { message: 'Please supply SchoolName.' } });
+                return ko.observable(options.data).extend({ required: { message: globalResources.resources.SchoolNameRequiredMessage } });
             }
         }
 

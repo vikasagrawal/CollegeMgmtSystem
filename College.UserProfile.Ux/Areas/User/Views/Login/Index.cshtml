@@ -1,5 +1,10 @@
-﻿@{
-    ViewBag.Title = "Sign In";
+﻿@using Resources;
+@{
+    if (!Request["lang"].IsEmpty())
+    {
+        Culture = UICulture = Request["lang"];
+    }
+    ViewBag.Title = LabelResources.SignInPageTitleText;
     Layout = null;
 }
 <!DOCTYPE html>
@@ -19,12 +24,12 @@
         <p data-bind="validationMessage: field"></p>
     </script>
 
-    <div id="dialog-form" class="container" hidden title="Sign In">
+    <div id="dialog-form" class="container" hidden title="@LabelResources.SignInPageTitleText">
         <form class="form-signin" role="form">
             @*<h2 class="form-signin-heading">Please sign in</h2>*@
             <div>
-                <button class="btn btn-lg btn-primary btn-block" id="btnNewUser" data-bind="click: ToggleNewUser">New User?</button>
-                <button class="btn btn-lg btn-primary btn-block" id="btnExistingUser" data-bind="click: ToggleExistingUser">Existing User?</button>
+                <button class="btn btn-lg btn-primary btn-block" id="btnNewUser" data-bind="click: ToggleNewUser">@LabelResources.NewUserQuestionText</button>
+                <button class="btn btn-lg btn-primary btn-block" id="btnExistingUser" data-bind="click: ToggleExistingUser">@LabelResources.ExistingUserQuestionText</button>
             </div>
             <div>
                 <p id="infoMessages" class="message-error"></p>
@@ -36,15 +41,15 @@
             </div>
             <div data-bind='validationOptions: { messageTemplate: "customMessageTemplate" }'>
                 <p></p>
-                <input type="text" data-bind="value: EmailAddress" class="form-control" id="EmailAddress" placeholder="ENTER EMAIL">
+                <input type="text" data-bind="value: EmailAddress" class="form-control" id="EmailAddress" placeholder="@LabelResources.EmailPlaceholderText">
                 <p></p>
-                <input type="password" data-bind="value: Password" class="form-control" id="Password" placeholder="PASSWORD">
+                <input type="password" data-bind="value: Password" class="form-control" id="Password" placeholder="@LabelResources.PasswordPlaceolderText">
                 <p></p>
-                <input placeholder="RE-TYPE PASSWORD" class="form-control" type="password" data-bind="value: ConfirmPassword, visible: NewUser" id="divConfirmPassword" />
+                <input placeholder="@LabelResources.ConfirmPasswordPlaceholderText" class="form-control" type="password" data-bind="value: ConfirmPassword, visible: NewUser" id="divConfirmPassword" />
             </div>
             <div>
                 <p></p>
-                <button data-bind="click: SignIn" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                <button data-bind="click: SignIn" class="btn btn-lg btn-primary btn-block" type="submit">@LabelResources.SignInButtonText</button>
 
             </div>
         </form>
@@ -60,6 +65,7 @@
     <link rel="stylesheet" href="~/Content/style.css">
     <link rel="stylesheet" href="~/Content/CustomCore.css">
     @Scripts.Render("~/Scripts/jquery-ui-1.10.3.js")
+    @Scripts.Render("~/Scripts/GlobalResources.js")
     @Scripts.Render("~/Scripts/knockout.mapping-latest.js")
     @Scripts.Render("~/Scripts/Custom.js")
     @Scripts.Render("~/Scripts/User/LoginViewModel.js")
