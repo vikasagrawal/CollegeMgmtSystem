@@ -59,7 +59,7 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
                 }
                 else
                 {
-                    throw new ValidationException(Json(new { Message = string.Format("User with email address '{0}' already registered.", userlogin.EmailAddress) }));
+                    throw new ValidationException(Json(new { Message = string.Format(Resources.MessageResources.UserAlreadyRegisteredMessageFormat, userlogin.EmailAddress) }));
                 }
             }
             else
@@ -80,7 +80,7 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
             var userlogin = _userLoginManager.GetUserLogin(userLogin.EmailAddress, userLogin.Password);
             if (userlogin == null)
             {
-                throw new ValidationException(Json(new { Message = string.Format("Invalid Email Address or Password.", userLogin.EmailAddress) }));
+                throw new ValidationException(Json(new { Message = Resources.MessageResources.UserLoginValidationFailedMessage}));
             }
 
             College.UserProfile.Core.Authentication.Utils.SetAuthenticationCookie(userlogin);

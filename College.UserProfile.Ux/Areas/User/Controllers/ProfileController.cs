@@ -57,7 +57,7 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
             if (ModelState.IsValid)
             {
                 userProfile = _userProfileManager.AddOrUpdateUserProfile(userProfile);
-                return Json(new { userProfile = userProfile, Message = "Profile Saved Successfully." });
+                return Json(new { userProfile = userProfile, Message = Resources.MessageResources.UserProfileSaveSuccessMessage });
             }
             else
             {
@@ -86,11 +86,11 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
                     var Imagefile = binaryReader.ReadBytes(Request.Files["files"].ContentLength);//your image
                     System.IO.File.WriteAllBytes(AppDomain.CurrentDomain.BaseDirectory + "Upload/" + Utils.GetAutheticatedUserData() + fileExtention, Imagefile);
                 }
-                return Json(new { FileName = Utils.GetAutheticatedUserData() + fileExtention, Message = "Image Saved Successfully." });
+                return Json(new { FileName = Utils.GetAutheticatedUserData() + fileExtention, Message = Resources.MessageResources.UserProfileImageSaveSuccessMessage });
             }
             else
             {
-                throw new ValidationException(Json(new { Message = "Invalid File." }));
+                throw new ValidationException(Json(new { Message = Resources.MessageResources.UserProfileImageInvalidMessage }));
             }
 
 

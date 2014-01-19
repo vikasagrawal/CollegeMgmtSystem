@@ -88,38 +88,11 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to COLLEGE....
-        /// </summary>
-        internal static string CollegePlaceholderText {
-            get {
-                return ResourceManager.GetString("CollegePlaceholderText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to RE-TYPE PASSWORD.
         /// </summary>
         internal static string ConfirmPasswordPlaceholderText {
             get {
                 return ResourceManager.GetString("ConfirmPasswordPlaceholderText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to COURSE....
-        /// </summary>
-        internal static string CoursePlaceholderText {
-            get {
-                return ResourceManager.GetString("CoursePlaceholderText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to DEGREE TYPE....
-        /// </summary>
-        internal static string DegreeTypePlaceholderText {
-            get {
-                return ResourceManager.GetString("DegreeTypePlaceholderText", resourceCulture);
             }
         }
         
@@ -165,15 +138,6 @@ namespace Resources {
         internal static string HomeTownLabel {
             get {
                 return ResourceManager.GetString("HomeTownLabel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to YEAR.
-        /// </summary>
-        internal static string InstitutePassingYearPlaceholderText {
-            get {
-                return ResourceManager.GetString("InstitutePassingYearPlaceholderText", resourceCulture);
             }
         }
         
@@ -250,15 +214,6 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SCHOOL.
-        /// </summary>
-        internal static string SchoolNamePlaceholderText {
-            get {
-                return ResourceManager.GetString("SchoolNamePlaceholderText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Sign In.
         /// </summary>
         internal static string SignInButtonText {
@@ -273,15 +228,6 @@ namespace Resources {
         internal static string SignInPageTitleText {
             get {
                 return ResourceManager.GetString("SignInPageTitleText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to MAJOR....
-        /// </summary>
-        internal static string SubjectPlaceholderText {
-            get {
-                return ResourceManager.GetString("SubjectPlaceholderText", resourceCulture);
             }
         }
         

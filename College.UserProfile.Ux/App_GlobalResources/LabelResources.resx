@@ -126,17 +126,8 @@
   <data name="BirthDateLabel" xml:space="preserve">
     <value>DATE OF BIRTH:</value>
   </data>
-  <data name="CollegePlaceholderText" xml:space="preserve">
-    <value>COLLEGE...</value>
-  </data>
   <data name="ConfirmPasswordPlaceholderText" xml:space="preserve">
     <value>RE-TYPE PASSWORD</value>
-  </data>
-  <data name="CoursePlaceholderText" xml:space="preserve">
-    <value>COURSE...</value>
-  </data>
-  <data name="DegreeTypePlaceholderText" xml:space="preserve">
-    <value>DEGREE TYPE...</value>
   </data>
   <data name="EmailPlaceholderText" xml:space="preserve">
     <value>ENTER EMAIL</value>
@@ -152,9 +143,6 @@
   </data>
   <data name="HomeTownLabel" xml:space="preserve">
     <value>HOME TOWN:</value>
-  </data>
-  <data name="InstitutePassingYearPlaceholderText" xml:space="preserve">
-    <value>YEAR</value>
   </data>
   <data name="InstituteSectionTitleText" xml:space="preserve">
     <value>CURRENT/PAST ACADEMIC INST.</value>
@@ -180,17 +168,11 @@
   <data name="SaveUserProfileButtonText" xml:space="preserve">
     <value>Save</value>
   </data>
-  <data name="SchoolNamePlaceholderText" xml:space="preserve">
-    <value>SCHOOL</value>
-  </data>
   <data name="SignInButtonText" xml:space="preserve">
     <value>Sign In</value>
   </data>
   <data name="SignInPageTitleText" xml:space="preserve">
     <value>Sign In</value>
-  </data>
-  <data name="SubjectPlaceholderText" xml:space="preserve">
-    <value>MAJOR...</value>
   </data>
   <data name="UserFieldOfInterestLabel" xml:space="preserve">
     <value>FIELD OF INTERESTS:</value>

@@ -1,6 +1,6 @@
 ﻿var globalResources;
 $.ajax({
-    url: '/Localization/GlobalResources?files=MessageResources.resx',
+    url: '/Localization/GlobalResources?files=ClientResources.resx',
     dataType: 'json',
     async: false
 }).

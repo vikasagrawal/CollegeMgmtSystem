@@ -61,137 +61,47 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please supply College..
+        ///   Looks up a localized string similar to User with email address &apos;{0}&apos; already registered..
         /// </summary>
-        internal static string CollegeRequiredMessage {
+        internal static string UserAlreadyRegisteredMessageFormat {
             get {
-                return ResourceManager.GetString("CollegeRequiredMessage", resourceCulture);
+                return ResourceManager.GetString("UserAlreadyRegisteredMessageFormat", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please supply Confirm Password..
+        ///   Looks up a localized string similar to Invalid Email Address or Password..
         /// </summary>
-        internal static string ConfirmPasswordRequiredMessage {
+        internal static string UserLoginValidationFailedMessage {
             get {
-                return ResourceManager.GetString("ConfirmPasswordRequiredMessage", resourceCulture);
+                return ResourceManager.GetString("UserLoginValidationFailedMessage", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please supply Course..
+        ///   Looks up a localized string similar to Invalid File..
         /// </summary>
-        internal static string CourseRequiredMessage {
+        internal static string UserProfileImageInvalidMessage {
             get {
-                return ResourceManager.GetString("CourseRequiredMessage", resourceCulture);
+                return ResourceManager.GetString("UserProfileImageInvalidMessage", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please supply Degree Type..
+        ///   Looks up a localized string similar to Image Saved Successfully..
         /// </summary>
-        internal static string DegreeTypeRequiredMessage {
+        internal static string UserProfileImageSaveSuccessMessage {
             get {
-                return ResourceManager.GetString("DegreeTypeRequiredMessage", resourceCulture);
+                return ResourceManager.GetString("UserProfileImageSaveSuccessMessage", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please supply Email Address..
+        ///   Looks up a localized string similar to Profile Saved Successfully..
         /// </summary>
-        internal static string EmailAddressRequiredMessage {
+        internal static string UserProfileSaveSuccessMessage {
             get {
-                return ResourceManager.GetString("EmailAddressRequiredMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Please supply First Name..
-        /// </summary>
-        internal static string FirstNameRequiredMessage {
-            get {
-                return ResourceManager.GetString("FirstNameRequiredMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Please enter Valid Email Address..
-        /// </summary>
-        internal static string InValidEmailAddressMessage {
-            get {
-                return ResourceManager.GetString("InValidEmailAddressMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Please enter valid Phone Number..
-        /// </summary>
-        internal static string InvalidPhoneNumberMessage {
-            get {
-                return ResourceManager.GetString("InvalidPhoneNumberMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Please enter valid Zip Code..
-        /// </summary>
-        internal static string InvalidZipCodeMessage {
-            get {
-                return ResourceManager.GetString("InvalidZipCodeMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Password must be between 6 and 128 characters long and contain three of the following 4 items: upper case letter, lower case letter, a symbol, a number.
-        /// </summary>
-        internal static string PasswordComplexityNotMetMessage {
-            get {
-                return ResourceManager.GetString("PasswordComplexityNotMetMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Passwords must match..
-        /// </summary>
-        internal static string PasswordMustMatchMessage {
-            get {
-                return ResourceManager.GetString("PasswordMustMatchMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Please supply Password..
-        /// </summary>
-        internal static string PasswordRequiredMessage {
-            get {
-                return ResourceManager.GetString("PasswordRequiredMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Please supply SchoolName..
-        /// </summary>
-        internal static string SchoolNameRequiredMessage {
-            get {
-                return ResourceManager.GetString("SchoolNameRequiredMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Please supply Major..
-        /// </summary>
-        internal static string SubjectRequiredMessage {
-            get {
-                return ResourceManager.GetString("SubjectRequiredMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Please supply Year..
-        /// </summary>
-        internal static string YearRequiredMessage {
-            get {
-                return ResourceManager.GetString("YearRequiredMessage", resourceCulture);
+                return ResourceManager.GetString("UserProfileSaveSuccessMessage", resourceCulture);
             }
         }
     }

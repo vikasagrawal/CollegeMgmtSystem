@@ -117,19 +117,67 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="UserAlreadyRegisteredMessageFormat" xml:space="preserve">
-    <value>User with email address '{0}' already registered.</value>
+  <data name="CollegePlaceholderText" xml:space="preserve">
+    <value>COLLEGE...</value>
   </data>
-  <data name="UserLoginValidationFailedMessage" xml:space="preserve">
-    <value>Invalid Email Address or Password.</value>
+  <data name="CollegeRequiredMessage" xml:space="preserve">
+    <value>Please supply College.</value>
   </data>
-  <data name="UserProfileImageInvalidMessage" xml:space="preserve">
-    <value>Invalid File.</value>
+  <data name="ConfirmPasswordRequiredMessage" xml:space="preserve">
+    <value>Please supply Confirm Password.</value>
   </data>
-  <data name="UserProfileImageSaveSuccessMessage" xml:space="preserve">
-    <value>Image Saved Successfully.</value>
+  <data name="CoursePlaceholderText" xml:space="preserve">
+    <value>COURSE...</value>
   </data>
-  <data name="UserProfileSaveSuccessMessage" xml:space="preserve">
-    <value>Profile Saved Successfully.</value>
+  <data name="CourseRequiredMessage" xml:space="preserve">
+    <value>Please supply Course.</value>
+  </data>
+  <data name="DegreeTypePlaceholderText" xml:space="preserve">
+    <value>DEGREE TYPE...</value>
+  </data>
+  <data name="DegreeTypeRequiredMessage" xml:space="preserve">
+    <value>Please supply Degree Type.</value>
+  </data>
+  <data name="EmailAddressRequiredMessage" xml:space="preserve">
+    <value>Please supply Email Address.</value>
+  </data>
+  <data name="FirstNameRequiredMessage" xml:space="preserve">
+    <value>Please supply First Name.</value>
+  </data>
+  <data name="InstitutePassingYearPlaceholderText" xml:space="preserve">
+    <value>YEAR</value>
+  </data>
+  <data name="InValidEmailAddressMessage" xml:space="preserve">
+    <value>Please enter Valid Email Address.</value>
+  </data>
+  <data name="InvalidPhoneNumberMessage" xml:space="preserve">
+    <value>Please enter valid Phone Number.</value>
+  </data>
+  <data name="InvalidZipCodeMessage" xml:space="preserve">
+    <value>Please enter valid Zip Code.</value>
+  </data>
+  <data name="PasswordComplexityNotMetMessage" xml:space="preserve">
+    <value>Password must be between 6 and 128 characters long and contain three of the following 4 items: upper case letter, lower case letter, a symbol, a number</value>
+  </data>
+  <data name="PasswordMustMatchMessage" xml:space="preserve">
+    <value>Passwords must match.</value>
+  </data>
+  <data name="PasswordRequiredMessage" xml:space="preserve">
+    <value>Please supply Password.</value>
+  </data>
+  <data name="SchoolNamePlaceholderText" xml:space="preserve">
+    <value>SCHOOL</value>
+  </data>
+  <data name="SchoolNameRequiredMessage" xml:space="preserve">
+    <value>Please supply SchoolName.</value>
+  </data>
+  <data name="SubjectPlaceholderText" xml:space="preserve">
+    <value>MAJOR...</value>
+  </data>
+  <data name="SubjectRequiredMessage" xml:space="preserve">
+    <value>Please supply Major.</value>
+  </data>
+  <data name="YearRequiredMessage" xml:space="preserve">
+    <value>Please supply Year.</value>
   </data>
 </root>

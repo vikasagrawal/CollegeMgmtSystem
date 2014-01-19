@@ -127,17 +127,17 @@
                             <tr>
                                 <td><a href="#" data-bind="click: $parent.removeCollegeDetails">Remove</a></td>
                                 <td>
-                                    <select id="CollegeId" data-bind="options: $root.CollegeOption, value: CollegeId, optionsValue: 'LookupID', optionsText: 'LookupValue', optionsCaption: 'COLLEGE...' "></select>
+                                    <select id="CollegeId" data-bind="options: $root.CollegeOption, value: CollegeId, optionsValue: 'LookupID', optionsText: 'LookupValue', optionsCaption: globalResources.resources.CollegePlaceholderText"></select>
                                 </td>
                                 <td>
-                                    <input placeholder="YEAR" type="text" data-bind="value: PassingYear" id="CollegePassingYear" /></td>
+                                    <input placeholder="@ClientResources.InstitutePassingYearPlaceholderText" type="text" data-bind="value: PassingYear" id="CollegePassingYear" /></td>
                                 <td>
-                                    <select id="DegreeTypeId" data-bind="options: $root.DegreeTypeOption, value: DegreeTypeId, optionsValue: 'LookupID', optionsText: 'LookupValue', optionsCaption: 'DEGREE TYPE...' "></select>
+                                    <select id="DegreeTypeId" data-bind="options: $root.DegreeTypeOption, value: DegreeTypeId, optionsValue: 'LookupID', optionsText: 'LookupValue', optionsCaption: globalResources.resources.DegreeTypePlaceholderText "></select>
                                 </td>
                                 <td>
-                                    <select id="CourseId" data-bind="options: $root.CourseOption, value: CourseId, optionsValue: 'LookupID', optionsText: 'LookupValue', optionsCaption: 'COURSE...'"></select></td>
+                                    <select id="CourseId" data-bind="options: $root.CourseOption, value: CourseId, optionsValue: 'LookupID', optionsText: 'LookupValue', optionsCaption: globalResources.resources.CoursePlaceholderText"></select></td>
                                 <td>
-                                    <select id="SubjectId" data-bind="options: $root.SubjectOption, value: SubjectId, optionsValue: 'LookupID', optionsText: 'LookupValue', optionsCaption: 'MAJOR...'"></select></td>
+                                    <select id="SubjectId" data-bind="options: $root.SubjectOption, value: SubjectId, optionsValue: 'LookupID', optionsText: 'LookupValue', optionsCaption: globalResources.resources.SubjectPlaceholderText"></select></td>
                             </tr>
                         </tbody>
                         <tr>
@@ -160,9 +160,9 @@
                             <tr>
                                 <td><a href="#" data-bind="click: $parent.removeSchoolDetails">Remove</a></td>
                                 <td>
-                                    <input type="text" placeholder="SCHOOL" data-bind="value: SchoolName" id="SchoolName" /></td>
+                                    <input type="text" placeholder="@ClientResources.SchoolNamePlaceholderText" data-bind="value: SchoolName" id="SchoolName" /></td>
                                 <td>
-                                    <input placeholder="YEAR" type="text" data-bind="value: PassingYear" id="SchoolPassingYear" /></td>
+                                    <input placeholder="@ClientResources.InstitutePassingYearPlaceholderText" type="text" data-bind="value: PassingYear" id="SchoolPassingYear" /></td>
                             </tr>
                         </tbody>
                         <tr>

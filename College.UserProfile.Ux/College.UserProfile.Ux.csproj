@@ -224,6 +224,11 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_GlobalResources\ClientResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ClientResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_GlobalResources\LabelResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -313,6 +318,12 @@
     <Content Include="App_GlobalResources\LabelResources.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>LabelResources.Designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\ClientResources.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>ClientResources.Designer.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <PropertyGroup>
