@@ -10,5 +10,6 @@ namespace College.UserProfile.Core.DataReaderInterfaces
     public interface ICollegeReader : IDisposable
     {
         IEnumerable<dynamic> GetCollegesForLookup();
+        IEnumerable<dynamic> GetAvailableColleges(List<int> courseFields);
     }
 }

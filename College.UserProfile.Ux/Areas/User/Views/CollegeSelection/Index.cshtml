@@ -1,0 +1,67 @@
+﻿@using Resources;
+@{
+    ViewBag.Title = LabelResources.CollegeSelectionPageTitleText;
+}
+
+<h2>@LabelResources.CollegeSelectionPageTitleText</h2>
+<script id="customMessageTemplate" type="text/html">
+    <em class="customMessage" data-bind='validationMessage: field'></em>
+</script>
+
+<div id="pageform" hidden>
+    <!-- set the context of working with the user part of the data-model -->
+    <form class="well form form-horizontal" data-bind='validationOptions: { messageTemplate: "customMessageTemplate" }'>
+        <div class="control-group">
+            <div class="controls">
+                <p id="infoMessages" class="message-success"></p>
+            </div>
+        </div>
+        <div>
+            <table>
+                <thead>
+                    <td style="width: 100px">SELECT
+                    </td>
+                    <td style="width: 500px">
+                        @LabelResources.CollegeNameText
+                    </td>
+                    <td style="width: 500px">
+                        @LabelResources.CollegeDescText
+                    </td>
+                </thead>
+                <tbody data-bind="foreach: availableColleges">
+                    <tr>
+                        <td>
+                            <input type="checkbox" data-bind="checkedValue: CollegeId, checked: $root.userSortListedColleges" />
+                        </td>
+                        <td>
+                            <label data-bind="text: CollegeName" />
+                        </td>
+                        <td>
+                            <label data-bind="text: CollegeDesc" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </form>
+</div>
+@section scripts
+{
+    <link rel="stylesheet" href="~/Content/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="~/Content/style.css">
+    <link rel="stylesheet" href="~/Content/chosen.css">
+    @Scripts.Render("~/Scripts/knockout.mapping-latest.js")
+    @Scripts.Render("~/Scripts/Custom.js")
+    @Scripts.Render("~/Scripts/User/CollegeSelection.js")
+    @Scripts.Render("~/Scripts/jquery-ui-1.10.3.js")
+    @Scripts.Render("~/Scripts/underscore.js")
+    @Scripts.Render("~/Scripts/chosen.jquery.js")
+    @Scripts.Render("~/Scripts/cb-ko-binding-chosen.js")
+    <script language="javascript" type="text/javascript">
+        $(document).ready(function () {
+            var collegeSelectionViewModel = new CollegeSelectionViewModel();
+            collegeSelectionViewModel.load();
+        });
+
+    </script>
+}

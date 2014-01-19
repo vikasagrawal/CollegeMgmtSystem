@@ -20,7 +20,15 @@ namespace College.UserProfile.Ux.Areas.CodeLookup.Controllers
         // GET: /CodeLookup/College/
         public JsonResult Index()
         {
-            var courses = _collegeReader.GetCollegesForLookup();
+            var colleges = _collegeReader.GetCollegesForLookup();
+            return Json(colleges, JsonRequestBehavior.AllowGet);
+        }
+
+
+        // GET: /CodeLookup/College/
+        public JsonResult GetAvailableColleges()
+        {
+            var courses = _collegeReader.GetAvailableColleges(null);
             return Json(courses, JsonRequestBehavior.AllowGet);
         }
 

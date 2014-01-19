@@ -196,6 +196,7 @@
     <Content Include="Areas\User\Views\Login\Index.cshtml" />
     <Content Include="Areas\CodeLookup\Views\web.config" />
     <Content Include="Areas\CodeLookup\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\User\Views\CollegeSelection\Index.cshtml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Images\loading.gif" />
     <Content Include="Scripts\bootstrap.js" />
@@ -217,6 +218,7 @@
     <Content Include="Scripts\knockout.validation.js" />
     <Content Include="Scripts\underscore.js" />
     <Content Include="Scripts\underscore.min.js" />
+    <Content Include="Scripts\User\CollegeSelection.js" />
     <Content Include="Scripts\User\LoginViewModel.js" />
     <Content Include="Scripts\User\ProfileViewModel.js" />
     <Content Include="Scripts\_references.js" />
@@ -252,6 +254,7 @@
     <Compile Include="Areas\CodeLookup\Controllers\CourseController.cs" />
     <Compile Include="Areas\CodeLookup\Controllers\GenderController.cs" />
     <Compile Include="Areas\CodeLookup\Controllers\LanguageController.cs" />
+    <Compile Include="Areas\User\Controllers\CollegeSelectionController.cs" />
     <Compile Include="Areas\User\Controllers\LoginController.cs" />
     <Compile Include="Areas\User\Controllers\ProfileController.cs" />
     <Compile Include="Areas\User\UserAreaRegistration.cs" />

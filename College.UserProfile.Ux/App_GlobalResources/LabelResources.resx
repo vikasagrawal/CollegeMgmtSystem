@@ -126,6 +126,15 @@
   <data name="BirthDateLabel" xml:space="preserve">
     <value>DATE OF BIRTH:</value>
   </data>
+  <data name="CollegeDescText" xml:space="preserve">
+    <value>ABOUT COLLEGE</value>
+  </data>
+  <data name="CollegeNameText" xml:space="preserve">
+    <value>COLLEGE</value>
+  </data>
+  <data name="CollegeSelectionPageTitleText" xml:space="preserve">
+    <value>SELECT COLLEGES</value>
+  </data>
   <data name="ConfirmPasswordPlaceholderText" xml:space="preserve">
     <value>RE-TYPE PASSWORD</value>
   </data>
@@ -166,7 +175,7 @@
     <value>PASSWORD</value>
   </data>
   <data name="SaveUserProfileButtonText" xml:space="preserve">
-    <value>Save</value>
+    <value>Save and Next</value>
   </data>
   <data name="SignInButtonText" xml:space="preserve">
     <value>Sign In</value>

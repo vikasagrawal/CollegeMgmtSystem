@@ -88,6 +88,33 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ABOUT COLLEGE.
+        /// </summary>
+        internal static string CollegeDescText {
+            get {
+                return ResourceManager.GetString("CollegeDescText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to COLLEGE.
+        /// </summary>
+        internal static string CollegeNameText {
+            get {
+                return ResourceManager.GetString("CollegeNameText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT COLLEGES.
+        /// </summary>
+        internal static string CollegeSelectionPageTitleText {
+            get {
+                return ResourceManager.GetString("CollegeSelectionPageTitleText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to RE-TYPE PASSWORD.
         /// </summary>
         internal static string ConfirmPasswordPlaceholderText {
@@ -205,7 +232,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Save.
+        ///   Looks up a localized string similar to Save and Next.
         /// </summary>
         internal static string SaveUserProfileButtonText {
             get {

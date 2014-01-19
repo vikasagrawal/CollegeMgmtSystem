@@ -57,7 +57,9 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
             if (ModelState.IsValid)
             {
                 userProfile = _userProfileManager.AddOrUpdateUserProfile(userProfile);
-                return Json(new { userProfile = userProfile, Message = Resources.MessageResources.UserProfileSaveSuccessMessage });
+                var routeValues = new { area = "User" };
+                var urlToRedirect = Url.Action("Index", "CollegeSelection", routeValues);
+                return Json(new { userProfile = userProfile, redirectToUrl = urlToRedirect, Message = Resources.MessageResources.UserProfileSaveSuccessMessage });
             }
             else
             {

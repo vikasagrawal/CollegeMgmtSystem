@@ -52,7 +52,7 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
                     _userLoginManager.AddUserLogin(userlogin);
 
                     Utils.SetAuthenticationCookie(userlogin);
-                    var routeValues = new { area = "User", id = userlogin.UserLoginID };
+                    var routeValues = new { area = "User" };
                     var urlToRedirect = Url.Action("Index", "Profile", routeValues);
                     return Json(new { redirectToUrl = urlToRedirect, Message = "Success" });
 

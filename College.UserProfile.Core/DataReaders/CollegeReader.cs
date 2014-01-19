@@ -30,6 +30,16 @@ namespace College.UserProfile.Core.DataReaders
             return colleges;
         }
 
+
+        public IEnumerable<dynamic> GetAvailableColleges(List<int> courseFields)
+        {
+            var colleges = from c1 in _db.Colleges
+                           orderby c1.CollegeName
+                           select c1;
+
+            return colleges;
+        }
+
         public void Dispose()
         {
             if (_db != null)

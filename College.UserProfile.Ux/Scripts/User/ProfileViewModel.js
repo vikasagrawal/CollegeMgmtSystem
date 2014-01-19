@@ -47,7 +47,7 @@ function UserViewModel() {
             if (xhr.readyState === 4) {
                 $('#loading').hide();
                 if (xhr.status === 200) {
-                    $("#infoMessages").html(JSON.parse(xhr.responseText).Message).attr("class", "message-error");
+                    $("#infoMessages").html(JSON.parse(xhr.responseText).Message).attr("class", "message-success");
                     self.viewModel.user.UserPhoto("");
                     d = new Date();
                     self.viewModel.user.UserPhoto("/upload/" + JSON.parse(xhr.responseText).FileName + "?" + d.getTime());
@@ -98,7 +98,7 @@ function UserViewModel() {
     self.addSchoolDetails = function () {
         self.viewModel.UserEducationDetail.push(ko.mapping.fromJS(ko.mapping.toJS(new BlankUserEducationDetail(2)), validationMapping));
     };
-    
+
     self.loadGenders = function (ctx) {
         self.loading.push(true);
         GetGenderLists(function (output) {
@@ -113,7 +113,7 @@ function UserViewModel() {
             if (ctx && ctx.success !== 'undefined') { ctx.success(); }
         });
     };
-    
+
     self.loadCourseFields = function (ctx) {
         self.loading.push(true);
         GetCourseFieldLists(function (output) {
@@ -247,7 +247,6 @@ function UserViewModel() {
                     $("#pageform").show();
                 }
                 $('#loading').hide();
-                //todo: redirect to error page
             },
             function (data, textStatus, jqXHR) {
                 $("#infoMessages").html(JSON.parse(jqXHR.responseText).Message).attr("class", "message-error");
@@ -264,7 +263,8 @@ function UserViewModel() {
                 function (data, textStatus, jqXHR) {
                     $('#loading').hide();
                     self.viewModel.user.UserID(JSON.parse(jqXHR.responseText).userProfile.user.UserID)
-                    $("#infoMessages").html(JSON.parse(jqXHR.responseText).Message).attr("class", "message-error");
+                    var output = JSON.parse(jqXHR.responseText);
+                    window.location.href = JSON.parse(jqXHR.responseText).redirectToUrl;
                 },
                 function (jqXHR, textStatus, errorThrown) {
                     $("#infoMessages").html(JSON.parse(jqXHR.responseText).Message).attr("class", "message-error");
