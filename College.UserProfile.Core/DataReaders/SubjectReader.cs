@@ -24,7 +24,8 @@ namespace College.UserProfile.Core.DataReaders
                            select new
                            {
                                LookupID = c1.SubjectId,
-                               LookupValue = c1.SubjectDesc
+                               LookupValue = c1.SubjectDesc,
+                               CourseId = c1.CourseID
                            };
 
             return subjects;

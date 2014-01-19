@@ -135,9 +135,11 @@
                                     <select id="DegreeTypeId" data-bind="options: $root.DegreeTypeOption, value: DegreeTypeId, optionsValue: 'LookupID', optionsText: 'LookupValue', optionsCaption: globalResources.resources.DegreeTypePlaceholderText "></select>
                                 </td>
                                 <td>
-                                    <select id="CourseId" data-bind="options: $root.CourseOption, value: CourseId, optionsValue: 'LookupID', optionsText: 'LookupValue', optionsCaption: globalResources.resources.CoursePlaceholderText"></select></td>
+                                    <select id="CourseId" style="width:300px" data-bind="options: $root.loadDependentCourses(DegreeTypeId), value: CourseId, optionsValue: 'LookupID', optionsText: 'LookupValue', optionsCaption: globalResources.resources.CoursePlaceholderText"></select>
+                                </td>
                                 <td>
-                                    <select id="SubjectId" data-bind="options: $root.SubjectOption, value: SubjectId, optionsValue: 'LookupID', optionsText: 'LookupValue', optionsCaption: globalResources.resources.SubjectPlaceholderText"></select></td>
+                                    <select id="SubjectId" style="width:300px" data-bind="options: $root.loadDependentSubjects(CourseId), value: SubjectId, optionsValue: 'LookupID', optionsText: 'LookupValue', optionsCaption: globalResources.resources.SubjectPlaceholderText"></select>
+                                </td>
                             </tr>
                         </tbody>
                         <tr>

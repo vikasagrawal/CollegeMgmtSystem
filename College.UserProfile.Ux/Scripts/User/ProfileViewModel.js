@@ -1,35 +1,27 @@
 ﻿
 function BlankUserEducationDetail(institutionTypeID) {
-    if (institutionTypeID == 1) {
-        var bed = {
-            UserEducationDetailId: ko.observable(),
-            UserId: ko.observable(),
-            CollegeId: ko.observable(),
-            PassingYear: ko.observable(""),
-            DegreeTypeId: ko.observable(),
-            CourseId: ko.observable(),
-            SubjectId: ko.observable(),
-            InstituitionTypeId: ko.observable(institutionTypeID),
-            SchoolName: ko.observable("NoSchool")
-        }
+    var self = this;
 
-        return bed;
-    }
-    else {
-        var bed = {
-            UserEducationDetailId: ko.observable(),
-            UserId: ko.observable(),
-            CollegeId: ko.observable(0),
-            PassingYear: ko.observable(""),
-            DegreeTypeId: ko.observable(0),
-            CourseId: ko.observable(0),
-            SubjectId: ko.observable(0),
-            InstituitionTypeId: ko.observable(institutionTypeID),
-            SchoolName: ko.observable("")
-        }
+    self.UserEducationDetailId = ko.observable();
+    self.UserId = ko.observable();
+    self.PassingYear = ko.observable("");
+    self.CollegeId = ko.observable();
+    self.DegreeTypeId = ko.observable();
+    self.CourseId = ko.observable();
+    self.SubjectId = ko.observable();
+    self.InstituitionTypeId = ko.observable(institutionTypeID);
+    self.SchoolName = ko.observable("NoSchool");
 
-        return bed;
+    if (institutionTypeID != 1) {
+        self.CollegeId = ko.observable(0);
+        self.DegreeTypeId = ko.observable(0);
+        self.CourseId = ko.observable(0);
+        self.SubjectId = ko.observable(0);
+        self.InstituitionTypeId = ko.observable(institutionTypeID);
+        self.SchoolName = ko.observable("");
     }
+
+    return self;
 }
 
 function UserViewModel() {
@@ -76,22 +68,37 @@ function UserViewModel() {
     self.SubjectOption = ko.observableArray([]);
     self.viewModel = {};
 
+    self.loadDependentCourses = function (degreetype) {
+        var filteredCourses = ko.utils.arrayFilter(self.CourseOption(), function (courseOption) {
+            return courseOption.DegreeTypeId === degreetype();
+        });
+
+        return filteredCourses;
+    };
+
+    self.loadDependentSubjects = function (course) {
+        var filteredCourses = ko.utils.arrayFilter(self.SubjectOption(), function (subjectOption) {
+            return subjectOption.CourseId === course();
+        });
+
+        return filteredCourses;
+    };
 
     self.removeCollegeDetails = self.removePerson = function () {
         self.viewModel.UserEducationDetail.remove(this);
-    }
+    };
     self.addCollegeDetails = function () {
         self.viewModel.UserEducationDetail.push(ko.mapping.fromJS(ko.mapping.toJS(new BlankUserEducationDetail(1)), validationMapping));
-    }
+    };
 
     self.removeSchoolDetails = self.removePerson = function () {
         self.viewModel.UserEducationDetail.remove(this);
-    }
+    };
+
     self.addSchoolDetails = function () {
         self.viewModel.UserEducationDetail.push(ko.mapping.fromJS(ko.mapping.toJS(new BlankUserEducationDetail(2)), validationMapping));
-    }
-
-
+    };
+    
     self.loadGenders = function (ctx) {
         self.loading.push(true);
         GetGenderLists(function (output) {
@@ -105,9 +112,8 @@ function UserViewModel() {
             self.loading.pop();
             if (ctx && ctx.success !== 'undefined') { ctx.success(); }
         });
-    }
-
-
+    };
+    
     self.loadCourseFields = function (ctx) {
         self.loading.push(true);
         GetCourseFieldLists(function (output) {
@@ -121,7 +127,7 @@ function UserViewModel() {
             self.loading.pop();
             if (ctx && ctx.success !== 'undefined') { ctx.success(); }
         });
-    }
+    };
 
     self.loadColleges = function (ctx) {
         self.loading.push(true);
@@ -136,7 +142,7 @@ function UserViewModel() {
             self.loading.pop();
             if (ctx && ctx.success !== 'undefined') { ctx.success(); }
         });
-    }
+    };
 
     self.loadDegreeTypes = function (ctx) {
         self.loading.push(true);
@@ -152,7 +158,7 @@ function UserViewModel() {
             self.loading.pop();
             if (ctx && ctx.success !== 'undefined') { ctx.success(); }
         });
-    }
+    };
 
     self.loadSubjects = function (ctx) {
         self.loading.push(true);
@@ -168,7 +174,7 @@ function UserViewModel() {
             self.loading.pop();
             if (ctx && ctx.success !== 'undefined') { ctx.success(); }
         });
-    }
+    };
 
     self.loadCourses = function (ctx) {
         self.loading.push(true);
@@ -184,7 +190,7 @@ function UserViewModel() {
             self.loading.pop();
             if (ctx && ctx.success !== 'undefined') { ctx.success(); }
         });
-    }
+    };
 
     self.loadLanguages = function (ctx) {
         self.loading.push(true);
@@ -224,7 +230,6 @@ function UserViewModel() {
                 if (textStatus == "success") {
                     self.viewModel = ko.mapping.fromJSON(jqXHR.responseText, validationMapping);
 
-
                     self.CollegeDetails = ko.computed(function () {
                         return ko.utils.arrayFilter(self.viewModel.UserEducationDetail(), function (eduDetails) {
                             return eduDetails.InstituitionTypeId() === 1;
@@ -248,7 +253,7 @@ function UserViewModel() {
                 $("#infoMessages").html(JSON.parse(jqXHR.responseText).Message).attr("class", "message-error");
                 $('#loading').hide();
             });
-    }
+    };
 
     self.SaveUserProfile = function () {
         $("#infoMessages").html("");
