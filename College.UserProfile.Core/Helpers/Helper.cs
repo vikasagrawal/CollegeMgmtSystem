@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace College.UserProfile.Core
+namespace College.UserProfile.Core.Helpers
 {
     public static class Helper
     {

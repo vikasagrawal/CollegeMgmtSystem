@@ -1,5 +1,6 @@
 ﻿using College.UserProfile.Core.Authentication;
 using College.UserProfile.Core.DataManagerInterfaces;
+using College.UserProfile.Core.Helpers;
 using College.UserProfile.Entities;
 using System;
 using System.Collections.Generic;

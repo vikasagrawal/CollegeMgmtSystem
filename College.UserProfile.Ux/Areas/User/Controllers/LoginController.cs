@@ -13,6 +13,8 @@ using System.Web.Security;
 using College.UserProfile.Core.DataManagers;
 using College.UserProfile.Core.DataManagerInterfaces;
 using College.UserProfile.Core;
+using College.UserProfile.Core.Helpers;
+using College.UserProfile.Core.Models;
 
 namespace College.UserProfile.Ux.Areas.User.Controllers
 {
@@ -41,6 +43,70 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult VerifyEmail(int id, string code)
+        {
+            object routeValues = new { area = "User" };
+            UserLogin userlogin = null;
+
+            /// if user is authenticated
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("", "Profile", routeValues);
+            }
+
+            // if id is null or empty
+            if (id <= 0)
+            {
+                return RedirectToAction("", "Login", routeValues);
+            }
+
+            userlogin = _userLoginManager.GetUserLogin(id);
+
+            // if user login doesn't exists for given id
+            if (userlogin == null)
+            {
+                return RedirectToAction("", "Login", routeValues);
+            }
+
+            var model = new UserEmailVerification();
+
+            if (userlogin.IsEmailVerified == true)
+            {
+                return RedirectToAction("", "Login", routeValues);
+            }
+
+            if (!string.IsNullOrEmpty(code))
+            {
+                if (!_userLoginManager.VerifyAndUpdateUserEmail(id, code))
+                {
+                    model.ValidationError = Resources.MessageResources.EmailVerificationCodeIsInvalidMessage;
+                }
+                else
+                {
+                    return RedirectToAction("", "Login", routeValues);
+                }
+            }
+
+            model.UserLoginId = id;
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult VerifyEmail(UserEmailVerification model)
+        {
+            if (!string.IsNullOrEmpty(model.VerificationCode))
+            {
+                if (_userLoginManager.VerifyAndUpdateUserEmail(model.UserLoginId, model.VerificationCode))
+                {
+                    var routeValues = new { area = "User" };
+                    return RedirectToAction("Index", "Login", routeValues);
+                }
+            }
+
+            model.ValidationError = Resources.MessageResources.EmailVerificationCodeIsInvalidMessage;
+            return View(model);
+        }
         //
         // POST: /User/Login/Create
         [HttpPost]
@@ -51,8 +117,7 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
                 bool IsUserAlreadyExists = true;
                 if (!_userLoginManager.IsUserLoginExists(userlogin.EmailAddress))
                 {
-                    // todo: generate random verification code here and update
-                    // userlogin message.
+                    userlogin.Password = UserLoginHelper.GenerateRandomVerificationCode();
                     _userLoginManager.AddUserLogin(userlogin);
                     IsUserAlreadyExists = false;
                 }
@@ -60,7 +125,7 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
                 if (userlogin.IsFacebookLogin == true)
                 {
                     FaceBookConnect.AccessToken = accessToken;
-                    // todo: generate random password and save;
+                    userlogin.Password = UserLoginHelper.GenerateRandomPassword();
                     userlogin = _userLoginManager.GetUserLogin(userlogin.EmailAddress);
                     IsUserAlreadyExists = false;
                 }
@@ -69,14 +134,20 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
                 {
                     throw new ValidationException(Json(new { Message = string.Format(Resources.MessageResources.UserAlreadyRegisteredMessageFormat, userlogin.EmailAddress) }));
                 }
-                
-                // todo: check user active status and email verification status and 
-                // redirect to user accordingly.
 
-                Utils.SetAuthenticationCookie(userlogin);
-                var routeValues = new { area = "User" };
-                var urlToRedirect = Url.Action("Index", "Profile", routeValues);
-                return Json(new { redirectToUrl = urlToRedirect, Message = "Success" });
+                if (userlogin.IsEmailVerified == true)
+                {
+                    Utils.SetAuthenticationCookie(userlogin);
+                    var routeValues = new { area = "User" };
+                    var urlToRedirect = Url.Action("Index", "Profile", routeValues);
+                    return Json(new { redirectToUrl = urlToRedirect, Message = "Success" });
+                }
+                else
+                {
+                    var routeValues = new { area = "User" };
+                    var urlToRedirect = Url.Action("VerifyEmail", "Login", routeValues);
+                    return Json(new { redirectToUrl = urlToRedirect, Message = "Success" });
+                }
 
             }
             else
@@ -95,14 +166,28 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
         public ActionResult ValidateUserLogin(UserLogin userLogin)
         {
             var userlogin = _userLoginManager.ValidateUserLogin(userLogin.EmailAddress, userLogin.Password);
+            object routeValues = new { area = "User" };
+            var urlToRedirect = Url.Action("", "Profile", routeValues);
             if (userlogin == null)
             {
                 throw new ValidationException(Json(new { Message = Resources.MessageResources.UserLoginValidationFailedMessage }));
             }
 
-            College.UserProfile.Core.Authentication.Utils.SetAuthenticationCookie(userlogin);
-            var routeValues = new { area = "User" };
-            var urlToRedirect = Url.Action("", "Profile", routeValues);
+            if (!(userlogin.IsActive == true))
+            {
+                throw new ValidationException(Json(new { Message = Resources.MessageResources.UserAccountInactiveMessage }));
+            }
+
+            if (!(userlogin.IsEmailVerified == true))
+            {
+                routeValues = new { area = "User", id = userlogin.UserLoginID };
+                urlToRedirect = Url.Action("VerifyEmail", "Login", routeValues);
+            }
+            else
+            {
+                College.UserProfile.Core.Authentication.Utils.SetAuthenticationCookie(userlogin);
+            }
+
             return Json(new { redirectToUrl = urlToRedirect, Message = "Success" });
         }
 

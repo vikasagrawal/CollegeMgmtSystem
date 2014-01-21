@@ -61,6 +61,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Verification Code is invalid. Please enter valid Verification Code and try again..
+        /// </summary>
+        internal static string EmailVerificationCodeIsInvalidMessage {
+            get {
+                return ResourceManager.GetString("EmailVerificationCodeIsInvalidMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your account is not active. Please contact administrator for help..
+        /// </summary>
+        internal static string UserAccountInactiveMessage {
+            get {
+                return ResourceManager.GetString("UserAccountInactiveMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to User with email address &apos;{0}&apos; already registered..
         /// </summary>
         internal static string UserAlreadyRegisteredMessageFormat {

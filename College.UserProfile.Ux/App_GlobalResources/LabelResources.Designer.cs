@@ -133,6 +133,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to EMAIL VERIFICATION.
+        /// </summary>
+        internal static string EmailVerificationPageTitle {
+            get {
+                return ResourceManager.GetString("EmailVerificationPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Existing User?.
         /// </summary>
         internal static string ExistingUserQuestionText {
@@ -282,6 +291,24 @@ namespace Resources {
         internal static string UserProfilePageTitleText {
             get {
                 return ResourceManager.GetString("UserProfilePageTitleText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VERIFICATION CODE.
+        /// </summary>
+        internal static string VerificationCodePlaceholderText {
+            get {
+                return ResourceManager.GetString("VerificationCodePlaceholderText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Verify.
+        /// </summary>
+        internal static string VerifyEmailButtonText {
+            get {
+                return ResourceManager.GetString("VerifyEmailButtonText", resourceCulture);
             }
         }
         

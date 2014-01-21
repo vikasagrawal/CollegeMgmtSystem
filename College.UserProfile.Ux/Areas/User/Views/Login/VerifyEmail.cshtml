@@ -1,0 +1,74 @@
+﻿@using Resources;
+@model College.UserProfile.Core.Models.UserEmailVerification
+@{
+    if (!Request["lang"].IsEmpty())
+    {
+        Culture = UICulture = Request["lang"];
+    }
+    ViewBag.Title = LabelResources.EmailVerificationPageTitle;
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    @*
+    <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">*@
+
+    <title>@LabelResources.EmailVerificationPageTitle</title>
+</head>
+<body>
+    <div id="dialog-form" class="container" hidden title="@LabelResources.EmailVerificationPageTitle">
+        @using (Html.BeginForm("VerifyEmail", "Login", FormMethod.Post))
+        {
+            <div>
+                <p></p>
+                <label class="message-error">@Model.ValidationError</label>
+                <p></p>
+                <input name="UserLoginId" value="@Model.UserLoginId" type="hidden" class="form-control" id="UserLoginId">
+                <input type="text" value="@Model.VerificationCode"  name="VerificationCode" class="form-control" id="VerificationCode" placeholder="@LabelResources.VerificationCodePlaceholderText">
+                @Html.ValidationMessage("VerificationCode", "*")
+                <p></p>
+                <input type="submit" class="form-button" id="Verify" value="@LabelResources.VerifyEmailButtonText" onclick="SubmitVerification()">
+                <p></p>
+            </div>
+        }
+    </div>
+    <!-- /container -->
+    <div id="loading">
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <link rel="stylesheet" href="~/Content/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="~/Content/style.css">
+    <link rel="stylesheet" href="~/Content/CustomCore.css">
+    @Scripts.Render("~/Scripts/jquery-ui-1.10.3.js")
+    @Scripts.Render("~/Scripts/GlobalResources.js")
+    <script>
+
+        function SubmitVerification() {
+            $("#loading").show();
+            $("#form1").submit();
+        }
+
+        $(document).ready(function () {
+
+            $("#dialog-form").dialog("open");
+            $("#dialog-form").show();
+            $("#loading").hide();
+
+        });
+
+        $("#dialog-form").dialog({
+            autoOpen: false,
+            height: 400,
+            width: 600,
+            modal: true,
+        });
+    </script>
+</body>
+</html>

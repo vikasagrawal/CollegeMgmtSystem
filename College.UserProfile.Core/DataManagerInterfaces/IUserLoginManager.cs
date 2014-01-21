@@ -14,5 +14,6 @@ namespace College.UserProfile.Core.DataManagerInterfaces
         UserLogin GetUserLogin(string emailAddress);
         UserLogin GetUserLogin(int userLoginID);
         void AddUserLogin(UserLogin userLogin);
+        bool VerifyAndUpdateUserEmail(int userLoginID, string verificationCode);
     }
 }

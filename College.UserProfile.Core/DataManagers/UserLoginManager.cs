@@ -44,6 +44,20 @@ namespace College.UserProfile.Core.DataManagers
             _db.SaveChanges();
         }
 
+        public bool VerifyAndUpdateUserEmail(int userLoginID, string verificationCode)
+        {
+            var userLogin = this.GetUserLogin(userLoginID);
+            if (userLogin.IsEmailVerified == true || (userLogin.VerificationCode != null &&
+                userLogin.VerificationCode.Equals(verificationCode, StringComparison.OrdinalIgnoreCase)))
+            {
+                userLogin.IsEmailVerified = true;
+                _db.SaveChanges();
+                return true;
+            }
+
+            return false;
+        }
+
         public void Dispose()
         {
             if (_db != null)

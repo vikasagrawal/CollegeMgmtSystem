@@ -141,6 +141,9 @@
   <data name="EmailPlaceholderText" xml:space="preserve">
     <value>ENTER EMAIL</value>
   </data>
+  <data name="EmailVerificationPageTitle" xml:space="preserve">
+    <value>EMAIL VERIFICATION</value>
+  </data>
   <data name="ExistingUserQuestionText" xml:space="preserve">
     <value>Existing User?</value>
   </data>
@@ -191,6 +194,12 @@
   </data>
   <data name="UserProfilePageTitleText" xml:space="preserve">
     <value>User Profile</value>
+  </data>
+  <data name="VerificationCodePlaceholderText" xml:space="preserve">
+    <value>VERIFICATION CODE</value>
+  </data>
+  <data name="VerifyEmailButtonText" xml:space="preserve">
+    <value>Verify</value>
   </data>
   <data name="ZipCodeLabel" xml:space="preserve">
     <value>ZIP CODE:</value>

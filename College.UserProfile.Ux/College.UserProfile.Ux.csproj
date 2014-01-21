@@ -205,6 +205,7 @@
     <Content Include="Scripts\chosen.jquery.min.js" />
     <Content Include="Scripts\Custom.js" />
     <Content Include="Scripts\GlobalResources.js" />
+    <Content Include="Areas\User\Views\Login\VerifyEmail.cshtml" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\jquery-2.0.3.js" />
     <Content Include="Scripts\jquery-2.0.3.min.js" />

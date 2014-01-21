@@ -18,7 +18,7 @@
     @*
     <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">*@
 
-    <title>Signin</title>
+    <title>@LabelResources.SignInPageTitleText</title>
 </head>
 <body>
     <div id="fb-root"></div>
@@ -44,20 +44,14 @@
                     <td style="width: 50%">
                         <fb:login-button width="200" height="200" max_rows="1" scope="user_photos,email" show_faces="false"></fb:login-button>
                     </td>
+                    <td style="border-left:3px solid grey; height:100%; width:1px; padding:10px;"></td>
                     <td style="width: 50%">
-                        @*<h2 class="form-signin-heading">Please sign in</h2>*@
                         <div>
                             <button class="btn btn-lg btn-primary btn-block" id="btnNewUser" data-bind="click: ToggleNewUser">@LabelResources.NewUserQuestionText</button>
                             <button class="btn btn-lg btn-primary btn-block" id="btnExistingUser" data-bind="click: ToggleExistingUser">@LabelResources.ExistingUserQuestionText</button>
                         </div>
                         <div>
                             <p id="infoMessages" class="message-error"></p>
-                            @*
-                            <ul>
-                                <li data-bind="validationMessage: EmailAddress"></li>
-                                <li data-bind="validationMessage: Password"></li>
-                                <li data-bind="validationMessage: ConfirmPassword"></li>
-                            </ul>*@
                         </div>
                         <div data-bind='validationOptions: { messageTemplate: "customMessageTemplate" }'>
                             <p></p>
