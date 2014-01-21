@@ -91,19 +91,21 @@
     $(document).ready(function () {
         var apikey = '@(System.Configuration.ConfigurationManager.AppSettings["FacebookAPIKey"].ToString())'
         window.fbAsyncInit = function () {
+            alert("before fb. initialize");
             FB.init({
                 appId: apikey,
                 status: true, // check login status
                 cookie: true, // enable cookies to allow the server to access the session
                 xfbml: true  // parse XFBML
             });
-
+            alert("after fb. initialize");
             var selfModel = new UserLoginViewModel();
             ko.applyBindings(selfModel);
             // Here we subscribe to the auth.authResponseChange JavaScript event. This event is fired
             // for any authentication related change, such as login, logout or session refresh. This means that
             // whenever someone who was previously logged out tries to log in again, the correct case below 
             // will be handled. 
+            alert("before event subscribe");
             FB.Event.subscribe('auth.authResponseChange', function (response) {
                 alert("inside auth.authResponseChange");
                 // Here we specify what we do with the response anytime this event occurs. 
