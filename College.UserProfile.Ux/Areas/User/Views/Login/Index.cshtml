@@ -25,6 +25,8 @@
     <script>
 
         var apikey = '@(System.Configuration.ConfigurationManager.AppSettings["FacebookAPIKey"].ToString())';
+
+        var facebooklikeurl = "https://www.facebook.com/plugins/facepile.php?app_id=577796618941784";
         window.fbAsyncInit = function () {
             FB.init({
                 appId: apikey,
@@ -33,7 +35,7 @@
                 xfbml: true  // parse XFBML
             });
 
-            
+
             FB.getLoginStatus(function (response) {
                 if (response.status === 'connected') {
                     $("#fbFacesButton").show();
@@ -64,7 +66,10 @@
                 <tr>
                     <td style="width: 50%">
                         <input type="button" onclick="fbLogin()" value="@LabelResources.FacebookLoginButtonText">
-                        <fb:login-button width="200" id="fbFacesButton" height="200" max_rows="1" show_faces="true"></fb:login-button>
+                        <iframe scrolling="no" id="facebooklikeframe" frameborder="0" style="border: none; overflow: hidden; width: 200px;" allowtransparency="true" src=""></iframe>
+                        @*<fb:like href="https://developers.facebook.com/docs/plugins/" layout="standard" action="like" show_faces="true" share="false"></fb:like>*@
+                        @*<fb:facepile app_id="577796618941784" href="http://facebook.com/TestApp" action="like" height="300" max_rows="10" colorscheme="dark" size="small" show_count="true"></fb:facepile>*@
+                        @*<fb:login-button width="200" id="fbFacesButton" height="200" max_rows="1" show_faces="true"></fb:login-button>*@
                     </td>
                     <td style="border-left: 3px solid grey; height: 100%; width: 1px; padding: 10px;"></td>
                     <td style="width: 50%">
@@ -109,13 +114,11 @@
     @Scripts.Render("~/Scripts/Custom.js")
     @Scripts.Render("~/Scripts/User/LoginViewModel.js")
     <script>
-
-        $("#fbFacesButton").hide();
-
         var selfModel = new UserLoginViewModel();
-
+       
         $(document).ready(function () {
-
+            var fburl = "https://www.facebook.com/plugins/facepile.php?app_id=" + apikey;
+            $("#facebooklikeframe").attr("src","https://www.facebook.com/plugins/facepile.php?app_id=" + apikey);
             ko.applyBindings(selfModel);
 
             $("#dialog-form").dialog("open");
