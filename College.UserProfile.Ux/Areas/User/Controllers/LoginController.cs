@@ -117,7 +117,8 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
                 bool IsUserAlreadyExists = true;
                 if (!_userLoginManager.IsUserLoginExists(userlogin.EmailAddress))
                 {
-                    userlogin.Password = UserLoginHelper.GenerateRandomVerificationCode();
+                    userlogin.VerificationCode = UserLoginHelper.GenerateRandomVerificationCode();
+                    userlogin.Password = UserLoginHelper.GenerateRandomPassword();
                     _userLoginManager.AddUserLogin(userlogin);
                     IsUserAlreadyExists = false;
                 }
@@ -125,7 +126,6 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
                 if (userlogin.IsFacebookLogin == true)
                 {
                     FaceBookConnect.AccessToken = accessToken;
-                    userlogin.Password = UserLoginHelper.GenerateRandomPassword();
                     userlogin = _userLoginManager.GetUserLogin(userlogin.EmailAddress);
                     IsUserAlreadyExists = false;
                 }
@@ -134,20 +134,20 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
                 {
                     throw new ValidationException(Json(new { Message = string.Format(Resources.MessageResources.UserAlreadyRegisteredMessageFormat, userlogin.EmailAddress) }));
                 }
+                object routeValues = new { area = "User" };
+                var urlToRedirect = Url.Action("Index", "Profile", routeValues);
 
                 if (userlogin.IsEmailVerified == true)
                 {
                     Utils.SetAuthenticationCookie(userlogin);
-                    var routeValues = new { area = "User" };
-                    var urlToRedirect = Url.Action("Index", "Profile", routeValues);
-                    return Json(new { redirectToUrl = urlToRedirect, Message = "Success" });
                 }
                 else
                 {
-                    var routeValues = new { area = "User", id = userlogin.UserLoginID };
-                    return RedirectToAction("VerifyEmail", "Login", routeValues);
+                    routeValues = new { area = "User", id = userlogin.UserLoginID };
+                    urlToRedirect = Url.Action("VerifyEmail", "Login", routeValues);
                 }
 
+                return Json(new { redirectToUrl = urlToRedirect, Message = "Success" });
             }
             else
             {
@@ -180,7 +180,7 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
             if (!(userlogin.IsEmailVerified == true))
             {
                 routeValues = new { area = "User", id = userlogin.UserLoginID };
-                return RedirectToAction("VerifyEmail", "Login", routeValues);
+                urlToRedirect = Url.Action("VerifyEmail", "Login", routeValues);
             }
             else
             {

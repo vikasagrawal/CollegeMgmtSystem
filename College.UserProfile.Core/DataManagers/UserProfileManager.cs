@@ -49,6 +49,7 @@ namespace College.UserProfile.Core.DataManagers
                     userProfile.user.MiddleName = faceBookUser.Middle_Name;
                     userProfile.user.LastName = faceBookUser.Last_Name;
                     userProfile.user.UserPhoto = faceBookUser.PictureUrl;
+                    _userManager.AddUser(userProfile.user);
                 }
 
                 userProfile.UserEducationDetail = new List<UserEducationDetail>();
