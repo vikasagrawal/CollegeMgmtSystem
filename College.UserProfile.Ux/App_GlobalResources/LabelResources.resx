@@ -147,6 +147,9 @@
   <data name="ExistingUserQuestionText" xml:space="preserve">
     <value>Existing User?</value>
   </data>
+  <data name="FacebookLoginButtonText" xml:space="preserve">
+    <value>Login With Facebook</value>
+  </data>
   <data name="FirstNameLabel" xml:space="preserve">
     <value>FIRST NAME:</value>
   </data>

@@ -23,8 +23,29 @@
 <body>
     <div id="fb-root"></div>
     <script>
+
+        var apikey = '@(System.Configuration.ConfigurationManager.AppSettings["FacebookAPIKey"].ToString())';
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: apikey,
+                status: true, // check login status
+                cookie: true, // enable cookies to allow the server to access the session
+                xfbml: true  // parse XFBML
+            });
+
+            
+            FB.getLoginStatus(function (response) {
+                if (response.status === 'connected') {
+                    $("#fbFacesButton").show();
+                } else {
+                    FB.Event.subscribe('auth.login', function (response) {
+                        $("#fbFacesButton").show();
+                    });
+                }
+            });
+        };
+
         (function (d, s, id) {
-            var apikey = '@(System.Configuration.ConfigurationManager.AppSettings["FacebookAPIKey"].ToString())'
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) return;
             js = d.createElement(s); js.id = id;
@@ -42,9 +63,10 @@
             <table>
                 <tr>
                     <td style="width: 50%">
-                        <fb:login-button width="200" height="200" max_rows="1" scope="user_photos,email" show_faces="false"></fb:login-button>
+                        <input type="button" onclick="fbLogin()" value="@LabelResources.FacebookLoginButtonText">
+                        <fb:login-button width="200" id="fbFacesButton" height="200" max_rows="1" show_faces="true"></fb:login-button>
                     </td>
-                    <td style="border-left:3px solid grey; height:100%; width:1px; padding:10px;"></td>
+                    <td style="border-left: 3px solid grey; height: 100%; width: 1px; padding: 10px;"></td>
                     <td style="width: 50%">
                         <div>
                             <button class="btn btn-lg btn-primary btn-block" id="btnNewUser" data-bind="click: ToggleNewUser">@LabelResources.NewUserQuestionText</button>
@@ -87,25 +109,8 @@
     @Scripts.Render("~/Scripts/Custom.js")
     @Scripts.Render("~/Scripts/User/LoginViewModel.js")
     <script>
-        var apikey = '@(System.Configuration.ConfigurationManager.AppSettings["FacebookAPIKey"].ToString())';
-        window.fbAsyncInit = function () {
-            FB.init({
-                appId: apikey,
-                status: false, // check login status
-                cookie: true, // enable cookies to allow the server to access the session
-                xfbml: true  // parse XFBML
-            });
 
-            FB.getLoginStatus(function (response) {
-                if (response.status === 'connected') {
-                    login(response.authResponse.userID, response.authResponse.accessToken);
-                } else {
-                    FB.Event.subscribe('auth.login', function (response) {
-                        login(response.authResponse.userID, response.authResponse.accessToken);
-                    });
-                }
-            });
-        };
+        $("#fbFacesButton").hide();
 
         var selfModel = new UserLoginViewModel();
 
@@ -118,8 +123,14 @@
 
         });
 
-        function login(userID, accessToken) {
-            selfModel.loginWithFaceBook(userID, accessToken);
+        function fbLogin() {
+            FB.login(function (response) {
+                if (response.authResponse) {
+                    selfModel.loginWithFaceBook(response.authResponse.userID, response.authResponse.accessToken);
+                } else {
+                    // user is not logged in
+                }
+            }, { perms: 'email,user_photos' });
         }
 
 

@@ -151,6 +151,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Login With Facebook.
+        /// </summary>
+        internal static string FacebookLoginButtonText {
+            get {
+                return ResourceManager.GetString("FacebookLoginButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to FIRST NAME:.
         /// </summary>
         internal static string FirstNameLabel {
