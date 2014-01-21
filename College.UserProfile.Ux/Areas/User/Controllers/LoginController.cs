@@ -110,7 +110,7 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
         //
         // POST: /User/Login/Create
         [HttpPost]
-        public JsonResult Create(UserLogin userlogin, string accessToken)
+        public ActionResult Create(UserLogin userlogin, string accessToken)
         {
             if (ModelState.IsValid)
             {
@@ -144,9 +144,8 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
                 }
                 else
                 {
-                    var routeValues = new { area = "User" };
-                    var urlToRedirect = Url.Action("VerifyEmail", "Login", routeValues);
-                    return Json(new { redirectToUrl = urlToRedirect, Message = "Success" });
+                    var routeValues = new { area = "User", id = userlogin.UserLoginID };
+                    return RedirectToAction("VerifyEmail", "Login", routeValues);
                 }
 
             }
@@ -181,7 +180,7 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
             if (!(userlogin.IsEmailVerified == true))
             {
                 routeValues = new { area = "User", id = userlogin.UserLoginID };
-                urlToRedirect = Url.Action("VerifyEmail", "Login", routeValues);
+                return RedirectToAction("VerifyEmail", "Login", routeValues);
             }
             else
             {
