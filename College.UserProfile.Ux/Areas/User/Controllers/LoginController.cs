@@ -48,26 +48,28 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (_userLoginManager.IsUserLoginExists(userlogin.EmailAddress))
-                {
-                    if (userlogin.IsFacebookLogin == true)
-                    {
-                        FaceBookConnect.AccessToken = accessToken;
-                        // todo: generate random password and save;
-                        userlogin = _userLoginManager.GetUserLogin(userlogin.EmailAddress);
-                    }
-                    else
-                    {
-                        throw new ValidationException(Json(new { Message = string.Format(Resources.MessageResources.UserAlreadyRegisteredMessageFormat, userlogin.EmailAddress) }));
-                    }
-                }
-                else
+                bool IsUserAlreadyExists = true;
+                if (!_userLoginManager.IsUserLoginExists(userlogin.EmailAddress))
                 {
                     // todo: generate random verification code here and update
                     // userlogin message.
                     _userLoginManager.AddUserLogin(userlogin);
+                    IsUserAlreadyExists = false;
                 }
 
+                if (userlogin.IsFacebookLogin == true)
+                {
+                    FaceBookConnect.AccessToken = accessToken;
+                    // todo: generate random password and save;
+                    userlogin = _userLoginManager.GetUserLogin(userlogin.EmailAddress);
+                    IsUserAlreadyExists = false;
+                }
+
+                if (IsUserAlreadyExists)
+                {
+                    throw new ValidationException(Json(new { Message = string.Format(Resources.MessageResources.UserAlreadyRegisteredMessageFormat, userlogin.EmailAddress) }));
+                }
+                
                 // todo: check user active status and email verification status and 
                 // redirect to user accordingly.
 
