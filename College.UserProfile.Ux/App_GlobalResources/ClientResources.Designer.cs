@@ -133,6 +133,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error occcured while logging in with Facebook Account.
+        /// </summary>
+        internal static string FacebookLoginErrorMessage {
+            get {
+                return ResourceManager.GetString("FacebookLoginErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please supply First Name..
         /// </summary>
         internal static string FirstNameRequiredMessage {

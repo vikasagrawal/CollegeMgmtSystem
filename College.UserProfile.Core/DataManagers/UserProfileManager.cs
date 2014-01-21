@@ -1,10 +1,12 @@
-﻿using College.UserProfile.Core.DataManagerInterfaces;
+﻿using College.UserProfile.Core.Authentication;
+using College.UserProfile.Core.DataManagerInterfaces;
 using College.UserProfile.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Script.Serialization;
 
 namespace College.UserProfile.Core.DataManagers
 {
@@ -12,10 +14,12 @@ namespace College.UserProfile.Core.DataManagers
     {
         IUserManager _userManager;
         IUserEducationDetailsManager _userEducationDetailsManager;
-        public UserProfileManager(IUserManager userManager, IUserEducationDetailsManager userEducationDetailsManager)
+        IUserLoginManager _userLoginManager;
+        public UserProfileManager(IUserManager userManager, IUserEducationDetailsManager userEducationDetailsManager, IUserLoginManager userLoginManager)
         {
             _userManager = userManager;
             _userEducationDetailsManager = userEducationDetailsManager;
+            _userLoginManager = userLoginManager;
         }
 
         public Models.UserProfile GetUserProfile(int userLoginId)
@@ -33,6 +37,19 @@ namespace College.UserProfile.Core.DataManagers
             else
             {
                 userProfile.user = _userManager.GetNewUser(userLoginId);
+
+                var userLogin = _userLoginManager.GetUserLogin(userLoginId);
+                if (userLogin.IsFacebookLogin == true)
+                {
+                    string userFacebookData = FaceBookConnect.Fetch("me");
+                    FaceBookUser faceBookUser = new JavaScriptSerializer().Deserialize<FaceBookUser>(userFacebookData);
+                    faceBookUser.PictureUrl = string.Format(Constants.FaceBookPictureURLFormat, faceBookUser.Id);
+                    userProfile.user.FirstName = faceBookUser.First_Name;
+                    userProfile.user.MiddleName = faceBookUser.Middle_Name;
+                    userProfile.user.LastName = faceBookUser.Last_Name;
+                    userProfile.user.UserPhoto = faceBookUser.PictureUrl;
+                }
+
                 userProfile.UserEducationDetail = new List<UserEducationDetail>();
                 userProfile.UserFieldOfInterest = new List<int>();
                 userProfile.UserLanguages = new List<int>();

@@ -180,4 +180,7 @@
   <data name="YearRequiredMessage" xml:space="preserve">
     <value>Please supply Year.</value>
   </data>
+  <data name="FacebookLoginErrorMessage" xml:space="preserve">
+    <value>Error occcured while logging in with Facebook Account</value>
+  </data>
 </root>

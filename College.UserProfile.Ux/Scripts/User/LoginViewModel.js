@@ -2,8 +2,12 @@
     $('#loading').hide();
     var self = this;
     self.loading = ko.observableArray();
-
+    self.IsFacebookLogin = ko.observable(false);
+    self.IsEmailVerified = ko.observable(false);
+    self.FBUserID = ko.observable("");
     self.NewUser = ko.observable(false);
+    self.IsActive = ko.observable(true);
+
     self.EmailAddress = ko.observable("").extend({
         required: {
             message: globalResources.resources.EmailAddressRequiredMessage
@@ -18,6 +22,27 @@
             message: globalResources.resources.PasswordRequiredMessage
         }
     });
+
+    // Here we run a very simple test of the Graph API after login is successful. 
+    // This testAPI() function is only called in those cases. 
+    self.loginWithFaceBook = function (userID, accessToken) {
+        FB.api('/me', function (response) {
+            if (response && !response.errors) {
+                self.IsFacebookLogin(true);
+                self.FBUserID(userID);
+                self.EmailAddress(response.email);
+                self.IsEmailVerified(true);
+                self.NewUser(true);
+                self.Password("temp@123");
+                self.ConfirmPassword("temp@123");
+                self.SignIn(accessToken);
+            }
+            else {
+                $("#infoMessages").html(globalResources.resources.FacebookLoginErrorMessage).attr("class", "message-error");
+            }
+        });
+
+    };
 
     self.ConfirmPassword = ko.observable("").extend({
         required: {
@@ -34,8 +59,7 @@
         }
     });
 
-    self.ToggleNewUser = function()
-    {
+    self.ToggleNewUser = function () {
         self.errors.showAllMessages(false);
         $("#infoMessages").html("")
         self.NewUser(true);
@@ -48,12 +72,12 @@
         self.NewUser(false);
     }
 
-    self.SignIn = function () {
+    self.SignIn = function (accessToken) {
         if (self.errors().length == 0) {
             $('#loading').show();
             if (self.NewUser()) {
                 var userLoginJson = ko.toJSON(self);
-                CreateNewUser(userLoginJson,
+                CreateNewUser(accessToken, userLoginJson,
                     function (data, textStatus, jqXHR) {
                         $('#loading').hide();
                         var output = JSON.parse(jqXHR.responseText);
@@ -91,23 +115,23 @@
     this.errors = ko.validation.group(self);
 }
 
-function CreateNewUser(data, handleSuccess, handleFailure) {
+function CreateNewUser(accessToken, data, handleSuccess, handleFailure) {
     $.ajax({
-        url: '/User/Login/Create',
+        url: '/User/Login/Create?accessToken=' + accessToken,
         type: "POST",
         data: data,
         datatype: "json",
         processData: false,
         contentType: "application/json; charset=utf-8"
     })
-    .done(
-        function (data, textStatus, jqXHR) {
-            handleSuccess(data, textStatus, jqXHR);
-        })
-    .fail(
-        function (data, textStatus, jqXHR) {
-            handleFailure(data, textStatus, jqXHR);
-        });
+     .done(
+         function (data, textStatus, jqXHR) {
+             handleSuccess(data, textStatus, jqXHR);
+         })
+     .fail(
+         function (data, textStatus, jqXHR) {
+             handleFailure(data, textStatus, jqXHR);
+         });
 }
 
 function ValidateUser(data, handleSuccess, handleFailure) {

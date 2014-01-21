@@ -10,7 +10,9 @@ namespace College.UserProfile.Core.DataManagerInterfaces
     public interface IUserLoginManager : IDisposable
     {
         bool IsUserLoginExists(string emailAddress);
-        UserLogin GetUserLogin(string emailAddress, string password);
+        UserLogin ValidateUserLogin(string emailAddress, string password);
+        UserLogin GetUserLogin(string emailAddress);
+        UserLogin GetUserLogin(int userLoginID);
         void AddUserLogin(UserLogin userLogin);
     }
 }

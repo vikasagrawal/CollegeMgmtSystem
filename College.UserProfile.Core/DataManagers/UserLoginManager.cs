@@ -22,10 +22,20 @@ namespace College.UserProfile.Core.DataManagers
             return _db.UserLogins.Count(e => e.EmailAddress.Equals(emailAddress, StringComparison.OrdinalIgnoreCase)) > 0;
         }
 
-        public Entities.UserLogin GetUserLogin(string emailAddress, string password)
+        public Entities.UserLogin ValidateUserLogin(string emailAddress, string password)
         {
             return _db.UserLogins.SingleOrDefault(usr => usr.EmailAddress.Equals(emailAddress, StringComparison.OrdinalIgnoreCase)
                 && usr.Password == password);
+        }
+
+        public Entities.UserLogin GetUserLogin(string emailAddress)
+        {
+            return _db.UserLogins.SingleOrDefault(usr => usr.EmailAddress.Equals(emailAddress, StringComparison.OrdinalIgnoreCase));
+        }
+
+        public Entities.UserLogin GetUserLogin(int userLoginID)
+        {
+            return _db.UserLogins.SingleOrDefault(usr => usr.UserLoginID == userLoginID);
         }
 
         public void AddUserLogin(UserLogin userLogin)
