@@ -12,16 +12,18 @@ namespace College.UserProfile.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class CodeLookup
+    public partial class City
     {
-        public int CodeLookupId { get; set; }
-        public string CodeDesc { get; set; }
-        public string ShortDesc { get; set; }
-        public Nullable<int> ParentCodeLookupId { get; set; }
+        public int CityId { get; set; }
+        public string CityName { get; set; }
+        public Nullable<bool> IsMetroCity { get; set; }
+        public string CityURL { get; set; }
+        public int StateId { get; set; }
         public bool IsActive { get; set; }
-        public Nullable<int> CreatedBy { get; set; }
-        public Nullable<System.DateTime> CreatedDate { get; set; }
+        public bool IsDeleted { get; set; }
+        public int CreatedBy { get; set; }
+        public System.DateTime CreatedDate { get; set; }
         public Nullable<int> UpdatedBy { get; set; }
-        public string UpdatedDate { get; set; }
+        public Nullable<System.DateTime> UpdatedDate { get; set; }
     }
 }

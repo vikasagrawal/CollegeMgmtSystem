@@ -15,6 +15,8 @@ namespace College.UserProfile.Entities
     public partial class User
     {
         public int UserID { get; set; }
+        public int UserLoginID { get; set; }
+        public Nullable<int> Prefix { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string LastName { get; set; }
@@ -30,6 +32,5 @@ namespace College.UserProfile.Entities
         public Nullable<bool> IsUserVerified { get; set; }
         public Nullable<int> VerifiedBy { get; set; }
         public string FieldOfInterest { get; set; }
-        public int UserLoginID { get; set; }
     }
 }

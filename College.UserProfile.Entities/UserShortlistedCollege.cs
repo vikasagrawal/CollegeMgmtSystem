@@ -12,10 +12,10 @@ namespace College.UserProfile.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class UserFBDetail
+    public partial class UserShortlistedCollege
     {
-        public int UserFBDetailId { get; set; }
-        public int UserLoginId { get; set; }
-        public string FBData { get; set; }
+        public int UserShortlistedCollegeId { get; set; }
+        public int UserId { get; set; }
+        public int CollegeId { get; set; }
     }
 }

@@ -25,13 +25,51 @@ namespace College.UserProfile.Entities
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<CodeLookup> CodeLookups { get; set; }
-        public DbSet<Course> Courses { get; set; }
-        public DbSet<Subject> Subjects { get; set; }
+        public DbSet<College> Colleges { get; set; }
+        public DbSet<CollegeClaimDetail> CollegeClaimDetails { get; set; }
+        public DbSet<CollegeCourse> CollegeCourses { get; set; }
+        public DbSet<CollegeCourseApplProcess> CollegeCourseApplProcesses { get; set; }
+        public DbSet<CollegeCourseEligibility> CollegeCourseEligibilities { get; set; }
+        public DbSet<CollegeCourseFee> CollegeCourseFees { get; set; }
+        public DbSet<CollegeCoursePlacement> CollegeCoursePlacements { get; set; }
+        public DbSet<CollegeCourseQuestion> CollegeCourseQuestions { get; set; }
+        public DbSet<CollegeCourseQuestionAnswer> CollegeCourseQuestionAnswers { get; set; }
+        public DbSet<CollegeCourseQuestionAnswerLike> CollegeCourseQuestionAnswerLikes { get; set; }
+        public DbSet<CollegeCourseQuestionAnswerSpam> CollegeCourseQuestionAnswerSpams { get; set; }
+        public DbSet<CollegeCourseQuestionLike> CollegeCourseQuestionLikes { get; set; }
+        public DbSet<CollegeCourseQuestionShare> CollegeCourseQuestionShares { get; set; }
+        public DbSet<CollegeCourseQuestionSpam> CollegeCourseQuestionSpams { get; set; }
+        public DbSet<CollegeCourseReview> CollegeCourseReviews { get; set; }
+        public DbSet<CollegeCourseReviewDetailComment> CollegeCourseReviewDetailComments { get; set; }
+        public DbSet<CollegeCourseReviewDetailCommentSpam> CollegeCourseReviewDetailCommentSpams { get; set; }
+        public DbSet<CollegeCourseReviewDetailLike> CollegeCourseReviewDetailLikes { get; set; }
+        public DbSet<CollegeCourseReviewDetail> CollegeCourseReviewDetails { get; set; }
+        public DbSet<CollegeCourseReviewDetailShare> CollegeCourseReviewDetailShares { get; set; }
+        public DbSet<CollegeCourseReviewDetailSpam> CollegeCourseReviewDetailSpams { get; set; }
+        public DbSet<CollegeCourseReviewDetailSubscribe> CollegeCourseReviewDetailSubscribes { get; set; }
+        public DbSet<CollegeCourseSameQuestion> CollegeCourseSameQuestions { get; set; }
+        public DbSet<CollegeCourseSeat> CollegeCourseSeats { get; set; }
+        public DbSet<CollegeCourseTimeLine> CollegeCourseTimeLines { get; set; }
+        public DbSet<CollegeFacility> CollegeFacilities { get; set; }
+        public DbSet<CollegeFamousAlumni> CollegeFamousAlumnis { get; set; }
+        public DbSet<CollegePhoto> CollegePhotos { get; set; }
+        public DbSet<ExpertReview> ExpertReviews { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
         public DbSet<UserEducationDetail> UserEducationDetails { get; set; }
+        public DbSet<UserShortlistedCollege> UserShortlistedColleges { get; set; }
+        public DbSet<ErrorLog> ErrorLogs { get; set; }
+        public DbSet<CodeLookup> CodeLookups { get; set; }
+        public DbSet<Affiliation> Affiliations { get; set; }
+        public DbSet<City> Cities { get; set; }
+        public DbSet<Country> Countries { get; set; }
+        public DbSet<Course> Courses { get; set; }
+        public DbSet<Expert> Experts { get; set; }
+        public DbSet<Facility> Facilities { get; set; }
+        public DbSet<PlacementCompany> PlacementCompanies { get; set; }
+        public DbSet<State> States { get; set; }
+        public DbSet<Subject> Subjects { get; set; }
         public DbSet<UserFBDetail> UserFBDetails { get; set; }
         public DbSet<UserLogin> UserLogins { get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<College> Colleges { get; set; }
     }
 }

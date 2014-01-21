@@ -12,10 +12,11 @@ namespace College.UserProfile.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class UserFBDetail
+    public partial class Notification
     {
-        public int UserFBDetailId { get; set; }
-        public int UserLoginId { get; set; }
-        public string FBData { get; set; }
+        public int NotificationId { get; set; }
+        public int NotificationTypeId { get; set; }
+        public int ToUserId { get; set; }
+        public bool IsNew { get; set; }
     }
 }

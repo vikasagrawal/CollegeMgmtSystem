@@ -12,10 +12,15 @@ namespace College.UserProfile.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class UserFBDetail
+    public partial class ErrorLog
     {
-        public int UserFBDetailId { get; set; }
-        public int UserLoginId { get; set; }
-        public string FBData { get; set; }
+        public long ErrorLogId { get; set; }
+        public Nullable<long> ErrorNumber { get; set; }
+        public Nullable<int> ErrorSeverity { get; set; }
+        public Nullable<int> ErrorState { get; set; }
+        public string ErrorProcedure { get; set; }
+        public Nullable<int> ErrorLine { get; set; }
+        public string ErrorMessage { get; set; }
+        public System.DateTime ErrorDateTime { get; set; }
     }
 }

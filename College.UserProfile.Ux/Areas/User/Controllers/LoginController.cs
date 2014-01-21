@@ -118,7 +118,10 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
                 if (!_userLoginManager.IsUserLoginExists(userlogin.EmailAddress))
                 {
                     userlogin.VerificationCode = UserLoginHelper.GenerateRandomVerificationCode();
-                    userlogin.Password = UserLoginHelper.GenerateRandomPassword();
+                    if (userlogin.IsFacebookLogin == true)
+                    {
+                        userlogin.Password = UserLoginHelper.GenerateRandomPassword();
+                    }
                     _userLoginManager.AddUserLogin(userlogin);
                     IsUserAlreadyExists = false;
                 }

@@ -12,11 +12,18 @@ namespace College.UserProfile.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class Course
+    public partial class CollegeCourse
     {
+        public int CollegeCourseId { get; set; }
+        public int CollegeId { get; set; }
         public int CourseId { get; set; }
-        public string CourseName { get; set; }
-        public int CourseFieldId { get; set; }
-        public int DegreeTypeId { get; set; }
+        public Nullable<int> SubjectId { get; set; }
+        public int TimingId { get; set; }
+        public string Duration { get; set; }
+        public Nullable<int> TotalFee { get; set; }
+        public Nullable<int> TotalSeats { get; set; }
+        public string EligibilityDesc { get; set; }
+        public string Accreditation { get; set; }
+        public bool IsPlacementDone { get; set; }
     }
 }

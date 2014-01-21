@@ -12,10 +12,13 @@ namespace College.UserProfile.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class UserFBDetail
+    public partial class ExpertReview
     {
-        public int UserFBDetailId { get; set; }
-        public int UserLoginId { get; set; }
-        public string FBData { get; set; }
+        public int ExpertReviewId { get; set; }
+        public int ExpertId { get; set; }
+        public int CollegeCourseId { get; set; }
+        public string ReviewTitle { get; set; }
+        public string ReviewInDetail { get; set; }
+        public int Rating { get; set; }
     }
 }

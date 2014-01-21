@@ -12,10 +12,16 @@ namespace College.UserProfile.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class UserFBDetail
+    public partial class State
     {
-        public int UserFBDetailId { get; set; }
-        public int UserLoginId { get; set; }
-        public string FBData { get; set; }
+        public int StateId { get; set; }
+        public string StateName { get; set; }
+        public int CountryId { get; set; }
+        public bool IsActive { get; set; }
+        public bool IsDeleted { get; set; }
+        public int CreatedBy { get; set; }
+        public System.DateTime CreatedDate { get; set; }
+        public Nullable<int> UpdatedBy { get; set; }
+        public Nullable<System.DateTime> UpdatedDate { get; set; }
     }
 }

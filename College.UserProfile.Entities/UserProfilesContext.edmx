@@ -4,31 +4,81 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="UserProfilesModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityContainer Name="UserProfilesModelStoreContainer">
-          <EntitySet Name="CodeLookup" EntityType="UserProfilesModel.Store.CodeLookup" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="College" EntityType="UserProfilesModel.Store.College" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Course" EntityType="UserProfilesModel.Store.Course" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Subject" EntityType="UserProfilesModel.Store.Subject" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="UserEducationDetails" EntityType="UserProfilesModel.Store.UserEducationDetails" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="UserFBDetails" EntityType="UserProfilesModel.Store.UserFBDetails" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="UserLogin" EntityType="UserProfilesModel.Store.UserLogin" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Users" EntityType="UserProfilesModel.Store.Users" store:Type="Tables" Schema="dbo" />
+      <Schema Namespace="Test2Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="Test2ModelStoreContainer">
+          <EntitySet Name="College" EntityType="Test2Model.Store.College" store:Type="Tables" Schema="College" />
+          <EntitySet Name="CollegeClaimDetails" EntityType="Test2Model.Store.CollegeClaimDetails" store:Type="Tables" Schema="College" />
+          <EntitySet Name="CollegeCourse" EntityType="Test2Model.Store.CollegeCourse" store:Type="Tables" Schema="College" />
+          <EntitySet Name="CollegeCourseApplProcess" EntityType="Test2Model.Store.CollegeCourseApplProcess" store:Type="Tables" Schema="College" />
+          <EntitySet Name="CollegeCourseEligibility" EntityType="Test2Model.Store.CollegeCourseEligibility" store:Type="Tables" Schema="College" />
+          <EntitySet Name="CollegeCourseFee" EntityType="Test2Model.Store.CollegeCourseFee" store:Type="Tables" Schema="College" />
+          <EntitySet Name="CollegeCoursePlacements" EntityType="Test2Model.Store.CollegeCoursePlacements" store:Type="Tables" Schema="College" />
+          <EntitySet Name="CollegeCourseQuestion" EntityType="Test2Model.Store.CollegeCourseQuestion" store:Type="Tables" Schema="College" />
+          <EntitySet Name="CollegeCourseQuestionAnswer" EntityType="Test2Model.Store.CollegeCourseQuestionAnswer" store:Type="Tables" Schema="College" />
+          <EntitySet Name="CollegeCourseQuestionAnswerLike" EntityType="Test2Model.Store.CollegeCourseQuestionAnswerLike" store:Type="Tables" Schema="College" />
+          <EntitySet Name="CollegeCourseQuestionAnswerSpam" EntityType="Test2Model.Store.CollegeCourseQuestionAnswerSpam" store:Type="Tables" Schema="College" />
+          <EntitySet Name="CollegeCourseQuestionLike" EntityType="Test2Model.Store.CollegeCourseQuestionLike" store:Type="Tables" Schema="College" />
+          <EntitySet Name="CollegeCourseQuestionShare" EntityType="Test2Model.Store.CollegeCourseQuestionShare" store:Type="Tables" Schema="College" />
+          <EntitySet Name="CollegeCourseQuestionSpam" EntityType="Test2Model.Store.CollegeCourseQuestionSpam" store:Type="Tables" Schema="College" />
+          <EntitySet Name="CollegeCourseReview" EntityType="Test2Model.Store.CollegeCourseReview" store:Type="Tables" Schema="College" />
+          <EntitySet Name="CollegeCourseReviewDetailComments" EntityType="Test2Model.Store.CollegeCourseReviewDetailComments" store:Type="Tables" Schema="College" />
+          <EntitySet Name="CollegeCourseReviewDetailCommentSpam" EntityType="Test2Model.Store.CollegeCourseReviewDetailCommentSpam" store:Type="Tables" Schema="College" />
+          <EntitySet Name="CollegeCourseReviewDetailLike" EntityType="Test2Model.Store.CollegeCourseReviewDetailLike" store:Type="Tables" Schema="College" />
+          <EntitySet Name="CollegeCourseReviewDetails" EntityType="Test2Model.Store.CollegeCourseReviewDetails" store:Type="Tables" Schema="College" />
+          <EntitySet Name="CollegeCourseReviewDetailShare" EntityType="Test2Model.Store.CollegeCourseReviewDetailShare" store:Type="Tables" Schema="College" />
+          <EntitySet Name="CollegeCourseReviewDetailSpam" EntityType="Test2Model.Store.CollegeCourseReviewDetailSpam" store:Type="Tables" Schema="College" />
+          <EntitySet Name="CollegeCourseReviewDetailSubscribe" EntityType="Test2Model.Store.CollegeCourseReviewDetailSubscribe" store:Type="Tables" Schema="College" />
+          <EntitySet Name="CollegeCourseSameQuestion" EntityType="Test2Model.Store.CollegeCourseSameQuestion" store:Type="Tables" Schema="College" />
+          <EntitySet Name="CollegeCourseSeats" EntityType="Test2Model.Store.CollegeCourseSeats" store:Type="Tables" Schema="College" />
+          <EntitySet Name="CollegeCourseTimeLine" EntityType="Test2Model.Store.CollegeCourseTimeLine" store:Type="Tables" Schema="College" />
+          <EntitySet Name="CollegeFacility" EntityType="Test2Model.Store.CollegeFacility" store:Type="Tables" Schema="College" />
+          <EntitySet Name="CollegeFamousAlumni" EntityType="Test2Model.Store.CollegeFamousAlumni" store:Type="Tables" Schema="College" />
+          <EntitySet Name="CollegePhotos" EntityType="Test2Model.Store.CollegePhotos" store:Type="Tables" Schema="College" />
+          <EntitySet Name="ExpertReview" EntityType="Test2Model.Store.ExpertReview" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Notifications" EntityType="Test2Model.Store.Notifications" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserEducationDetails" EntityType="Test2Model.Store.UserEducationDetails" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserShortlistedColleges" EntityType="Test2Model.Store.UserShortlistedColleges" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ErrorLog" EntityType="Test2Model.Store.ErrorLog" store:Type="Tables" Schema="Logging" />
+          <EntitySet Name="CodeLookup" EntityType="Test2Model.Store.CodeLookup" store:Type="Tables" Schema="Lookup" />
+          <EntitySet Name="Affiliation" EntityType="Test2Model.Store.Affiliation" store:Type="Tables" Schema="Master" />
+          <EntitySet Name="City" EntityType="Test2Model.Store.City" store:Type="Tables" store:Schema="Master" store:Name="City">
+            <DefiningQuery>SELECT 
+      [City].[CityId] AS [CityId], 
+      [City].[CityName] AS [CityName], 
+      [City].[IsMetroCity] AS [IsMetroCity], 
+      [City].[CityURL] AS [CityURL], 
+      [City].[StateId] AS [StateId], 
+      [City].[IsActive] AS [IsActive], 
+      [City].[IsDeleted] AS [IsDeleted], 
+      [City].[CreatedBy] AS [CreatedBy], 
+      [City].[CreatedDate] AS [CreatedDate], 
+      [City].[UpdatedBy] AS [UpdatedBy], 
+      [City].[UpdatedDate] AS [UpdatedDate]
+      FROM [Master].[City] AS [City]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Country" EntityType="Test2Model.Store.Country" store:Type="Tables" store:Schema="Master" store:Name="Country">
+            <DefiningQuery>SELECT 
+      [Country].[CountryId] AS [CountryId], 
+      [Country].[CountryName] AS [CountryName], 
+      [Country].[CountryCode] AS [CountryCode], 
+      [Country].[IsActive] AS [IsActive], 
+      [Country].[IsDeleted] AS [IsDeleted], 
+      [Country].[CreatedBy] AS [CreatedBy], 
+      [Country].[CreatedDate] AS [CreatedDate], 
+      [Country].[UpdatedBy] AS [UpdatedBy], 
+      [Country].[UpdatedDate] AS [UpdatedDate]
+      FROM [Master].[Country] AS [Country]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Course" EntityType="Test2Model.Store.Course" store:Type="Tables" Schema="Master" />
+          <EntitySet Name="Expert" EntityType="Test2Model.Store.Expert" store:Type="Tables" Schema="Master" />
+          <EntitySet Name="Facility" EntityType="Test2Model.Store.Facility" store:Type="Tables" Schema="Master" />
+          <EntitySet Name="PlacementCompany" EntityType="Test2Model.Store.PlacementCompany" store:Type="Tables" Schema="Master" />
+          <EntitySet Name="State" EntityType="Test2Model.Store.State" store:Type="Tables" Schema="Master" />
+          <EntitySet Name="Subject" EntityType="Test2Model.Store.Subject" store:Type="Tables" Schema="Master" />
+          <EntitySet Name="UserFBDetails" EntityType="Test2Model.Store.UserFBDetails" store:Type="Tables" Schema="Security" />
+          <EntitySet Name="UserLogin" EntityType="Test2Model.Store.UserLogin" store:Type="Tables" Schema="Security" />
+          <EntitySet Name="Users" EntityType="Test2Model.Store.Users" store:Type="Tables" Schema="Security" />
         </EntityContainer>
-        <EntityType Name="CodeLookup">
-          <Key>
-            <PropertyRef Name="CodeLookupId" />
-          </Key>
-          <Property Name="CodeLookupId" Type="int" Nullable="false" />
-          <Property Name="CodeDesc" Type="varchar" Nullable="false" MaxLength="500" />
-          <Property Name="ShortDesc" Type="varchar" MaxLength="50" />
-          <Property Name="ParentCodeLookupId" Type="int" />
-          <Property Name="IsActive" Type="bit" Nullable="false" />
-          <Property Name="CreatedBy" Type="int" />
-          <Property Name="CreatedDate" Type="datetime" />
-          <Property Name="UpdatedBy" Type="int" />
-          <Property Name="UpdatedDate" Type="nchar" MaxLength="10" />
-        </EntityType>
         <EntityType Name="College">
           <Key>
             <PropertyRef Name="CollegeId" />
@@ -70,22 +120,305 @@
           <Property Name="UpdatedBy" Type="int" />
           <Property Name="UpdatedDate" Type="datetime" />
         </EntityType>
-        <EntityType Name="Course">
+        <EntityType Name="CollegeClaimDetails">
           <Key>
-            <PropertyRef Name="CourseId" />
+            <PropertyRef Name="CollegeClaimDetailId" />
           </Key>
-          <Property Name="CourseId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="CourseName" Type="varchar" Nullable="false" MaxLength="100" />
-          <Property Name="CourseFieldId" Type="int" Nullable="false" />
-          <Property Name="DegreeTypeId" Type="int" Nullable="false" />
+          <Property Name="CollegeClaimDetailId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="EmailAddress" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="MobileNo" Type="varchar" Nullable="false" MaxLength="20" />
         </EntityType>
-        <EntityType Name="Subject">
+        <EntityType Name="CollegeCourse">
           <Key>
-            <PropertyRef Name="SubjectId" />
+            <PropertyRef Name="CollegeCourseId" />
           </Key>
-          <Property Name="SubjectId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="SubjectDesc" Type="varchar" Nullable="false" MaxLength="50" />
-          <Property Name="CourseID" Type="int" />
+          <Property Name="CollegeCourseId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeId" Type="int" Nullable="false" />
+          <Property Name="CourseId" Type="int" Nullable="false" />
+          <Property Name="SubjectId" Type="int" />
+          <Property Name="TimingId" Type="int" Nullable="false" />
+          <Property Name="Duration" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="TotalFee" Type="int" />
+          <Property Name="TotalSeats" Type="int" />
+          <Property Name="EligibilityDesc" Type="varchar" Nullable="false" MaxLength="1000" />
+          <Property Name="Accreditation" Type="varchar" MaxLength="100" />
+          <Property Name="IsPlacementDone" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CollegeCourseApplProcess">
+          <Key>
+            <PropertyRef Name="CollegeCourseApplProcessId" />
+          </Key>
+          <Property Name="CollegeCourseApplProcessId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeCourseId" Type="int" Nullable="false" />
+          <Property Name="ExtranceExams" Type="xml" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="500" />
+          <Property Name="Syllabus" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="CollegeCourseEligibility">
+          <Key>
+            <PropertyRef Name="CollegeCourseEligibilityId" />
+          </Key>
+          <Property Name="CollegeCourseEligibilityId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeCourseId" Type="int" Nullable="false" />
+          <Property Name="StudentCategoryId" Type="int" Nullable="false" />
+          <Property Name="Percentage" Type="decimal" Nullable="false" Precision="5" Scale="2" />
+        </EntityType>
+        <EntityType Name="CollegeCourseFee">
+          <Key>
+            <PropertyRef Name="CollegeCourseFeeId" />
+          </Key>
+          <Property Name="CollegeCourseFeeId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeCourseId" Type="int" Nullable="false" />
+          <Property Name="StudentCategoryId" Type="int" Nullable="false" />
+          <Property Name="TotalFee" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CollegeCoursePlacements">
+          <Key>
+            <PropertyRef Name="CollegeCoursePlacementId" />
+          </Key>
+          <Property Name="CollegeCoursePlacementId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeCourseId" Type="int" Nullable="false" />
+          <Property Name="NumberOfStudentsPlaced" Type="int" />
+          <Property Name="PercentOfStudentsPlaced" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="PlacementDesc" Type="varchar" MaxLength="1000" />
+          <Property Name="CompanyList" Type="xml" Nullable="false" />
+          <Property Name="HighestPackage" Type="decimal" Precision="10" />
+          <Property Name="AvgSalaryReceived" Type="decimal" Precision="10" />
+        </EntityType>
+        <EntityType Name="CollegeCourseQuestion">
+          <Key>
+            <PropertyRef Name="CollegeCourseQuestionId" />
+          </Key>
+          <Property Name="CollegeCourseQuestionId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeCourseId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Question" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="Action" Type="char" Nullable="false" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="CollegeCourseQuestionAnswer">
+          <Key>
+            <PropertyRef Name="CollegeCourseQuestionAnswerId" />
+          </Key>
+          <Property Name="CollegeCourseQuestionAnswerId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeCourseQuestionId" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar" Nullable="false" MaxLength="1000" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="Action" Type="char" Nullable="false" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="CollegeCourseQuestionAnswerLike">
+          <Key>
+            <PropertyRef Name="CollegeCourseQuestionAnswerLikeId" />
+          </Key>
+          <Property Name="CollegeCourseQuestionAnswerLikeId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeCourseQuestionAnswerId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CollegeCourseQuestionAnswerSpam">
+          <Key>
+            <PropertyRef Name="CollegeCourseQuestionAnswerSpamId" />
+          </Key>
+          <Property Name="CollegeCourseQuestionAnswerSpamId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeCourseQuestionAnswerId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsReviewed" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CollegeCourseQuestionLike">
+          <Key>
+            <PropertyRef Name="CollegeCourseQuestionLikeId" />
+          </Key>
+          <Property Name="CollegeCourseQuestionLikeId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeCourseQuestionId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CollegeCourseQuestionShare">
+          <Key>
+            <PropertyRef Name="CollegeCourseQuestionShareId" />
+          </Key>
+          <Property Name="CollegeCourseQuestionShareId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeCourseQuestionId" Type="int" Nullable="false" />
+          <Property Name="SharingMediaId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CollegeCourseQuestionSpam">
+          <Key>
+            <PropertyRef Name="CollegeCourseQuestionSpamId" />
+          </Key>
+          <Property Name="CollegeCourseQuestionSpamId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeCourseQuestionId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsReviewed" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CollegeCourseReview">
+          <Key>
+            <PropertyRef Name="CollegeCourseReviewId" />
+          </Key>
+          <Property Name="CollegeCourseReviewId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="ReviewDate" Type="datetime" Nullable="false" />
+          <Property Name="CollegeCourseId" Type="int" Nullable="false" />
+          <Property Name="IsAnonymousUser" Type="bit" Nullable="false" />
+          <Property Name="NickName" Type="varchar" MaxLength="50" />
+          <Property Name="AvatarImage" Type="varchar" MaxLength="50" />
+          <Property Name="IsCompleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CollegeCourseReviewDetailComments">
+          <Key>
+            <PropertyRef Name="CollegeCourseReviewDetailCommentId" />
+          </Key>
+          <Property Name="CollegeCourseReviewDetailCommentId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeCourseReviewDetailId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Comment" Type="varchar" Nullable="false" MaxLength="500" />
+          <Property Name="ParentReviewCommentId" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="Action" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="CollegeCourseReviewDetailCommentSpam">
+          <Key>
+            <PropertyRef Name="CollegeCourseReviewDetailCommentSpamId" />
+          </Key>
+          <Property Name="CollegeCourseReviewDetailCommentSpamId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeCourseReviewDetailCommentId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsReviewed" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CollegeCourseReviewDetailLike">
+          <Key>
+            <PropertyRef Name="CollegeCourseReviewDetailLikeId" />
+          </Key>
+          <Property Name="CollegeCourseReviewDetailLikeId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeCourseReviewDetailId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CollegeCourseReviewDetails">
+          <Key>
+            <PropertyRef Name="CollegeCourseReviewDetailId" />
+          </Key>
+          <Property Name="CollegeCourseReviewDetailId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeCourseReviewId" Type="int" Nullable="false" />
+          <Property Name="ReviewCategoryId" Type="int" Nullable="false" />
+          <Property Name="ReviewTitle" Type="varchar" MaxLength="200" />
+          <Property Name="GreatDesc" Type="varchar" MaxLength="5000" />
+          <Property Name="NotGreatDesc" Type="varchar" MaxLength="5000" />
+          <Property Name="WhyDesc" Type="varchar" MaxLength="5000" />
+          <Property Name="Rating" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="Action" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="CollegeCourseReviewDetailShare">
+          <Key>
+            <PropertyRef Name="CollegeCourseReviewDetailShareId" />
+          </Key>
+          <Property Name="CollegeCourseReviewDetailShareId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeCourseReviewDetailId" Type="int" Nullable="false" />
+          <Property Name="SharingMediaId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CollegeCourseReviewDetailSpam">
+          <Key>
+            <PropertyRef Name="CollegeCourseReviewDetailSpamId" />
+          </Key>
+          <Property Name="CollegeCourseReviewDetailSpamId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeCourseReviewDetailId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsReviewed" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CollegeCourseReviewDetailSubscribe">
+          <Key>
+            <PropertyRef Name="CollegeCourseReviewDetailSubscribeId" />
+          </Key>
+          <Property Name="CollegeCourseReviewDetailSubscribeId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeCourseReviewDetailId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CollegeCourseSameQuestion">
+          <Key>
+            <PropertyRef Name="CollegeCourseSameQuestionId" />
+          </Key>
+          <Property Name="CollegeCourseSameQuestionId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeCourseQuestionId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CollegeCourseSeats">
+          <Key>
+            <PropertyRef Name="CollegeCourseSeatId" />
+          </Key>
+          <Property Name="CollegeCourseSeatId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeCourseId" Type="int" Nullable="false" />
+          <Property Name="StudentCategoryId" Type="int" Nullable="false" />
+          <Property Name="TotalSeats" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CollegeCourseTimeLine">
+          <Key>
+            <PropertyRef Name="CollegeCourseTimeLineId" />
+          </Key>
+          <Property Name="CollegeCourseTimeLineId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeCourseId" Type="int" Nullable="false" />
+          <Property Name="EntranceDate" Type="date" />
+          <Property Name="ApplicationDate" Type="date" />
+          <Property Name="Campus" Type="varchar" MaxLength="500" />
+          <Property Name="Scholarship" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="CollegeFacility">
+          <Key>
+            <PropertyRef Name="CollegeFacilityId" />
+          </Key>
+          <Property Name="CollegeFacilityId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FacilityId" Type="int" Nullable="false" />
+          <Property Name="CollegeId" Type="int" Nullable="false" />
+          <Property Name="IsAvailable" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CollegeFamousAlumni">
+          <Key>
+            <PropertyRef Name="CollegeFamousAlumniId" />
+          </Key>
+          <Property Name="CollegeFamousAlumniId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeId" Type="int" Nullable="false" />
+          <Property Name="AlumniName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="AlumniDesc" Type="varchar" Nullable="false" MaxLength="1000" />
+          <Property Name="AlumniPhoto" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="AlumniLink" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="CollegePhotos">
+          <Key>
+            <PropertyRef Name="CollegePhotoId" />
+          </Key>
+          <Property Name="CollegePhotoId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeId" Type="int" Nullable="false" />
+          <Property Name="ImageURL" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ExpertReview">
+          <Key>
+            <PropertyRef Name="ExpertReviewId" />
+          </Key>
+          <Property Name="ExpertReviewId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ExpertId" Type="int" Nullable="false" />
+          <Property Name="CollegeCourseId" Type="int" Nullable="false" />
+          <Property Name="ReviewTitle" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="ReviewInDetail" Type="varchar" Nullable="false" MaxLength="5000" />
+          <Property Name="Rating" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Notifications">
+          <Key>
+            <PropertyRef Name="NotificationId" />
+          </Key>
+          <Property Name="NotificationId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NotificationTypeId" Type="int" Nullable="false" />
+          <Property Name="ToUserId" Type="int" Nullable="false" />
+          <Property Name="IsNew" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="UserEducationDetails">
           <Key>
@@ -100,6 +433,152 @@
           <Property Name="SubjectId" Type="int" Nullable="false" />
           <Property Name="InstituitionTypeId" Type="int" Nullable="false" />
           <Property Name="SchoolName" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="UserShortlistedColleges">
+          <Key>
+            <PropertyRef Name="UserShortlistedCollegeId" />
+          </Key>
+          <Property Name="UserShortlistedCollegeId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CollegeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ErrorLog">
+          <Key>
+            <PropertyRef Name="ErrorLogId" />
+          </Key>
+          <Property Name="ErrorLogId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ErrorNumber" Type="bigint" />
+          <Property Name="ErrorSeverity" Type="int" />
+          <Property Name="ErrorState" Type="int" />
+          <Property Name="ErrorProcedure" Type="varchar" MaxLength="250" />
+          <Property Name="ErrorLine" Type="int" />
+          <Property Name="ErrorMessage" Type="varchar(max)" />
+          <Property Name="ErrorDateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CodeLookup">
+          <Key>
+            <PropertyRef Name="CodeLookupId" />
+          </Key>
+          <Property Name="CodeLookupId" Type="int" Nullable="false" />
+          <Property Name="CodeDesc" Type="varchar" Nullable="false" MaxLength="500" />
+          <Property Name="ShortDesc" Type="varchar" MaxLength="50" />
+          <Property Name="ParentCodeLookupId" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDate" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Affiliation">
+          <Key>
+            <PropertyRef Name="AffiliatedToId" />
+          </Key>
+          <Property Name="AffiliatedToId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AffiliatedTo" Type="varchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'Test2.Master.City' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="CityId" />
+            <PropertyRef Name="CityName" />
+            <PropertyRef Name="StateId" />
+            <PropertyRef Name="IsActive" />
+            <PropertyRef Name="IsDeleted" />
+            <PropertyRef Name="CreatedBy" />
+            <PropertyRef Name="CreatedDate" />
+          </Key>
+          <Property Name="CityId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CityName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="IsMetroCity" Type="bit" />
+          <Property Name="CityURL" Type="varchar" MaxLength="150" />
+          <Property Name="StateId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'Test2.Master.Country' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryId" />
+            <PropertyRef Name="CountryName" />
+            <PropertyRef Name="CountryCode" />
+            <PropertyRef Name="IsActive" />
+            <PropertyRef Name="IsDeleted" />
+            <PropertyRef Name="CreatedBy" />
+            <PropertyRef Name="CreatedDate" />
+          </Key>
+          <Property Name="CountryId" Type="int" Nullable="false" />
+          <Property Name="CountryName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="CountryCode" Type="char" Nullable="false" MaxLength="2" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="CourseId" />
+          </Key>
+          <Property Name="CourseId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CourseName" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="CourseFieldId" Type="int" Nullable="false" />
+          <Property Name="DegreeTypeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Expert">
+          <Key>
+            <PropertyRef Name="ExpertId" />
+          </Key>
+          <Property Name="ExpertId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ExpertName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ExpertPhoto" Type="varchar" MaxLength="50" />
+          <Property Name="ExpertDesc" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="Facility">
+          <Key>
+            <PropertyRef Name="FacilityId" />
+          </Key>
+          <Property Name="FacilityId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FacilityName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="FacilityIcon" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="PlacementCompany">
+          <Key>
+            <PropertyRef Name="PlacementCompanyId" />
+          </Key>
+          <Property Name="PlacementCompanyId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="CompanyLogo" Type="varchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="StateId" />
+          </Key>
+          <Property Name="StateId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="StateName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="CountryId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="SubjectId" />
+          </Key>
+          <Property Name="SubjectId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SubjectDesc" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="CourseID" Type="int" />
         </EntityType>
         <EntityType Name="UserFBDetails">
           <Key>
@@ -127,6 +606,8 @@
             <PropertyRef Name="UserID" />
           </Key>
           <Property Name="UserID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserLoginID" Type="int" Nullable="false" />
+          <Property Name="Prefix" Type="int" />
           <Property Name="FirstName" Type="varchar" Nullable="false" MaxLength="50" />
           <Property Name="MiddleName" Type="varchar" MaxLength="50" />
           <Property Name="LastName" Type="varchar" MaxLength="50" />
@@ -142,52 +623,400 @@
           <Property Name="IsUserVerified" Type="bit" />
           <Property Name="VerifiedBy" Type="int" />
           <Property Name="FieldOfInterest" Type="xml" />
-          <Property Name="UserLoginID" Type="int" Nullable="false" />
         </EntityType>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="UserProfilesModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="Test2Model" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="UserProfilesContext" p1:LazyLoadingEnabled="true">
-          <EntitySet Name="CodeLookups" EntityType="UserProfilesModel.CodeLookup" />
-          <EntitySet Name="Courses" EntityType="UserProfilesModel.Course" />
-          <EntitySet Name="Subjects" EntityType="UserProfilesModel.Subject" />
-          <EntitySet Name="UserEducationDetails" EntityType="UserProfilesModel.UserEducationDetail" />
-          <EntitySet Name="UserFBDetails" EntityType="UserProfilesModel.UserFBDetail" />
-          <EntitySet Name="UserLogins" EntityType="UserProfilesModel.UserLogin" />
-          <EntitySet Name="Users" EntityType="UserProfilesModel.User" />
-          <EntitySet Name="Colleges" EntityType="UserProfilesModel.College" />
+          <EntitySet Name="Colleges" EntityType="Test2Model.College" />
+          <EntitySet Name="CollegeClaimDetails" EntityType="Test2Model.CollegeClaimDetail" />
+          <EntitySet Name="CollegeCourses" EntityType="Test2Model.CollegeCourse" />
+          <EntitySet Name="CollegeCourseApplProcesses" EntityType="Test2Model.CollegeCourseApplProcess" />
+          <EntitySet Name="CollegeCourseEligibilities" EntityType="Test2Model.CollegeCourseEligibility" />
+          <EntitySet Name="CollegeCourseFees" EntityType="Test2Model.CollegeCourseFee" />
+          <EntitySet Name="CollegeCoursePlacements" EntityType="Test2Model.CollegeCoursePlacement" />
+          <EntitySet Name="CollegeCourseQuestions" EntityType="Test2Model.CollegeCourseQuestion" />
+          <EntitySet Name="CollegeCourseQuestionAnswers" EntityType="Test2Model.CollegeCourseQuestionAnswer" />
+          <EntitySet Name="CollegeCourseQuestionAnswerLikes" EntityType="Test2Model.CollegeCourseQuestionAnswerLike" />
+          <EntitySet Name="CollegeCourseQuestionAnswerSpams" EntityType="Test2Model.CollegeCourseQuestionAnswerSpam" />
+          <EntitySet Name="CollegeCourseQuestionLikes" EntityType="Test2Model.CollegeCourseQuestionLike" />
+          <EntitySet Name="CollegeCourseQuestionShares" EntityType="Test2Model.CollegeCourseQuestionShare" />
+          <EntitySet Name="CollegeCourseQuestionSpams" EntityType="Test2Model.CollegeCourseQuestionSpam" />
+          <EntitySet Name="CollegeCourseReviews" EntityType="Test2Model.CollegeCourseReview" />
+          <EntitySet Name="CollegeCourseReviewDetailComments" EntityType="Test2Model.CollegeCourseReviewDetailComment" />
+          <EntitySet Name="CollegeCourseReviewDetailCommentSpams" EntityType="Test2Model.CollegeCourseReviewDetailCommentSpam" />
+          <EntitySet Name="CollegeCourseReviewDetailLikes" EntityType="Test2Model.CollegeCourseReviewDetailLike" />
+          <EntitySet Name="CollegeCourseReviewDetails" EntityType="Test2Model.CollegeCourseReviewDetail" />
+          <EntitySet Name="CollegeCourseReviewDetailShares" EntityType="Test2Model.CollegeCourseReviewDetailShare" />
+          <EntitySet Name="CollegeCourseReviewDetailSpams" EntityType="Test2Model.CollegeCourseReviewDetailSpam" />
+          <EntitySet Name="CollegeCourseReviewDetailSubscribes" EntityType="Test2Model.CollegeCourseReviewDetailSubscribe" />
+          <EntitySet Name="CollegeCourseSameQuestions" EntityType="Test2Model.CollegeCourseSameQuestion" />
+          <EntitySet Name="CollegeCourseSeats" EntityType="Test2Model.CollegeCourseSeat" />
+          <EntitySet Name="CollegeCourseTimeLines" EntityType="Test2Model.CollegeCourseTimeLine" />
+          <EntitySet Name="CollegeFacilities" EntityType="Test2Model.CollegeFacility" />
+          <EntitySet Name="CollegeFamousAlumnis" EntityType="Test2Model.CollegeFamousAlumni" />
+          <EntitySet Name="CollegePhotos" EntityType="Test2Model.CollegePhoto" />
+          <EntitySet Name="ExpertReviews" EntityType="Test2Model.ExpertReview" />
+          <EntitySet Name="Notifications" EntityType="Test2Model.Notification" />
+          <EntitySet Name="UserEducationDetails" EntityType="Test2Model.UserEducationDetail" />
+          <EntitySet Name="UserShortlistedColleges" EntityType="Test2Model.UserShortlistedCollege" />
+          <EntitySet Name="ErrorLogs" EntityType="Test2Model.ErrorLog" />
+          <EntitySet Name="CodeLookups" EntityType="Test2Model.CodeLookup" />
+          <EntitySet Name="Affiliations" EntityType="Test2Model.Affiliation" />
+          <EntitySet Name="Cities" EntityType="Test2Model.City" />
+          <EntitySet Name="Countries" EntityType="Test2Model.Country" />
+          <EntitySet Name="Courses" EntityType="Test2Model.Course" />
+          <EntitySet Name="Experts" EntityType="Test2Model.Expert" />
+          <EntitySet Name="Facilities" EntityType="Test2Model.Facility" />
+          <EntitySet Name="PlacementCompanies" EntityType="Test2Model.PlacementCompany" />
+          <EntitySet Name="States" EntityType="Test2Model.State" />
+          <EntitySet Name="Subjects" EntityType="Test2Model.Subject" />
+          <EntitySet Name="UserFBDetails" EntityType="Test2Model.UserFBDetail" />
+          <EntitySet Name="UserLogins" EntityType="Test2Model.UserLogin" />
+          <EntitySet Name="Users" EntityType="Test2Model.User" />
         </EntityContainer>
-        <EntityType Name="CodeLookup">
+        <EntityType Name="College">
           <Key>
-            <PropertyRef Name="CodeLookupId" />
+            <PropertyRef Name="CollegeId" />
           </Key>
-          <Property Name="CodeLookupId" Type="Int32" Nullable="false" />
-          <Property Name="CodeDesc" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
-          <Property Name="ShortDesc" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="ParentCodeLookupId" Type="Int32" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="CreatedBy" Type="Int32" />
-          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CollegeId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeName" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="CollegeLogo" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CollegeDesc" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="EstablishedYear" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="Address1" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Address2" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="CityId" Type="Int32" Nullable="false" />
+          <Property Name="StateId" Type="Int32" />
+          <Property Name="CountryId" Type="Int32" Nullable="false" />
+          <Property Name="PinCode" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="Longitude" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Latitude" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Phone" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="EmailAddress" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="TransportDetail" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="NotifEmailToCollege" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="SportsAvailable" Type="Boolean" Nullable="false" />
+          <Property Name="WebSiteURL" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Accreditation" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="NoOfStudents" Type="Int32" />
+          <Property Name="CollegeTypeId" Type="Int32" Nullable="false" />
+          <Property Name="StudentTypeId" Type="Int32" Nullable="false" />
+          <Property Name="AffiliatedToId" Type="Int32" />
+          <Property Name="IsAccomodation" Type="Boolean" Nullable="false" />
+          <Property Name="AccomodationTypeId" Type="Int32" />
+          <Property Name="Activities" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="ProspectusLink" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="AcademicSessionId" Type="Int32" />
+          <Property Name="CampusInfrastructure" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="SubmittedById" Type="Int32" />
+          <Property Name="ViewCount" Type="Int64" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UpdatedBy" Type="Int32" />
-          <Property Name="UpdatedDate" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
         </EntityType>
-        <EntityType Name="Course">
+        <EntityType Name="CollegeClaimDetail">
           <Key>
-            <PropertyRef Name="CourseId" />
+            <PropertyRef Name="CollegeClaimDetailId" />
           </Key>
-          <Property Name="CourseId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="CourseName" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
-          <Property Name="CourseFieldId" Type="Int32" Nullable="false" />
-          <Property Name="DegreeTypeId" Type="Int32" Nullable="false" />
+          <Property Name="CollegeClaimDetailId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="EmailAddress" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="MobileNo" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
         </EntityType>
-        <EntityType Name="Subject">
+        <EntityType Name="CollegeCourse">
           <Key>
-            <PropertyRef Name="SubjectId" />
+            <PropertyRef Name="CollegeCourseId" />
           </Key>
-          <Property Name="SubjectId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="SubjectDesc" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Type="Int32" Name="CourseID" />
+          <Property Name="CollegeCourseId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeId" Type="Int32" Nullable="false" />
+          <Property Name="CourseId" Type="Int32" Nullable="false" />
+          <Property Name="SubjectId" Type="Int32" />
+          <Property Name="TimingId" Type="Int32" Nullable="false" />
+          <Property Name="Duration" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="TotalFee" Type="Int32" />
+          <Property Name="TotalSeats" Type="Int32" />
+          <Property Name="EligibilityDesc" Type="String" Nullable="false" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="Accreditation" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="IsPlacementDone" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CollegeCourseApplProcess">
+          <Key>
+            <PropertyRef Name="CollegeCourseApplProcessId" />
+          </Key>
+          <Property Name="CollegeCourseApplProcessId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeCourseId" Type="Int32" Nullable="false" />
+          <Property Name="ExtranceExams" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="Syllabus" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="CollegeCourseEligibility">
+          <Key>
+            <PropertyRef Name="CollegeCourseEligibilityId" />
+          </Key>
+          <Property Name="CollegeCourseEligibilityId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeCourseId" Type="Int32" Nullable="false" />
+          <Property Name="StudentCategoryId" Type="Int32" Nullable="false" />
+          <Property Name="Percentage" Type="Decimal" Nullable="false" Precision="5" Scale="2" />
+        </EntityType>
+        <EntityType Name="CollegeCourseFee">
+          <Key>
+            <PropertyRef Name="CollegeCourseFeeId" />
+          </Key>
+          <Property Name="CollegeCourseFeeId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeCourseId" Type="Int32" Nullable="false" />
+          <Property Name="StudentCategoryId" Type="Int32" Nullable="false" />
+          <Property Name="TotalFee" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CollegeCoursePlacement">
+          <Key>
+            <PropertyRef Name="CollegeCoursePlacementId" />
+          </Key>
+          <Property Name="CollegeCoursePlacementId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeCourseId" Type="Int32" Nullable="false" />
+          <Property Name="NumberOfStudentsPlaced" Type="Int32" />
+          <Property Name="PercentOfStudentsPlaced" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="PlacementDesc" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="CompanyList" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="HighestPackage" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="AvgSalaryReceived" Type="Decimal" Precision="10" Scale="0" />
+        </EntityType>
+        <EntityType Name="CollegeCourseQuestion">
+          <Key>
+            <PropertyRef Name="CollegeCourseQuestionId" />
+          </Key>
+          <Property Name="CollegeCourseQuestionId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeCourseId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Question" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="Action" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+        </EntityType>
+        <EntityType Name="CollegeCourseQuestionAnswer">
+          <Key>
+            <PropertyRef Name="CollegeCourseQuestionAnswerId" />
+          </Key>
+          <Property Name="CollegeCourseQuestionAnswerId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeCourseQuestionId" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="Action" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+        </EntityType>
+        <EntityType Name="CollegeCourseQuestionAnswerLike">
+          <Key>
+            <PropertyRef Name="CollegeCourseQuestionAnswerLikeId" />
+          </Key>
+          <Property Name="CollegeCourseQuestionAnswerLikeId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeCourseQuestionAnswerId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CollegeCourseQuestionAnswerSpam">
+          <Key>
+            <PropertyRef Name="CollegeCourseQuestionAnswerSpamId" />
+          </Key>
+          <Property Name="CollegeCourseQuestionAnswerSpamId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeCourseQuestionAnswerId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsReviewed" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CollegeCourseQuestionLike">
+          <Key>
+            <PropertyRef Name="CollegeCourseQuestionLikeId" />
+          </Key>
+          <Property Name="CollegeCourseQuestionLikeId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeCourseQuestionId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CollegeCourseQuestionShare">
+          <Key>
+            <PropertyRef Name="CollegeCourseQuestionShareId" />
+          </Key>
+          <Property Name="CollegeCourseQuestionShareId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeCourseQuestionId" Type="Int32" Nullable="false" />
+          <Property Name="SharingMediaId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CollegeCourseQuestionSpam">
+          <Key>
+            <PropertyRef Name="CollegeCourseQuestionSpamId" />
+          </Key>
+          <Property Name="CollegeCourseQuestionSpamId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeCourseQuestionId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsReviewed" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CollegeCourseReview">
+          <Key>
+            <PropertyRef Name="CollegeCourseReviewId" />
+          </Key>
+          <Property Name="CollegeCourseReviewId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="ReviewDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CollegeCourseId" Type="Int32" Nullable="false" />
+          <Property Name="IsAnonymousUser" Type="Boolean" Nullable="false" />
+          <Property Name="NickName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="AvatarImage" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="IsCompleted" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CollegeCourseReviewDetailComment">
+          <Key>
+            <PropertyRef Name="CollegeCourseReviewDetailCommentId" />
+          </Key>
+          <Property Name="CollegeCourseReviewDetailCommentId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeCourseReviewDetailId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Comment" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="ParentReviewCommentId" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="Action" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+        </EntityType>
+        <EntityType Name="CollegeCourseReviewDetailCommentSpam">
+          <Key>
+            <PropertyRef Name="CollegeCourseReviewDetailCommentSpamId" />
+          </Key>
+          <Property Name="CollegeCourseReviewDetailCommentSpamId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeCourseReviewDetailCommentId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsReviewed" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CollegeCourseReviewDetailLike">
+          <Key>
+            <PropertyRef Name="CollegeCourseReviewDetailLikeId" />
+          </Key>
+          <Property Name="CollegeCourseReviewDetailLikeId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeCourseReviewDetailId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CollegeCourseReviewDetail">
+          <Key>
+            <PropertyRef Name="CollegeCourseReviewDetailId" />
+          </Key>
+          <Property Name="CollegeCourseReviewDetailId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeCourseReviewId" Type="Int32" Nullable="false" />
+          <Property Name="ReviewCategoryId" Type="Int32" Nullable="false" />
+          <Property Name="ReviewTitle" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="GreatDesc" Type="String" MaxLength="5000" Unicode="false" FixedLength="false" />
+          <Property Name="NotGreatDesc" Type="String" MaxLength="5000" Unicode="false" FixedLength="false" />
+          <Property Name="WhyDesc" Type="String" MaxLength="5000" Unicode="false" FixedLength="false" />
+          <Property Name="Rating" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="Action" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+        </EntityType>
+        <EntityType Name="CollegeCourseReviewDetailShare">
+          <Key>
+            <PropertyRef Name="CollegeCourseReviewDetailShareId" />
+          </Key>
+          <Property Name="CollegeCourseReviewDetailShareId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeCourseReviewDetailId" Type="Int32" Nullable="false" />
+          <Property Name="SharingMediaId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CollegeCourseReviewDetailSpam">
+          <Key>
+            <PropertyRef Name="CollegeCourseReviewDetailSpamId" />
+          </Key>
+          <Property Name="CollegeCourseReviewDetailSpamId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeCourseReviewDetailId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsReviewed" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CollegeCourseReviewDetailSubscribe">
+          <Key>
+            <PropertyRef Name="CollegeCourseReviewDetailSubscribeId" />
+          </Key>
+          <Property Name="CollegeCourseReviewDetailSubscribeId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeCourseReviewDetailId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CollegeCourseSameQuestion">
+          <Key>
+            <PropertyRef Name="CollegeCourseSameQuestionId" />
+          </Key>
+          <Property Name="CollegeCourseSameQuestionId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeCourseQuestionId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CollegeCourseSeat">
+          <Key>
+            <PropertyRef Name="CollegeCourseSeatId" />
+          </Key>
+          <Property Name="CollegeCourseSeatId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeCourseId" Type="Int32" Nullable="false" />
+          <Property Name="StudentCategoryId" Type="Int32" Nullable="false" />
+          <Property Name="TotalSeats" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CollegeCourseTimeLine">
+          <Key>
+            <PropertyRef Name="CollegeCourseTimeLineId" />
+          </Key>
+          <Property Name="CollegeCourseTimeLineId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeCourseId" Type="Int32" Nullable="false" />
+          <Property Name="EntranceDate" Type="DateTime" Precision="0" />
+          <Property Name="ApplicationDate" Type="DateTime" Precision="0" />
+          <Property Name="Campus" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="Scholarship" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="CollegeFacility">
+          <Key>
+            <PropertyRef Name="CollegeFacilityId" />
+          </Key>
+          <Property Name="CollegeFacilityId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="FacilityId" Type="Int32" Nullable="false" />
+          <Property Name="CollegeId" Type="Int32" Nullable="false" />
+          <Property Name="IsAvailable" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CollegeFamousAlumni">
+          <Key>
+            <PropertyRef Name="CollegeFamousAlumniId" />
+          </Key>
+          <Property Name="CollegeFamousAlumniId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeId" Type="Int32" Nullable="false" />
+          <Property Name="AlumniName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="AlumniDesc" Type="String" Nullable="false" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="AlumniPhoto" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="AlumniLink" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="CollegePhoto">
+          <Key>
+            <PropertyRef Name="CollegePhotoId" />
+          </Key>
+          <Property Name="CollegePhotoId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeId" Type="Int32" Nullable="false" />
+          <Property Name="ImageURL" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="ExpertReview">
+          <Key>
+            <PropertyRef Name="ExpertReviewId" />
+          </Key>
+          <Property Name="ExpertReviewId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ExpertId" Type="Int32" Nullable="false" />
+          <Property Name="CollegeCourseId" Type="Int32" Nullable="false" />
+          <Property Name="ReviewTitle" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="ReviewInDetail" Type="String" Nullable="false" MaxLength="5000" Unicode="false" FixedLength="false" />
+          <Property Name="Rating" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Notification">
+          <Key>
+            <PropertyRef Name="NotificationId" />
+          </Key>
+          <Property Name="NotificationId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="NotificationTypeId" Type="Int32" Nullable="false" />
+          <Property Name="ToUserId" Type="Int32" Nullable="false" />
+          <Property Name="IsNew" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="UserEducationDetail">
           <Key>
@@ -202,6 +1031,146 @@
           <Property Name="SubjectId" Type="Int32" Nullable="false" />
           <Property Name="InstituitionTypeId" Type="Int32" Nullable="false" />
           <Property Name="SchoolName" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="UserShortlistedCollege">
+          <Key>
+            <PropertyRef Name="UserShortlistedCollegeId" />
+          </Key>
+          <Property Name="UserShortlistedCollegeId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CollegeId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ErrorLog">
+          <Key>
+            <PropertyRef Name="ErrorLogId" />
+          </Key>
+          <Property Name="ErrorLogId" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ErrorNumber" Type="Int64" />
+          <Property Name="ErrorSeverity" Type="Int32" />
+          <Property Name="ErrorState" Type="Int32" />
+          <Property Name="ErrorProcedure" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="ErrorLine" Type="Int32" />
+          <Property Name="ErrorMessage" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="ErrorDateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="CodeLookup">
+          <Key>
+            <PropertyRef Name="CodeLookupId" />
+          </Key>
+          <Property Name="CodeLookupId" Type="Int32" Nullable="false" />
+          <Property Name="CodeDesc" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="ShortDesc" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ParentCodeLookupId" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDate" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+        </EntityType>
+        <EntityType Name="Affiliation">
+          <Key>
+            <PropertyRef Name="AffiliatedToId" />
+          </Key>
+          <Property Name="AffiliatedToId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="AffiliatedTo" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="CityId" />
+            <PropertyRef Name="CityName" />
+            <PropertyRef Name="StateId" />
+            <PropertyRef Name="IsActive" />
+            <PropertyRef Name="IsDeleted" />
+            <PropertyRef Name="CreatedBy" />
+            <PropertyRef Name="CreatedDate" />
+          </Key>
+          <Property Name="CityId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CityName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="IsMetroCity" Type="Boolean" />
+          <Property Name="CityURL" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="StateId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryId" />
+            <PropertyRef Name="CountryName" />
+            <PropertyRef Name="CountryCode" />
+            <PropertyRef Name="IsActive" />
+            <PropertyRef Name="IsDeleted" />
+            <PropertyRef Name="CreatedBy" />
+            <PropertyRef Name="CreatedDate" />
+          </Key>
+          <Property Name="CountryId" Type="Int32" Nullable="false" />
+          <Property Name="CountryName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CountryCode" Type="String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="CourseId" />
+          </Key>
+          <Property Name="CourseId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseName" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="CourseFieldId" Type="Int32" Nullable="false" />
+          <Property Name="DegreeTypeId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Expert">
+          <Key>
+            <PropertyRef Name="ExpertId" />
+          </Key>
+          <Property Name="ExpertId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ExpertName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ExpertPhoto" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ExpertDesc" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Facility">
+          <Key>
+            <PropertyRef Name="FacilityId" />
+          </Key>
+          <Property Name="FacilityId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="FacilityName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="FacilityIcon" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="PlacementCompany">
+          <Key>
+            <PropertyRef Name="PlacementCompanyId" />
+          </Key>
+          <Property Name="PlacementCompanyId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CompanyLogo" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="StateId" />
+          </Key>
+          <Property Name="StateId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="StateName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CountryId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="SubjectId" />
+          </Key>
+          <Property Name="SubjectId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="SubjectDesc" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CourseID" Type="Int32" />
         </EntityType>
         <EntityType Name="UserFBDetail">
           <Key>
@@ -229,6 +1198,8 @@
             <PropertyRef Name="UserID" />
           </Key>
           <Property Name="UserID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="UserLoginID" Type="Int32" Nullable="false" />
+          <Property Name="Prefix" Type="Int32" />
           <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="MiddleName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="LastName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
@@ -244,63 +1215,48 @@
           <Property Name="IsUserVerified" Type="Boolean" />
           <Property Name="VerifiedBy" Type="Int32" />
           <Property Name="FieldOfInterest" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Type="Int32" Name="UserLoginID" Nullable="false" />
-        </EntityType>
-        <EntityType Name="College">
-          <Key>
-            <PropertyRef Name="CollegeId" />
-          </Key>
-          <Property Type="Int32" Name="CollegeId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="CollegeName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="CollegeLogo" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="CollegeDesc" MaxLength="1000" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="EstablishedYear" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Address1" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Address2" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Type="Int32" Name="CityId" Nullable="false" />
-          <Property Type="Int32" Name="StateId" />
-          <Property Type="Int32" Name="CountryId" Nullable="false" />
-          <Property Type="String" Name="PinCode" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Longitude" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Latitude" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Phone" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="EmailAddress" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="TransportDetail" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="NotifEmailToCollege" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="Boolean" Name="SportsAvailable" Nullable="false" />
-          <Property Type="String" Name="WebSiteURL" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Accreditation" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Type="Int32" Name="NoOfStudents" />
-          <Property Type="Int32" Name="CollegeTypeId" Nullable="false" />
-          <Property Type="Int32" Name="StudentTypeId" Nullable="false" />
-          <Property Type="Int32" Name="AffiliatedToId" />
-          <Property Type="Boolean" Name="IsAccomodation" Nullable="false" />
-          <Property Type="Int32" Name="AccomodationTypeId" />
-          <Property Type="String" Name="Activities" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="ProspectusLink" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="Int32" Name="AcademicSessionId" />
-          <Property Type="String" Name="CampusInfrastructure" MaxLength="1000" FixedLength="false" Unicode="false" />
-          <Property Type="Int32" Name="SubmittedById" />
-          <Property Type="Int64" Name="ViewCount" Nullable="false" />
-          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
-          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="3" />
-          <Property Type="Int32" Name="UpdatedBy" />
-          <Property Type="DateTime" Name="UpdatedDate" Precision="3" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="UserProfilesModelStoreContainer" CdmEntityContainer="UserProfilesContext">
-          <EntitySetMapping Name="CodeLookups">
-            <EntityTypeMapping TypeName="UserProfilesModel.CodeLookup">
-              <MappingFragment StoreEntitySet="CodeLookup">
-                <ScalarProperty Name="CodeLookupId" ColumnName="CodeLookupId" />
-                <ScalarProperty Name="CodeDesc" ColumnName="CodeDesc" />
-                <ScalarProperty Name="ShortDesc" ColumnName="ShortDesc" />
-                <ScalarProperty Name="ParentCodeLookupId" ColumnName="ParentCodeLookupId" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        <EntityContainerMapping StorageEntityContainer="Test2ModelStoreContainer" CdmEntityContainer="UserProfilesContext">
+          <EntitySetMapping Name="Colleges">
+            <EntityTypeMapping TypeName="Test2Model.College">
+              <MappingFragment StoreEntitySet="College">
+                <ScalarProperty Name="CollegeId" ColumnName="CollegeId" />
+                <ScalarProperty Name="CollegeName" ColumnName="CollegeName" />
+                <ScalarProperty Name="CollegeLogo" ColumnName="CollegeLogo" />
+                <ScalarProperty Name="CollegeDesc" ColumnName="CollegeDesc" />
+                <ScalarProperty Name="EstablishedYear" ColumnName="EstablishedYear" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="PinCode" ColumnName="PinCode" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="TransportDetail" ColumnName="TransportDetail" />
+                <ScalarProperty Name="NotifEmailToCollege" ColumnName="NotifEmailToCollege" />
+                <ScalarProperty Name="SportsAvailable" ColumnName="SportsAvailable" />
+                <ScalarProperty Name="WebSiteURL" ColumnName="WebSiteURL" />
+                <ScalarProperty Name="Accreditation" ColumnName="Accreditation" />
+                <ScalarProperty Name="NoOfStudents" ColumnName="NoOfStudents" />
+                <ScalarProperty Name="CollegeTypeId" ColumnName="CollegeTypeId" />
+                <ScalarProperty Name="StudentTypeId" ColumnName="StudentTypeId" />
+                <ScalarProperty Name="AffiliatedToId" ColumnName="AffiliatedToId" />
+                <ScalarProperty Name="IsAccomodation" ColumnName="IsAccomodation" />
+                <ScalarProperty Name="AccomodationTypeId" ColumnName="AccomodationTypeId" />
+                <ScalarProperty Name="Activities" ColumnName="Activities" />
+                <ScalarProperty Name="ProspectusLink" ColumnName="ProspectusLink" />
+                <ScalarProperty Name="AcademicSessionId" ColumnName="AcademicSessionId" />
+                <ScalarProperty Name="CampusInfrastructure" ColumnName="CampusInfrastructure" />
+                <ScalarProperty Name="SubmittedById" ColumnName="SubmittedById" />
+                <ScalarProperty Name="ViewCount" ColumnName="ViewCount" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
@@ -308,27 +1264,337 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Courses">
-            <EntityTypeMapping TypeName="UserProfilesModel.Course">
-              <MappingFragment StoreEntitySet="Course">
-                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
-                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
-                <ScalarProperty Name="CourseFieldId" ColumnName="CourseFieldId" />
-                <ScalarProperty Name="DegreeTypeId" ColumnName="DegreeTypeId" />
+          <EntitySetMapping Name="CollegeClaimDetails">
+            <EntityTypeMapping TypeName="Test2Model.CollegeClaimDetail">
+              <MappingFragment StoreEntitySet="CollegeClaimDetails">
+                <ScalarProperty Name="CollegeClaimDetailId" ColumnName="CollegeClaimDetailId" />
+                <ScalarProperty Name="CollegeId" ColumnName="CollegeId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Subjects">
-            <EntityTypeMapping TypeName="UserProfilesModel.Subject">
-              <MappingFragment StoreEntitySet="Subject">
-                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+          <EntitySetMapping Name="CollegeCourses">
+            <EntityTypeMapping TypeName="Test2Model.CollegeCourse">
+              <MappingFragment StoreEntitySet="CollegeCourse">
+                <ScalarProperty Name="CollegeCourseId" ColumnName="CollegeCourseId" />
+                <ScalarProperty Name="CollegeId" ColumnName="CollegeId" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
                 <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
-                <ScalarProperty Name="SubjectDesc" ColumnName="SubjectDesc" />
+                <ScalarProperty Name="TimingId" ColumnName="TimingId" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="TotalFee" ColumnName="TotalFee" />
+                <ScalarProperty Name="TotalSeats" ColumnName="TotalSeats" />
+                <ScalarProperty Name="EligibilityDesc" ColumnName="EligibilityDesc" />
+                <ScalarProperty Name="Accreditation" ColumnName="Accreditation" />
+                <ScalarProperty Name="IsPlacementDone" ColumnName="IsPlacementDone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CollegeCourseApplProcesses">
+            <EntityTypeMapping TypeName="Test2Model.CollegeCourseApplProcess">
+              <MappingFragment StoreEntitySet="CollegeCourseApplProcess">
+                <ScalarProperty Name="CollegeCourseApplProcessId" ColumnName="CollegeCourseApplProcessId" />
+                <ScalarProperty Name="CollegeCourseId" ColumnName="CollegeCourseId" />
+                <ScalarProperty Name="ExtranceExams" ColumnName="ExtranceExams" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Syllabus" ColumnName="Syllabus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CollegeCourseEligibilities">
+            <EntityTypeMapping TypeName="Test2Model.CollegeCourseEligibility">
+              <MappingFragment StoreEntitySet="CollegeCourseEligibility">
+                <ScalarProperty Name="CollegeCourseEligibilityId" ColumnName="CollegeCourseEligibilityId" />
+                <ScalarProperty Name="CollegeCourseId" ColumnName="CollegeCourseId" />
+                <ScalarProperty Name="StudentCategoryId" ColumnName="StudentCategoryId" />
+                <ScalarProperty Name="Percentage" ColumnName="Percentage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CollegeCourseFees">
+            <EntityTypeMapping TypeName="Test2Model.CollegeCourseFee">
+              <MappingFragment StoreEntitySet="CollegeCourseFee">
+                <ScalarProperty Name="CollegeCourseFeeId" ColumnName="CollegeCourseFeeId" />
+                <ScalarProperty Name="CollegeCourseId" ColumnName="CollegeCourseId" />
+                <ScalarProperty Name="StudentCategoryId" ColumnName="StudentCategoryId" />
+                <ScalarProperty Name="TotalFee" ColumnName="TotalFee" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CollegeCoursePlacements">
+            <EntityTypeMapping TypeName="Test2Model.CollegeCoursePlacement">
+              <MappingFragment StoreEntitySet="CollegeCoursePlacements">
+                <ScalarProperty Name="CollegeCoursePlacementId" ColumnName="CollegeCoursePlacementId" />
+                <ScalarProperty Name="CollegeCourseId" ColumnName="CollegeCourseId" />
+                <ScalarProperty Name="NumberOfStudentsPlaced" ColumnName="NumberOfStudentsPlaced" />
+                <ScalarProperty Name="PercentOfStudentsPlaced" ColumnName="PercentOfStudentsPlaced" />
+                <ScalarProperty Name="PlacementDesc" ColumnName="PlacementDesc" />
+                <ScalarProperty Name="CompanyList" ColumnName="CompanyList" />
+                <ScalarProperty Name="HighestPackage" ColumnName="HighestPackage" />
+                <ScalarProperty Name="AvgSalaryReceived" ColumnName="AvgSalaryReceived" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CollegeCourseQuestions">
+            <EntityTypeMapping TypeName="Test2Model.CollegeCourseQuestion">
+              <MappingFragment StoreEntitySet="CollegeCourseQuestion">
+                <ScalarProperty Name="CollegeCourseQuestionId" ColumnName="CollegeCourseQuestionId" />
+                <ScalarProperty Name="CollegeCourseId" ColumnName="CollegeCourseId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CollegeCourseQuestionAnswers">
+            <EntityTypeMapping TypeName="Test2Model.CollegeCourseQuestionAnswer">
+              <MappingFragment StoreEntitySet="CollegeCourseQuestionAnswer">
+                <ScalarProperty Name="CollegeCourseQuestionAnswerId" ColumnName="CollegeCourseQuestionAnswerId" />
+                <ScalarProperty Name="CollegeCourseQuestionId" ColumnName="CollegeCourseQuestionId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CollegeCourseQuestionAnswerLikes">
+            <EntityTypeMapping TypeName="Test2Model.CollegeCourseQuestionAnswerLike">
+              <MappingFragment StoreEntitySet="CollegeCourseQuestionAnswerLike">
+                <ScalarProperty Name="CollegeCourseQuestionAnswerLikeId" ColumnName="CollegeCourseQuestionAnswerLikeId" />
+                <ScalarProperty Name="CollegeCourseQuestionAnswerId" ColumnName="CollegeCourseQuestionAnswerId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CollegeCourseQuestionAnswerSpams">
+            <EntityTypeMapping TypeName="Test2Model.CollegeCourseQuestionAnswerSpam">
+              <MappingFragment StoreEntitySet="CollegeCourseQuestionAnswerSpam">
+                <ScalarProperty Name="CollegeCourseQuestionAnswerSpamId" ColumnName="CollegeCourseQuestionAnswerSpamId" />
+                <ScalarProperty Name="CollegeCourseQuestionAnswerId" ColumnName="CollegeCourseQuestionAnswerId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsReviewed" ColumnName="IsReviewed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CollegeCourseQuestionLikes">
+            <EntityTypeMapping TypeName="Test2Model.CollegeCourseQuestionLike">
+              <MappingFragment StoreEntitySet="CollegeCourseQuestionLike">
+                <ScalarProperty Name="CollegeCourseQuestionLikeId" ColumnName="CollegeCourseQuestionLikeId" />
+                <ScalarProperty Name="CollegeCourseQuestionId" ColumnName="CollegeCourseQuestionId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CollegeCourseQuestionShares">
+            <EntityTypeMapping TypeName="Test2Model.CollegeCourseQuestionShare">
+              <MappingFragment StoreEntitySet="CollegeCourseQuestionShare">
+                <ScalarProperty Name="CollegeCourseQuestionShareId" ColumnName="CollegeCourseQuestionShareId" />
+                <ScalarProperty Name="CollegeCourseQuestionId" ColumnName="CollegeCourseQuestionId" />
+                <ScalarProperty Name="SharingMediaId" ColumnName="SharingMediaId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CollegeCourseQuestionSpams">
+            <EntityTypeMapping TypeName="Test2Model.CollegeCourseQuestionSpam">
+              <MappingFragment StoreEntitySet="CollegeCourseQuestionSpam">
+                <ScalarProperty Name="CollegeCourseQuestionSpamId" ColumnName="CollegeCourseQuestionSpamId" />
+                <ScalarProperty Name="CollegeCourseQuestionId" ColumnName="CollegeCourseQuestionId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsReviewed" ColumnName="IsReviewed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CollegeCourseReviews">
+            <EntityTypeMapping TypeName="Test2Model.CollegeCourseReview">
+              <MappingFragment StoreEntitySet="CollegeCourseReview">
+                <ScalarProperty Name="CollegeCourseReviewId" ColumnName="CollegeCourseReviewId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ReviewDate" ColumnName="ReviewDate" />
+                <ScalarProperty Name="CollegeCourseId" ColumnName="CollegeCourseId" />
+                <ScalarProperty Name="IsAnonymousUser" ColumnName="IsAnonymousUser" />
+                <ScalarProperty Name="NickName" ColumnName="NickName" />
+                <ScalarProperty Name="AvatarImage" ColumnName="AvatarImage" />
+                <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CollegeCourseReviewDetailComments">
+            <EntityTypeMapping TypeName="Test2Model.CollegeCourseReviewDetailComment">
+              <MappingFragment StoreEntitySet="CollegeCourseReviewDetailComments">
+                <ScalarProperty Name="CollegeCourseReviewDetailCommentId" ColumnName="CollegeCourseReviewDetailCommentId" />
+                <ScalarProperty Name="CollegeCourseReviewDetailId" ColumnName="CollegeCourseReviewDetailId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="ParentReviewCommentId" ColumnName="ParentReviewCommentId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CollegeCourseReviewDetailCommentSpams">
+            <EntityTypeMapping TypeName="Test2Model.CollegeCourseReviewDetailCommentSpam">
+              <MappingFragment StoreEntitySet="CollegeCourseReviewDetailCommentSpam">
+                <ScalarProperty Name="CollegeCourseReviewDetailCommentSpamId" ColumnName="CollegeCourseReviewDetailCommentSpamId" />
+                <ScalarProperty Name="CollegeCourseReviewDetailCommentId" ColumnName="CollegeCourseReviewDetailCommentId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsReviewed" ColumnName="IsReviewed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CollegeCourseReviewDetailLikes">
+            <EntityTypeMapping TypeName="Test2Model.CollegeCourseReviewDetailLike">
+              <MappingFragment StoreEntitySet="CollegeCourseReviewDetailLike">
+                <ScalarProperty Name="CollegeCourseReviewDetailLikeId" ColumnName="CollegeCourseReviewDetailLikeId" />
+                <ScalarProperty Name="CollegeCourseReviewDetailId" ColumnName="CollegeCourseReviewDetailId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CollegeCourseReviewDetails">
+            <EntityTypeMapping TypeName="Test2Model.CollegeCourseReviewDetail">
+              <MappingFragment StoreEntitySet="CollegeCourseReviewDetails">
+                <ScalarProperty Name="CollegeCourseReviewDetailId" ColumnName="CollegeCourseReviewDetailId" />
+                <ScalarProperty Name="CollegeCourseReviewId" ColumnName="CollegeCourseReviewId" />
+                <ScalarProperty Name="ReviewCategoryId" ColumnName="ReviewCategoryId" />
+                <ScalarProperty Name="ReviewTitle" ColumnName="ReviewTitle" />
+                <ScalarProperty Name="GreatDesc" ColumnName="GreatDesc" />
+                <ScalarProperty Name="NotGreatDesc" ColumnName="NotGreatDesc" />
+                <ScalarProperty Name="WhyDesc" ColumnName="WhyDesc" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CollegeCourseReviewDetailShares">
+            <EntityTypeMapping TypeName="Test2Model.CollegeCourseReviewDetailShare">
+              <MappingFragment StoreEntitySet="CollegeCourseReviewDetailShare">
+                <ScalarProperty Name="CollegeCourseReviewDetailShareId" ColumnName="CollegeCourseReviewDetailShareId" />
+                <ScalarProperty Name="CollegeCourseReviewDetailId" ColumnName="CollegeCourseReviewDetailId" />
+                <ScalarProperty Name="SharingMediaId" ColumnName="SharingMediaId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CollegeCourseReviewDetailSpams">
+            <EntityTypeMapping TypeName="Test2Model.CollegeCourseReviewDetailSpam">
+              <MappingFragment StoreEntitySet="CollegeCourseReviewDetailSpam">
+                <ScalarProperty Name="CollegeCourseReviewDetailSpamId" ColumnName="CollegeCourseReviewDetailSpamId" />
+                <ScalarProperty Name="CollegeCourseReviewDetailId" ColumnName="CollegeCourseReviewDetailId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsReviewed" ColumnName="IsReviewed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CollegeCourseReviewDetailSubscribes">
+            <EntityTypeMapping TypeName="Test2Model.CollegeCourseReviewDetailSubscribe">
+              <MappingFragment StoreEntitySet="CollegeCourseReviewDetailSubscribe">
+                <ScalarProperty Name="CollegeCourseReviewDetailSubscribeId" ColumnName="CollegeCourseReviewDetailSubscribeId" />
+                <ScalarProperty Name="CollegeCourseReviewDetailId" ColumnName="CollegeCourseReviewDetailId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CollegeCourseSameQuestions">
+            <EntityTypeMapping TypeName="Test2Model.CollegeCourseSameQuestion">
+              <MappingFragment StoreEntitySet="CollegeCourseSameQuestion">
+                <ScalarProperty Name="CollegeCourseSameQuestionId" ColumnName="CollegeCourseSameQuestionId" />
+                <ScalarProperty Name="CollegeCourseQuestionId" ColumnName="CollegeCourseQuestionId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CollegeCourseSeats">
+            <EntityTypeMapping TypeName="Test2Model.CollegeCourseSeat">
+              <MappingFragment StoreEntitySet="CollegeCourseSeats">
+                <ScalarProperty Name="CollegeCourseSeatId" ColumnName="CollegeCourseSeatId" />
+                <ScalarProperty Name="CollegeCourseId" ColumnName="CollegeCourseId" />
+                <ScalarProperty Name="StudentCategoryId" ColumnName="StudentCategoryId" />
+                <ScalarProperty Name="TotalSeats" ColumnName="TotalSeats" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CollegeCourseTimeLines">
+            <EntityTypeMapping TypeName="Test2Model.CollegeCourseTimeLine">
+              <MappingFragment StoreEntitySet="CollegeCourseTimeLine">
+                <ScalarProperty Name="CollegeCourseTimeLineId" ColumnName="CollegeCourseTimeLineId" />
+                <ScalarProperty Name="CollegeCourseId" ColumnName="CollegeCourseId" />
+                <ScalarProperty Name="EntranceDate" ColumnName="EntranceDate" />
+                <ScalarProperty Name="ApplicationDate" ColumnName="ApplicationDate" />
+                <ScalarProperty Name="Campus" ColumnName="Campus" />
+                <ScalarProperty Name="Scholarship" ColumnName="Scholarship" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CollegeFacilities">
+            <EntityTypeMapping TypeName="Test2Model.CollegeFacility">
+              <MappingFragment StoreEntitySet="CollegeFacility">
+                <ScalarProperty Name="CollegeFacilityId" ColumnName="CollegeFacilityId" />
+                <ScalarProperty Name="FacilityId" ColumnName="FacilityId" />
+                <ScalarProperty Name="CollegeId" ColumnName="CollegeId" />
+                <ScalarProperty Name="IsAvailable" ColumnName="IsAvailable" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CollegeFamousAlumnis">
+            <EntityTypeMapping TypeName="Test2Model.CollegeFamousAlumni">
+              <MappingFragment StoreEntitySet="CollegeFamousAlumni">
+                <ScalarProperty Name="CollegeFamousAlumniId" ColumnName="CollegeFamousAlumniId" />
+                <ScalarProperty Name="CollegeId" ColumnName="CollegeId" />
+                <ScalarProperty Name="AlumniName" ColumnName="AlumniName" />
+                <ScalarProperty Name="AlumniDesc" ColumnName="AlumniDesc" />
+                <ScalarProperty Name="AlumniPhoto" ColumnName="AlumniPhoto" />
+                <ScalarProperty Name="AlumniLink" ColumnName="AlumniLink" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CollegePhotos">
+            <EntityTypeMapping TypeName="Test2Model.CollegePhoto">
+              <MappingFragment StoreEntitySet="CollegePhotos">
+                <ScalarProperty Name="CollegePhotoId" ColumnName="CollegePhotoId" />
+                <ScalarProperty Name="CollegeId" ColumnName="CollegeId" />
+                <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExpertReviews">
+            <EntityTypeMapping TypeName="Test2Model.ExpertReview">
+              <MappingFragment StoreEntitySet="ExpertReview">
+                <ScalarProperty Name="ExpertReviewId" ColumnName="ExpertReviewId" />
+                <ScalarProperty Name="ExpertId" ColumnName="ExpertId" />
+                <ScalarProperty Name="CollegeCourseId" ColumnName="CollegeCourseId" />
+                <ScalarProperty Name="ReviewTitle" ColumnName="ReviewTitle" />
+                <ScalarProperty Name="ReviewInDetail" ColumnName="ReviewInDetail" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notifications">
+            <EntityTypeMapping TypeName="Test2Model.Notification">
+              <MappingFragment StoreEntitySet="Notifications">
+                <ScalarProperty Name="NotificationId" ColumnName="NotificationId" />
+                <ScalarProperty Name="NotificationTypeId" ColumnName="NotificationTypeId" />
+                <ScalarProperty Name="ToUserId" ColumnName="ToUserId" />
+                <ScalarProperty Name="IsNew" ColumnName="IsNew" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserEducationDetails">
-            <EntityTypeMapping TypeName="UserProfilesModel.UserEducationDetail">
+            <EntityTypeMapping TypeName="Test2Model.UserEducationDetail">
               <MappingFragment StoreEntitySet="UserEducationDetails">
                 <ScalarProperty Name="UserEducationDetailId" ColumnName="UserEducationDetailId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -342,8 +1608,148 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="UserShortlistedColleges">
+            <EntityTypeMapping TypeName="Test2Model.UserShortlistedCollege">
+              <MappingFragment StoreEntitySet="UserShortlistedColleges">
+                <ScalarProperty Name="UserShortlistedCollegeId" ColumnName="UserShortlistedCollegeId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CollegeId" ColumnName="CollegeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ErrorLogs">
+            <EntityTypeMapping TypeName="Test2Model.ErrorLog">
+              <MappingFragment StoreEntitySet="ErrorLog">
+                <ScalarProperty Name="ErrorLogId" ColumnName="ErrorLogId" />
+                <ScalarProperty Name="ErrorNumber" ColumnName="ErrorNumber" />
+                <ScalarProperty Name="ErrorSeverity" ColumnName="ErrorSeverity" />
+                <ScalarProperty Name="ErrorState" ColumnName="ErrorState" />
+                <ScalarProperty Name="ErrorProcedure" ColumnName="ErrorProcedure" />
+                <ScalarProperty Name="ErrorLine" ColumnName="ErrorLine" />
+                <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+                <ScalarProperty Name="ErrorDateTime" ColumnName="ErrorDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CodeLookups">
+            <EntityTypeMapping TypeName="Test2Model.CodeLookup">
+              <MappingFragment StoreEntitySet="CodeLookup">
+                <ScalarProperty Name="CodeLookupId" ColumnName="CodeLookupId" />
+                <ScalarProperty Name="CodeDesc" ColumnName="CodeDesc" />
+                <ScalarProperty Name="ShortDesc" ColumnName="ShortDesc" />
+                <ScalarProperty Name="ParentCodeLookupId" ColumnName="ParentCodeLookupId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Affiliations">
+            <EntityTypeMapping TypeName="Test2Model.Affiliation">
+              <MappingFragment StoreEntitySet="Affiliation">
+                <ScalarProperty Name="AffiliatedToId" ColumnName="AffiliatedToId" />
+                <ScalarProperty Name="AffiliatedTo" ColumnName="AffiliatedTo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cities">
+            <EntityTypeMapping TypeName="Test2Model.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="IsMetroCity" ColumnName="IsMetroCity" />
+                <ScalarProperty Name="CityURL" ColumnName="CityURL" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="Test2Model.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Courses">
+            <EntityTypeMapping TypeName="Test2Model.Course">
+              <MappingFragment StoreEntitySet="Course">
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="CourseFieldId" ColumnName="CourseFieldId" />
+                <ScalarProperty Name="DegreeTypeId" ColumnName="DegreeTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Experts">
+            <EntityTypeMapping TypeName="Test2Model.Expert">
+              <MappingFragment StoreEntitySet="Expert">
+                <ScalarProperty Name="ExpertId" ColumnName="ExpertId" />
+                <ScalarProperty Name="ExpertName" ColumnName="ExpertName" />
+                <ScalarProperty Name="ExpertPhoto" ColumnName="ExpertPhoto" />
+                <ScalarProperty Name="ExpertDesc" ColumnName="ExpertDesc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Facilities">
+            <EntityTypeMapping TypeName="Test2Model.Facility">
+              <MappingFragment StoreEntitySet="Facility">
+                <ScalarProperty Name="FacilityId" ColumnName="FacilityId" />
+                <ScalarProperty Name="FacilityName" ColumnName="FacilityName" />
+                <ScalarProperty Name="FacilityIcon" ColumnName="FacilityIcon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlacementCompanies">
+            <EntityTypeMapping TypeName="Test2Model.PlacementCompany">
+              <MappingFragment StoreEntitySet="PlacementCompany">
+                <ScalarProperty Name="PlacementCompanyId" ColumnName="PlacementCompanyId" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="CompanyLogo" ColumnName="CompanyLogo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="States">
+            <EntityTypeMapping TypeName="Test2Model.State">
+              <MappingFragment StoreEntitySet="State">
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subjects">
+            <EntityTypeMapping TypeName="Test2Model.Subject">
+              <MappingFragment StoreEntitySet="Subject">
+                <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+                <ScalarProperty Name="SubjectDesc" ColumnName="SubjectDesc" />
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="UserFBDetails">
-            <EntityTypeMapping TypeName="UserProfilesModel.UserFBDetail">
+            <EntityTypeMapping TypeName="Test2Model.UserFBDetail">
               <MappingFragment StoreEntitySet="UserFBDetails">
                 <ScalarProperty Name="UserFBDetailId" ColumnName="UserFBDetailId" />
                 <ScalarProperty Name="UserLoginId" ColumnName="UserLoginId" />
@@ -352,7 +1758,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserLogins">
-            <EntityTypeMapping TypeName="UserProfilesModel.UserLogin">
+            <EntityTypeMapping TypeName="Test2Model.UserLogin">
               <MappingFragment StoreEntitySet="UserLogin">
                 <ScalarProperty Name="UserLoginID" ColumnName="UserLoginID" />
                 <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
@@ -366,10 +1772,11 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="UserProfilesModel.User">
+            <EntityTypeMapping TypeName="Test2Model.User">
               <MappingFragment StoreEntitySet="Users">
-                <ScalarProperty Name="UserLoginID" ColumnName="UserLoginID" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserLoginID" ColumnName="UserLoginID" />
+                <ScalarProperty Name="Prefix" ColumnName="Prefix" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
@@ -385,48 +1792,6 @@
                 <ScalarProperty Name="IsUserVerified" ColumnName="IsUserVerified" />
                 <ScalarProperty Name="VerifiedBy" ColumnName="VerifiedBy" />
                 <ScalarProperty Name="FieldOfInterest" ColumnName="FieldOfInterest" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Colleges">
-            <EntityTypeMapping TypeName="UserProfilesModel.College">
-              <MappingFragment StoreEntitySet="College">
-                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="ViewCount" ColumnName="ViewCount" />
-                <ScalarProperty Name="SubmittedById" ColumnName="SubmittedById" />
-                <ScalarProperty Name="CampusInfrastructure" ColumnName="CampusInfrastructure" />
-                <ScalarProperty Name="AcademicSessionId" ColumnName="AcademicSessionId" />
-                <ScalarProperty Name="ProspectusLink" ColumnName="ProspectusLink" />
-                <ScalarProperty Name="Activities" ColumnName="Activities" />
-                <ScalarProperty Name="AccomodationTypeId" ColumnName="AccomodationTypeId" />
-                <ScalarProperty Name="IsAccomodation" ColumnName="IsAccomodation" />
-                <ScalarProperty Name="AffiliatedToId" ColumnName="AffiliatedToId" />
-                <ScalarProperty Name="StudentTypeId" ColumnName="StudentTypeId" />
-                <ScalarProperty Name="CollegeTypeId" ColumnName="CollegeTypeId" />
-                <ScalarProperty Name="NoOfStudents" ColumnName="NoOfStudents" />
-                <ScalarProperty Name="Accreditation" ColumnName="Accreditation" />
-                <ScalarProperty Name="WebSiteURL" ColumnName="WebSiteURL" />
-                <ScalarProperty Name="SportsAvailable" ColumnName="SportsAvailable" />
-                <ScalarProperty Name="NotifEmailToCollege" ColumnName="NotifEmailToCollege" />
-                <ScalarProperty Name="TransportDetail" ColumnName="TransportDetail" />
-                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
-                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
-                <ScalarProperty Name="PinCode" ColumnName="PinCode" />
-                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
-                <ScalarProperty Name="StateId" ColumnName="StateId" />
-                <ScalarProperty Name="CityId" ColumnName="CityId" />
-                <ScalarProperty Name="Address2" ColumnName="Address2" />
-                <ScalarProperty Name="Address1" ColumnName="Address1" />
-                <ScalarProperty Name="EstablishedYear" ColumnName="EstablishedYear" />
-                <ScalarProperty Name="CollegeDesc" ColumnName="CollegeDesc" />
-                <ScalarProperty Name="CollegeLogo" ColumnName="CollegeLogo" />
-                <ScalarProperty Name="CollegeName" ColumnName="CollegeName" />
-                <ScalarProperty Name="CollegeId" ColumnName="CollegeId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
