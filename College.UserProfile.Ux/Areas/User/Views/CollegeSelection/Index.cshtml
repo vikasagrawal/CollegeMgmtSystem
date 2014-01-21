@@ -19,13 +19,22 @@
         <div>
             <table>
                 <thead>
-                    <td style="width: 100px">SELECT
+                    <td style="width: 100px">
                     </td>
-                    <td style="width: 500px">
-                        @LabelResources.CollegeNameText
+                    <td>
+                        @*  @LabelResources.CollegeNameText*@
                     </td>
-                    <td style="width: 500px">
-                        @LabelResources.CollegeDescText
+                    <td>
+                        @*@LabelResources.CollegeDescText*@
+                    </td>
+                    <td>
+                        @*@LabelResources.CollegeDescText*@
+                    </td>
+                    <td>
+                        @*@LabelResources.CollegeDescText*@
+                    </td>
+                    <td>
+                        @*@LabelResources.CollegeDescText*@
                     </td>
                 </thead>
                 <tbody data-bind="foreach: availableColleges">
@@ -34,10 +43,19 @@
                             <input type="checkbox" data-bind="checkedValue: CollegeId, checked: $root.userSortListedColleges" />
                         </td>
                         <td>
+                            <img data-bind="attr: { src: CollegeLogo }" width="100px" height="100px" />
+                        </td>
+                        <td>
                             <label data-bind="text: CollegeName" />
                         </td>
                         <td>
-                            <label data-bind="text: CollegeDesc" />
+                            <label data-bind="text: CityId" />
+                        </td>
+                        <td>
+                            <label data-bind="text: StateId" />
+                        </td>
+                        <td>
+                            <label data-bind="text: CountryId" />
                         </td>
                     </tr>
                 </tbody>
