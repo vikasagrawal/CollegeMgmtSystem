@@ -26,11 +26,9 @@
     // Here we run a very simple test of the Graph API after login is successful. 
     // This testAPI() function is only called in those cases. 
     self.loginWithFaceBook = function (userID, accessToken) {
-        alert("inside loginWithFaceBook");
         FB.api('/me', function (response) {
-            alert("inside fb abi response. " + response);
             if (response && !response.errors) {
-                alert("inside fb abi response success ");
+
                 self.IsFacebookLogin(true);
                 self.FBUserID(userID);
                 self.EmailAddress(response.email);
@@ -41,7 +39,6 @@
                 self.SignIn(accessToken);
             }
             else {
-                alert("inside fb abi response failure ");
                 $("#infoMessages").html(globalResources.resources.FacebookLoginErrorMessage).attr("class", "message-error");
             }
         });
