@@ -126,6 +126,9 @@
   <data name="UserAlreadyRegisteredMessageFormat" xml:space="preserve">
     <value>User with email address '{0}' already registered.</value>
   </data>
+  <data name="UserCollegeShortlistingSaveSuccessMessage" xml:space="preserve">
+    <value>Your College Shortlisting Saved Successfully.</value>
+  </data>
   <data name="UserLoginValidationFailedMessage" xml:space="preserve">
     <value>Invalid Email Address or Password.</value>
   </data>

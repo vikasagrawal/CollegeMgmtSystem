@@ -66,6 +66,8 @@
     </Compile>
     <Compile Include="Authentication\Utils.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="DataManagerInterfaces\IUserShortListedCollegesManager.cs" />
+    <Compile Include="DataManagers\UserShortListedCollegesManager.cs" />
     <Compile Include="DataReaderInterfaces\ICollegeReader.cs" />
     <Compile Include="DataReaderInterfaces\ICodeLookupReader.cs" />
     <Compile Include="DataReaderInterfaces\ICourseReader.cs" />
@@ -74,6 +76,7 @@
     <Compile Include="DataManagerInterfaces\IUserLoginManager.cs" />
     <Compile Include="DataManagerInterfaces\IUserManager.cs" />
     <Compile Include="DataManagerInterfaces\IUserProfileManager.cs" />
+    <Compile Include="DataReaderInterfaces\IUserShortListedCollegesReader.cs" />
     <Compile Include="DataReaders\CodeLookupReader.cs" />
     <Compile Include="DataReaders\CollegeReader.cs" />
     <Compile Include="DataReaders\CourseReader.cs" />
@@ -82,12 +85,14 @@
     <Compile Include="DataManagers\UserLoginManager.cs" />
     <Compile Include="DataManagers\UserManager.cs" />
     <Compile Include="DataManagers\UserProfileManager.cs" />
+    <Compile Include="DataReaders\UserShortListedCollegesReader.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Models\UserEmailVerification.cs" />
     <Compile Include="Models\UserProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Helpers\Helper.cs" />
     <Compile Include="Helpers\UserLoginHelper.cs" />
+    <Compile Include="UserContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -34,16 +34,12 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
         // GET: /User/Profile/GetUserProfileInformation
         public ActionResult GetUserProfileInformation()
         {
-            string userLoginID = Utils.GetAutheticatedUserData();
+            int userLoginID = UserContext.CurrentUserLoginID;
 
-            if (!String.IsNullOrEmpty(userLoginID))
+            if (userLoginID > 0)
             {
-                int id;
-                if (Int32.TryParse(userLoginID, out id))
-                {
-                    var userProfile = _userProfileManager.GetUserProfile(id);
-                    return Json(userProfile, JsonRequestBehavior.AllowGet);
-                }
+                var userProfile = _userProfileManager.GetUserProfile(userLoginID);
+                return Json(userProfile, JsonRequestBehavior.AllowGet);
             }
 
             throw new UnauthorizedAccessException();
@@ -59,6 +55,7 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
                 userProfile = _userProfileManager.AddOrUpdateUserProfile(userProfile);
                 var routeValues = new { area = "User" };
                 var urlToRedirect = Url.Action("Index", "CollegeSelection", routeValues);
+                UserContext.CurrentUserID = userProfile.user.UserID;
                 return Json(new { userProfile = userProfile, redirectToUrl = urlToRedirect, Message = Resources.MessageResources.UserProfileSaveSuccessMessage });
             }
             else
@@ -86,9 +83,9 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
                 using (var binaryReader = new System.IO.BinaryReader(Request.Files["files"].InputStream))
                 {
                     var Imagefile = binaryReader.ReadBytes(Request.Files["files"].ContentLength);//your image
-                    System.IO.File.WriteAllBytes(AppDomain.CurrentDomain.BaseDirectory + "Upload/" + Utils.GetAutheticatedUserData() + fileExtention, Imagefile);
+                    System.IO.File.WriteAllBytes(AppDomain.CurrentDomain.BaseDirectory + "Upload/" + UserContext.CurrentUserLoginID.ToString() + fileExtention, Imagefile);
                 }
-                return Json(new { FileName = Utils.GetAutheticatedUserData() + fileExtention, Message = Resources.MessageResources.UserProfileImageSaveSuccessMessage });
+                return Json(new { FileName = UserContext.CurrentUserLoginID.ToString() + fileExtention, Message = Resources.MessageResources.UserProfileImageSaveSuccessMessage });
             }
             else
             {

@@ -241,6 +241,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Next.
+        /// </summary>
+        internal static string PagerNextButtonText {
+            get {
+                return ResourceManager.GetString("PagerNextButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prev.
+        /// </summary>
+        internal static string PagerPrevButtonText {
+            get {
+                return ResourceManager.GetString("PagerPrevButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to PASSWORD.
         /// </summary>
         internal static string PasswordPlaceolderText {

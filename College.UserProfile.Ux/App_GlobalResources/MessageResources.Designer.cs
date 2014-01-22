@@ -88,6 +88,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your College Shortlisting Saved Successfully..
+        /// </summary>
+        internal static string UserCollegeShortlistingSaveSuccessMessage {
+            get {
+                return ResourceManager.GetString("UserCollegeShortlistingSaveSuccessMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid Email Address or Password..
         /// </summary>
         internal static string UserLoginValidationFailedMessage {

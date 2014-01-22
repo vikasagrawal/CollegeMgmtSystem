@@ -27,10 +27,6 @@ function BlankUserEducationDetail(institutionTypeID) {
 function UserViewModel() {
     $('#loading').hide();
     var self = this;
-    var bindingCompleted = false;
-    var languagesLoaded = false;
-    var userProfileLoaded = false;
-
 
     self.loading = ko.observableArray();
 
@@ -224,7 +220,6 @@ function UserViewModel() {
 
     self.loadUserProfile = function () {
         $('#loading').show();
-        self.loading.push(true);
         GetUserProfile(
             function (data, textStatus, jqXHR) {
                 if (textStatus == "success") {

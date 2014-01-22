@@ -177,6 +177,12 @@
   <data name="NewUserQuestionText" xml:space="preserve">
     <value>New User?</value>
   </data>
+  <data name="PagerNextButtonText" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="PagerPrevButtonText" xml:space="preserve">
+    <value>Prev</value>
+  </data>
   <data name="PasswordPlaceolderText" xml:space="preserve">
     <value>PASSWORD</value>
   </data>

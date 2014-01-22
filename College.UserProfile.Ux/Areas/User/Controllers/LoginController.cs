@@ -143,6 +143,7 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
                 if (userlogin.IsEmailVerified == true)
                 {
                     Utils.SetAuthenticationCookie(userlogin);
+                    UserContext.CurrentUserLoginID = userlogin.UserLoginID;
                 }
                 else
                 {
@@ -187,7 +188,8 @@ namespace College.UserProfile.Ux.Areas.User.Controllers
             }
             else
             {
-                College.UserProfile.Core.Authentication.Utils.SetAuthenticationCookie(userlogin);
+                Utils.SetAuthenticationCookie(userlogin);
+                UserContext.CurrentUserLoginID = userlogin.UserLoginID;
             }
 
             return Json(new { redirectToUrl = urlToRedirect, Message = "Success" });

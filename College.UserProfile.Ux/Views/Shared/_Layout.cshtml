@@ -16,35 +16,37 @@
     <script>
         (function (d, s, id) {
             var apikey = '@(System.Configuration.ConfigurationManager.AppSettings["FacebookAPIKey"].ToString())'
-                    var js, fjs = d.getElementsByTagName(s)[0];
-                    if (d.getElementById(id)) return;
-                    js = d.createElement(s); js.id = id;
-                    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=" + apikey;
-                    fjs.parentNode.insertBefore(js, fjs);
-                }(document, 'script', 'facebook-jssdk'));
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=" + apikey;
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
     </script>
 
     <header>
-        <div class="content-wrapper">
-            @if (User.Identity.IsAuthenticated)
-            {
-                <div>Logged In As </div> @Html.ActionLink(User.Identity.Name, "", "Profile", null, new { area = "User" });
-                <div><a href="~/User/Login/Logout" onclick="FB.logout();">Logout</a> </div>
+        <div class="navbar navbar-inverse">
+            <div class="navbar-inner">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <div>Logged In As </div> @Html.ActionLink(User.Identity.Name, "", "Profile", null, new { area = "User" });
+                    <div><a href="~/User/Login/Logout" onclick="FB.logout();">Logout</a> </div>
                 
-            }
-            else
-            {
-                <div>@Html.ActionLink("Login", "", "Login", null, new { area = "User" })
+                }
+                else
+                {
+                    <div>@Html.ActionLink("Login", "", "Login", null, new { area = "User" })
 
-                </div>
-            }
+                    </div>
+                }
+            </div>
         </div>
     </header>
-    <div id="body">
+    <div id="body" class="container-fluid">
         @RenderSection("featured", required: false)
-        <section class="content-wrapper main-content clear-fix">
+        <div class="row-fluid">
             @RenderBody()
-        </section>
+        </div>
         <div id="loading">
         </div>
 
